@@ -1,26 +1,42 @@
 Certos de ter:
 	Jogo RPG por turno, no estilo Fear and Hunger, Darkest Dungeon, Ordem Paranormal.
 
-	Combate por turno. Máximo de dois adversários. Mínimo de um. 
+	Combate por turno. Máximo de dois adversários. Mínimo de um. Incentivar a não enfrentar os NPCs
 		Ataque padrão. Só carregar uma arma, a melhor; escolhe o alvo; todo ataque acerta e a chance é do critico; Não consegue se defender; Fugir, atrelado a Sanidade (quanto menor a Sanidade, mais difícil é fugir) e num sucesso, perde sanidade; Dano: apenas um tipo, independente de origem (magica ou física);
 		Não consegue usar itens no combate.
 		Condição, chance de aplicar no jogador baseado na Sanidade atual: 1. podridão(dano por turno, dentro e fora de combate), 2. cegueira (afeta a chance de critico, temporario, X turnos), 3. Devorado (não consegue agir, temporario, Y turnos). Elas nao acumulam, nem se renovam. Precisa acabar o original e depois aplicar.
-		Magias, quanto menos Sanidade tu tem, mais forte: 1. Causa mais dano que um ataque; 2. paralisia, chance de acertar afetada pela Sanidade ; 
+		Magias, quanto menos Sanidade tu tem, mais forte: 1. Dark Fire, Causa mais dano que um ataque; 2. Dark Hold, chance de acertar afetada pela Sanidade ; 3. Darkness, cega o inimigo.
 		
 	Jogador vai ter um aliado, que não vai durar o jogo todo, ele pode ser morto. 
 	Barra de Sanidade: mente/mana, barra, ela vai começar em 100% e vai diminuindo com o passar do jogo. Diminui quando: usa magia, dano critico, ataque especial de um inimigo, ver o aliado morrer, perde quando o monstro inicia o combate.
+	Chance de turno IDLE, inimigo faz nada. "Ele te observa...".
+
 
 	Inventario:
 		Armadura: apenas melhora, jogador não pode trocar ou equipar a anterior. Reduz o dano sofrido
 		Arma, apenas melhora, aumenta o ataque.
 		Consumiveis: Curar vida, Sanidade, Podridão.
-
+		Itens importantes: chaves.
 		Sem dinheiro, sem lojinha.
+	Ter um item foda que precisa sacrificar o NPC.
+
 	Exploracao
 		Deslocamento no mapa, fora de combate: livre, sem ser nas diagonais.
-		Encontraveis: armaduras, armas, consumiveis (curar a vida e a Sanidade); curar as condições; 
+		Encontraveis: armaduras, armas, consumiveis (curar a vida e a Sanidade); curar as condições; Curiosidades: tem um textinho, mas não são coletáveis.
+		Os inimigos caminham pelo mapa. Quando eles enxergam o jogador, vão atras dele. 
+		Jogador emite a luz. Consegue enxergar apenas uma area em torno dele.
+		Armadilhas: pisa sofre dano e alerta os inimigos; causa podridão; cegueira, tela fica preta/branca.
+		Puzzles, simples.
+		Save point. 
+		Portas trancadas.
+
+Cenarios:
+	Esgoto, calabouço do culto.
+
 
 	
 
-	Se der tempo: 
+Se der tempo: 
 	Run 100% de Sanidade, dar as costas e sair da Dungeon ou concluir ela.
+	Outro bicho.
+	Sangue-sugas invadem o inventario.
