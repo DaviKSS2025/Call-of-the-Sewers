@@ -1,7 +1,7 @@
 Certos de ter:
 	Jogo RPG por turno, no estilo Fear and Hunger, Darkest Dungeon, Ordem Paranormal.
 
-	Combate por turno. Máximo de dois adversários. Mínimo de um. 
+	Combate por turno. Máximo de dois adversários. Mínimo de um. Incentivar a não enfrentar os NPCs
 		Ataque padrão. Só carregar uma arma, a melhor; escolhe o alvo; todo ataque acerta e a chance é do critico; Não consegue se defender; Fugir, atrelado a Sanidade (quanto menor a Sanidade, mais difícil é fugir) e num sucesso, perde sanidade; Dano: apenas um tipo, independente de origem (magica ou física);
 		Não consegue usar itens no combate.
 		Condição, chance de aplicar no jogador baseado na Sanidade atual: 1. podridão(dano por turno, dentro e fora de combate), 2. cegueira (afeta a chance de critico, temporario, X turnos), 3. Devorado (não consegue agir, temporario, Y turnos). Elas nao acumulam, nem se renovam. Precisa acabar o original e depois aplicar.
@@ -16,7 +16,7 @@ Certos de ter:
 		Armadura: apenas melhora, jogador não pode trocar ou equipar a anterior. Reduz o dano sofrido
 		Arma, apenas melhora, aumenta o ataque.
 		Consumiveis: Curar vida, Sanidade, Podridão.
-		Itens chave: importantes.
+		Itens importantes: chaves.
 		Sem dinheiro, sem lojinha.
 	Ter um item foda que precisa sacrificar o NPC.
 
@@ -26,7 +26,9 @@ Certos de ter:
 		Os inimigos caminham pelo mapa. Quando eles enxergam o jogador, vão atras dele. 
 		Jogador emite a luz. Consegue enxergar apenas uma area em torno dele.
 		Armadilhas: pisa sofre dano e alerta os inimigos; causa podridão; cegueira, tela fica preta/branca.
-	
+		Puzzles, simples.
+		Save point. 
+		Portas trancadas.
 
 Cenarios:
 	Esgoto, calabouço do culto.
