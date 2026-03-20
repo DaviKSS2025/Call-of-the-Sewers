@@ -9,6 +9,8 @@ Certos de ter:
 		
 	Jogador vai ter um aliado, que não vai durar o jogo todo, ele pode ser morto. 
 	Barra de Sanidade: mente/mana, barra, ela vai começar em 100% e vai diminuindo com o passar do jogo. Diminui quando: usa magia, dano critico, ataque especial de um inimigo, ver o aliado morrer, perde quando o monstro inicia o combate.
+	Chance de turno IDLE, inimigo faz nada. "Ele te observa...".
+
 
 	Inventario:
 		Armadura: apenas melhora, jogador não pode trocar ou equipar a anterior. Reduz o dano sofrido
@@ -16,13 +18,20 @@ Certos de ter:
 		Consumiveis: Curar vida, Sanidade, Podridão.
 		Itens chave: importantes.
 		Sem dinheiro, sem lojinha.
+	Ter um item foda que precisa sacrificar o NPC.
 
 	Exploracao
 		Deslocamento no mapa, fora de combate: livre, sem ser nas diagonais.
-		Encontraveis: armaduras, armas, consumiveis (curar a vida e a Sanidade); curar as condições; 
+		Encontraveis: armaduras, armas, consumiveis (curar a vida e a Sanidade); curar as condições; Curiosidades: tem um textinho, mas não são coletáveis.
+		Os inimigos caminham pelo mapa. Quando eles enxergam o jogador, vão atras dele. 
+		Jogador emite a luz. Consegue enxergar apenas uma area em torno dele.
+		Armadilhas: pisa sofre dano e alerta os inimigos; causa podridão; cegueira, tela fica preta/branca.
+	
 
-	Ter um item foda que precisa sacrificar o NPC.
-	Chance de turno IDLE, inimigo faz nada. "Ele te observa...".
+Cenarios:
+	Esgoto, calabouço do culto.
+
+
 	
 
 Se der tempo: 
