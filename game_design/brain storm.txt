@@ -4,7 +4,7 @@ Certos de ter:
 	Combate por turno. Máximo de dois adversários. Mínimo de um. 
 		Ataque padrão. Só carregar uma arma, a melhor; escolhe o alvo; todo ataque acerta e a chance é do critico; Não consegue se defender; Fugir, atrelado a Sanidade (quanto menor a Sanidade, mais difícil é fugir) e num sucesso, perde sanidade; Dano: apenas um tipo, independente de origem (magica ou física);
 		Não consegue usar itens no combate.
-		Condição, chance de aplicar no jogador baseado na Sanidade atual: 1. podridão(dano por turno, dentro e fora de combate), 2. cegueira (afeta a chance de critico, temporario, X turnos), 3. paralisia (não consegue agir, temporario, Y turnos). 
+		Condição, chance de aplicar no jogador baseado na Sanidade atual: 1. podridão(dano por turno, dentro e fora de combate), 2. cegueira (afeta a chance de critico, temporario, X turnos), 3. Devorado (não consegue agir, temporario, Y turnos). Elas nao acumulam, nem se renovam. Precisa acabar o original e depois aplicar.
 		Magias, quanto menos Sanidade tu tem, mais forte: 1. Causa mais dano que um ataque; 2. paralisia, chance de acertar afetada pela Sanidade ; 
 		
 	Jogador vai ter um aliado, que não vai durar o jogo todo, ele pode ser morto. 
