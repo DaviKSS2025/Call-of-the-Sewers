@@ -20,7 +20,10 @@ Certos de ter:
 		Deslocamento no mapa, fora de combate: livre, sem ser nas diagonais.
 		Encontraveis: armaduras, armas, consumiveis (curar a vida e a Sanidade); curar as condições; 
 
+	Ter um item foda que precisa sacrificar o NPC.
+
 	
 
-	Se der tempo: 
+Se der tempo: 
 	Run 100% de Sanidade, dar as costas e sair da Dungeon ou concluir ela.
+	Outro bicho.
