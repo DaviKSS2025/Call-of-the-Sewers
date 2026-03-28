@@ -18,6 +18,8 @@ Certos de ter:
 		Consumiveis: Curar vida, Sanidade, Podridão.
 		Itens importantes: chaves.
 		Sem dinheiro, sem lojinha.
+		Tochas: evitar o escuro. No escuro o jogador perde SANIDADE.
+		Frosforo: Pode acendar velas do cenario. Interage com a vela para acender OU Abre o inventario em cima do tile e USA.
 	Ter um item foda que precisa sacrificar o NPC.
 
 	Exploracao
