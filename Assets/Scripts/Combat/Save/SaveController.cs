@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class SaveController : MonoBehaviour
@@ -14,6 +13,11 @@ public class SaveController : MonoBehaviour
         }
         Instance = this;
     }
+    public void SetPlayerName(string playerName)
+    {
+        SaveManager.Instance.Data.PlayerData.PlayerName = playerName;
+        SaveManager.Instance.Save();
+    }
     public void SetCurrentHealth(int currentHealth, int currentCharacter)
     {
         /*var data = SaveManager.Instance.Data.slots[currentCharacter];
@@ -21,4 +25,5 @@ public class SaveController : MonoBehaviour
 
         SaveManager.Instance.Save();*/
     }
+
 }

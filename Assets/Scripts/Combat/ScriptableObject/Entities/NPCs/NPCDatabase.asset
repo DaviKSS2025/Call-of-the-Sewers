@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: NPCDatabase
   m_EditorClassIdentifier: Assembly-CSharp::NPCDatabase
   NPCS:
-  - npcName: {fileID: 11400000, guid: dc01800eec56f424dada32072c82adac, type: 2}
+  - Type: 0
+    NPCName: {fileID: 11400000, guid: dc01800eec56f424dada32072c82adac, type: 2}
+    StatusSprite: {fileID: 0}
+    Weapon: {fileID: 0}
+    Armor: {fileID: 0}
+    SurvivalStats: {fileID: 11400000, guid: 4bd73e3a5366e3f4f90b25a3ecf7ce08, type: 2}
     prefab: {fileID: 0}

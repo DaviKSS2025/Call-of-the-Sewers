@@ -8,15 +8,27 @@ public class SceneChangeController : MonoBehaviour
     private void OnEnable()
     {
         _sceneChangeChannel.SceneChanged += OnSceneChanged;
+        _sceneChangeChannel.SceneStartFromMenu += OnSceneStartFromMenu;
+        _sceneChangeChannel.NewGameStarted += OnNewGameStarted;
     }
 
     private void OnDisable()
     {
         _sceneChangeChannel.SceneChanged -= OnSceneChanged;
+        _sceneChangeChannel.SceneStartFromMenu -= OnSceneStartFromMenu;
+        _sceneChangeChannel.NewGameStarted -= OnNewGameStarted;
     }
 
     private void OnSceneChanged()
     {
         SceneManager.LoadScene(SaveManager.Instance.Data.CurrentMapName.ToString());
+    }
+    private void OnSceneStartFromMenu(SceneNames targetMap)
+    {
+        SceneManager.LoadScene(targetMap.ToString());
+    }
+    private void OnNewGameStarted()
+    {
+        SceneManager.LoadScene(SceneNames.ChangeName.ToString());
     }
 }

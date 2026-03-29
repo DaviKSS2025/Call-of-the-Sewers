@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0f7ba414a5eeae478129fa89f5aac12, type: 3}
-  m_Name: 2
-  m_EditorClassIdentifier: Assembly-CSharp::CharacterIndex
-  _index: 2
+  m_Script: {fileID: 11500000, guid: 8498b6606b9a3854f8dd01be048ed937, type: 3}
+  m_Name: Weapons
+  m_EditorClassIdentifier: Assembly-CSharp::Weapons
+  _damageMultiplier: 1
+  _name: 
+  _weaponSprite: {fileID: 0}

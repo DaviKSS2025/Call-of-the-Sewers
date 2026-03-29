@@ -13,7 +13,7 @@ public class NPCGenerator : MonoBehaviour
 
         if (isNPCAlive())
         {
-            SpawnNPC();
+            SpawnAllyObjects();
         }
 
         return _generatedNPCS;
@@ -25,15 +25,18 @@ public class NPCGenerator : MonoBehaviour
     }
     private void SpawnNPC()
     {
-        GameObject prefab = _database.GetNPCPrefab(SaveManager.Instance.Data.NPCData.NPCname);
+        foreach (AllyNPC npc in SaveManager.Instance.Data.NPCData)
+        {
+            GameObject prefab = _database.GetNPCPrefab(npc.NPCInfo);
 
-        GameObject instance = Instantiate(prefab, transform);
+            GameObject instance = Instantiate(prefab, transform);
 
-        _generatedNPCS.Add(instance.GetComponent<BaseEntityController>());
+            _generatedNPCS.Add(instance.GetComponent<BaseEntityController>());
+        }
     }
     private bool isNPCAlive()
     {
-        return SaveManager.Instance.Data.NPCData.NPCname != null;
+        return SaveManager.Instance.Data.NPCData != null && SaveManager.Instance.Data.NPCData.Count > 0;
     }
     
 }

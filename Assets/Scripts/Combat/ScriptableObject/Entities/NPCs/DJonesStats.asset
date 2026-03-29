@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0f7ba414a5eeae478129fa89f5aac12, type: 3}
-  m_Name: 0
-  m_EditorClassIdentifier: Assembly-CSharp::CharacterIndex
-  _index: 0
+  m_Script: {fileID: 11500000, guid: 47c2ecaba61474f47ae3b372277fa42e, type: 3}
+  m_Name: DJonesStats
+  m_EditorClassIdentifier: Assembly-CSharp::SurvivalStats
+  _maxHealth: 100
+  _maxMana: 0
+  _defense: 0.15
