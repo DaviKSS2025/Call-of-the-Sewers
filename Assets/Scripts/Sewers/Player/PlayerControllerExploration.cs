@@ -19,6 +19,7 @@ public class PlayerControllerExploration : MonoBehaviour
 
     [SerializeField] private SurvivalStats _maxHealth;
     [SerializeField] private MovementSpeed _movementSpeed;
+    [SerializeField] private MenuController _menuController;
 
     public PlayerInputReader PlayerInputReader
     {
@@ -39,6 +40,16 @@ public class PlayerControllerExploration : MonoBehaviour
         _rigidBody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+    private void OnEnable()
+    {
+        _menuController.OpenedMenu += OnOpenedMenu;
+        _menuController.ClosedMenu += OnClosedMenu;
+    }
+    private void OnDisable()
+    {
+        _menuController.OpenedMenu -= OnOpenedMenu;
+        _menuController.ClosedMenu -= OnClosedMenu;
     }
     private void Start()
     {
@@ -77,7 +88,14 @@ public class PlayerControllerExploration : MonoBehaviour
     {
         currentState.HandleAnimationEvent(eventName);
     }
-
+    private void OnOpenedMenu()
+    {
+        ChangeState(new PlayerFreezeState(this));
+    }
+    private void OnClosedMenu()
+    {
+        ChangeState(new PlayerMovingState(this));
+    }
     private void KillingPlayer()
     {
         //Enter death animation if health < 0.

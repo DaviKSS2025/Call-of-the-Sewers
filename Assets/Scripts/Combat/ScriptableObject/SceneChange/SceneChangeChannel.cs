@@ -5,15 +5,16 @@ using System;
 public class SceneChangeChannel : ScriptableObject
 {
     public Action SceneChanged;
-    public Action<SceneNames> SceneStartFromMenu;
+    public Action<SceneNames> GoToTargetScene;
     public Action NewGameStarted;
     public void RaiseSceneChanged()
     {
         SceneChanged?.Invoke();
     }
-    public void RaiseSceneStartFromMenu(SceneNames targetMap)
+    public void RaiseGoToTargetScene(SceneNames targetMap)
     {
-        SceneStartFromMenu?.Invoke(targetMap);
+        Debug.Log("Evento!");
+        GoToTargetScene?.Invoke(targetMap);
     }
     public void RaiseNewGameStarted()
     {

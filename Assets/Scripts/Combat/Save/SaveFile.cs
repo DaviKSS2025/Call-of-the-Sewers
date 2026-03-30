@@ -26,12 +26,15 @@ public class SaveFile
     public Vector2 WorldPosition = Vector2.zero;
     public SceneNames CurrentMapName = SceneNames.Sewers;
     public bool ChoosedNickName;
+    public List<ConsumableItemData> Items;
+
     public static SaveFile CreateNewGame(Weapons playerStartingWeapon,Armors playerStartingArmor)
     {
         return new SaveFile
         {
             PlayerData = CreateDefaultPlayer(playerStartingWeapon, playerStartingArmor),
             NPCData = new List<AllyNPC>(),
+            Items = new List<ConsumableItemData>(),
             WorldPosition = Vector2.zero,
             CurrentMapName = SceneNames.Sewers,
             ChoosedNickName = false

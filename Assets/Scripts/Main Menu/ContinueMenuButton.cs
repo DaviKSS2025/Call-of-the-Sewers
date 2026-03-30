@@ -26,7 +26,7 @@ public class ContinueMenuButton : MainMenuBaseButton
     }
     private void LoadGame()
     {
-        _sceneChangeChannel.RaiseSceneStartFromMenu(SaveManager.Instance.Data.CurrentMapName);
+        _sceneChangeChannel.RaiseGoToTargetScene(SaveManager.Instance.Data.CurrentMapName);
     }
     private void NewGame()
     {

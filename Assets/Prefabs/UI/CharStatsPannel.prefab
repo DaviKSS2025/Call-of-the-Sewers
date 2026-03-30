@@ -285,7 +285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -481,7 +481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -914,12 +914,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcd7d066a76d2754f86e1fc19fb23c43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStatsUI
-  _characterIndex: {fileID: 0}
   _healthSlider: {fileID: 3326811746542908750}
   _healthTMPro: {fileID: 5317142322326428387}
   _manaSlider: {fileID: 838493101448820266}
   _manaTMPro: {fileID: 4638483895054346248}
-  _statChangeChannel: {fileID: 11400000, guid: 89af23cb99e3ad647985354127b6bb3d, type: 2}
   _characterName: {fileID: 4082859664614474870}
 --- !u!1 &8503738376322327233
 GameObject:

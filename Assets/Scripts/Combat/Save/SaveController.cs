@@ -16,6 +16,7 @@ public class SaveController : MonoBehaviour
     public void SetPlayerName(string playerName)
     {
         SaveManager.Instance.Data.PlayerData.PlayerName = playerName;
+        SaveManager.Instance.Data.ChoosedNickName = true;
         SaveManager.Instance.Save();
     }
     public void SetCurrentHealth(int currentHealth, int currentCharacter)

@@ -30,6 +30,8 @@ public class NPCCharacterStatusPannel : BaseCharacterStatusPannel
         _armorName.text = npcArmor.Name;
         int defensePower = (int)npcArmor.DefenseMultiplier * 100;
         _armorDefensePower.text = defensePower.ToString();
+
+        _healthValue.text = SaveManager.Instance.Data.NPCData[0].CurrentHealth.ToString();
     }
     public override void UpdateImages()
     {

@@ -24,7 +24,7 @@ public class ChangeNameInterfaceManager : MonoBehaviour
     public void ConfirmNickName()
     {
         SaveController.Instance.SetPlayerName(_playerNamePreview.text);
-        _sceneChangeChannel.SceneStartFromMenu(SceneNames.Sewers);
+        _sceneChangeChannel.RaiseGoToTargetScene(SceneNames.Sewers);
     }
     public void CancelNickName()
     {
