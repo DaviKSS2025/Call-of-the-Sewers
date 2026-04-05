@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AttackData
   _damage: 50
   _attackName: Bite
-  _attackChance: 5
+  _attackChance: 0
   _criticalChance: 20
-  _statusEffect: {fileID: 0}
+  _statusList:
+  - _statusEffect: {fileID: 11400000, guid: 05939b19444bd444f8ee69194cb7946a, type: 2}
+    _statusEffectChance: 100

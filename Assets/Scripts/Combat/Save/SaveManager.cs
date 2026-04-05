@@ -5,8 +5,6 @@ using UnityEngine;
 public class SaveManager : MonoBehaviour
 {
     public static SaveManager Instance { get; private set; }
-    [SerializeField] private Weapons _defaultWeapon;
-    [SerializeField] private Armors _defaultArmor;
     public SaveFile Data { get; private set; }
 
 
@@ -23,6 +21,15 @@ public class SaveManager : MonoBehaviour
         Instance = this;
         LoadOrCreate();
         ValidateData();
+    }
+    public void ManualSave()
+    {
+        Data.PlayerData = PlayerDataController.Instance.RuntimeData;
+        Data.NPCData = NPCDataController.Instance.RuntimeData;
+        Data.WorldPosition = MapDataController.Instance.GetPlayerPosition();
+        Data.CurrentMapName = MapDataController.Instance.RuntimeData.CurrentSceneName;
+        Data.Items = InventoryDataController.Instance.GetItemList();
+        Save();
     }
 
     public void Save()
@@ -43,7 +50,7 @@ public class SaveManager : MonoBehaviour
             catch
             {
                 Debug.LogWarning("Save corrompido. Criando novo.");
-                Data = SaveFile.CreateNewGame(_defaultWeapon, _defaultArmor);
+                Data = SaveFile.CreateNewGame();
                 Save();
                 return;
             }
@@ -51,14 +58,14 @@ public class SaveManager : MonoBehaviour
 
         if (Data == null)
         {
-            Data = SaveFile.CreateNewGame(_defaultWeapon, _defaultArmor);
+            Data = SaveFile.CreateNewGame();
             Save();
         }
     }
 
     public void NewGame()
     {
-        Data = SaveFile.CreateNewGame(_defaultWeapon, _defaultArmor);
+        Data = SaveFile.CreateNewGame();
         Save();
     }
 

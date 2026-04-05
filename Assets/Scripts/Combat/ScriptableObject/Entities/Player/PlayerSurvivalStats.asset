@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c2ecaba61474f47ae3b372277fa42e, type: 3}
   m_Name: PlayerSurvivalStats
   m_EditorClassIdentifier: Assembly-CSharp::SurvivalStats
-  _maxHealth: 500
+  _maxHealth: 100
   _maxMana: 100
   _defense: 0

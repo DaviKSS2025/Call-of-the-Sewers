@@ -16,4 +16,6 @@ MonoBehaviour:
   _attackName: Lantern
   _attackChance: 12
   _criticalChance: 0
-  _statusEffect: {fileID: 0}
+  _statusList:
+  - _statusEffect: {fileID: 11400000, guid: 0979f48634e108e42aafb03e5ea46f52, type: 2}
+    _statusEffectChance: 100

@@ -13,7 +13,6 @@ public class SceneChangeChannel : ScriptableObject
     }
     public void RaiseGoToTargetScene(SceneNames targetMap)
     {
-        Debug.Log("Evento!");
         GoToTargetScene?.Invoke(targetMap);
     }
     public void RaiseNewGameStarted()

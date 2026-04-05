@@ -4,11 +4,17 @@ public class AttackController
 {
     private BaseEntityController _entity;
     private float _attackMultiplier = 1f;
+    private float _criticalChanceMultiplier = 1f;
     private AttackData _selectedAttack;
     public float AttackMultiplier
     {
         get => _attackMultiplier;
         set => _attackMultiplier = Mathf.Max(0, value);
+    }
+    public float CriticalChanceMultiplier
+    {
+        get => _criticalChanceMultiplier;
+        set => _criticalChanceMultiplier = Mathf.Max(0, value);
     }
     public AttackController(BaseEntityController entity)
     {

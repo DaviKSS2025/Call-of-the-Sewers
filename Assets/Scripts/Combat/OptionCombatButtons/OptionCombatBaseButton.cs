@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
@@ -10,12 +11,9 @@ public abstract class OptionCombatBaseButton : MonoBehaviour, IOptionCombatButto
     [SerializeField] protected SimpleSFXEvent _useSound;
     [SerializeField] protected TurnChangeChannel _turnChangeChannel;
     [SerializeField] protected PlayerController _playerController;
-    protected InputSystem_Actions _inputActions;
-
     private void Awake()
     {
         _button = GetComponent<Button>();
-        _inputActions = new InputSystem_Actions();
     }
     public virtual void OnSelected()
     {
@@ -28,18 +26,11 @@ public abstract class OptionCombatBaseButton : MonoBehaviour, IOptionCombatButto
     }
     public virtual void OnEnable()
     {
-        _turnChangeChannel.UpdateCurrentTurnUser += OnPlayerTurnStarted;
+        _turnChangeChannel.OnPlayerTurnStarted += ResetButton;
     }
     public virtual void OnDisable()
     {
-        _turnChangeChannel.UpdateCurrentTurnUser -= OnPlayerTurnStarted;
-    }
-    public virtual void OnPlayerTurnStarted(BaseEntityController entity)
-    {
-        if (entity == _playerController)
-        {
-            ResetButton();      
-        }
+        _turnChangeChannel.OnPlayerTurnStarted -= ResetButton;
     }
     public virtual void ResetButton()
     {

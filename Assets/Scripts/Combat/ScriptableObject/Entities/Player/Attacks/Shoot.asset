@@ -16,4 +16,4 @@ MonoBehaviour:
   _attackName: Shoot
   _attackChance: 0
   _criticalChance: 20
-  _statusEffect: {fileID: 0}
+  _statusList: []

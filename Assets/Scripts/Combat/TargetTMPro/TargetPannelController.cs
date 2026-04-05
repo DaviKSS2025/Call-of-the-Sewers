@@ -16,11 +16,13 @@ public class TargetPannelController : MonoBehaviour
     {
         _selectionChannel.StartSelectionUI += OnSelectionStarted;
         _selectionChannel.SelectionEnd += OnSelectionEnd;
+        _selectionChannel.SelectionConfirmed += OnSelectionEnd;
     }
     private void OnDisable()
     {
         _selectionChannel.StartSelectionUI -= OnSelectionStarted;
         _selectionChannel.SelectionEnd -= OnSelectionEnd;
+        _selectionChannel.SelectionConfirmed -= OnSelectionEnd;
     }
 
     private void OnSelectionStarted()

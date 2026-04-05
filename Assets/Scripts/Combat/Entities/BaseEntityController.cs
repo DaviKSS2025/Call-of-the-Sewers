@@ -1,9 +1,11 @@
 using System;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 [RequireComponent(typeof(Animator))]
 public abstract class BaseEntityController : MonoBehaviour
 {
-    [SerializeField] protected EntityName _name;
+    protected string _name;
 
     [Header("Channels")]
     [SerializeField] protected TurnChangeChannel _turnChannel;
@@ -26,8 +28,13 @@ public abstract class BaseEntityController : MonoBehaviour
 
     protected StatsController _stats;
     protected SelectableEntity _selectableEntity;
+    protected StatusEffectManager _statusEffectManager;
     [SerializeField] protected TargetType _targetType;
     [SerializeField] protected AttackData[] _attackList;
+
+    [Header("Status effect settings")]
+    [SerializeField] protected Image[] _statusEffectSlots;
+    [SerializeField] protected TextMeshProUGUI[] _statusEffectDurationTMPro;
 
     [Header("Defense Settings")]
     [SerializeField] protected SurvivalStats _survivalStats;
@@ -37,7 +44,7 @@ public abstract class BaseEntityController : MonoBehaviour
 
     public string EntityNameString
     {
-        get => _name.Name;
+        get => _name;
     }
     public AttackController AttackController
     {
@@ -71,6 +78,22 @@ public abstract class BaseEntityController : MonoBehaviour
     {
         get => _survivalStats;
     }
+    public TurnChangeChannel ThisTurnChangeChannel
+    {
+        get => _turnChannel;
+    }
+    public StatusEffectManager StatusManager
+    {
+        get => _statusEffectManager;
+    }
+    public Image[] StatusEffectSlotImages
+    {
+        get => _statusEffectSlots;
+    }
+    public TextMeshProUGUI[] StatusEffectDurationTMPro
+    {
+        get => _statusEffectDurationTMPro;
+    }
     #endregion
 
     #region Monobehaviour
@@ -92,6 +115,7 @@ public abstract class BaseEntityController : MonoBehaviour
     {
         _selectableEntity = new SelectableEntity(this);
         _selectableEntity.Subscribe();
+        _statusEffectManager = new StatusEffectManager(this);
         SetupStatsController();
     }
     #endregion
@@ -112,12 +136,26 @@ public abstract class BaseEntityController : MonoBehaviour
     {
         if (entity == this)
         {
-            ExecuteTurnStart();
+            
+            if (!_statusEffectManager.ExecuteStatusEffectsAndSkipTurnIfStunned())
+            {
+                ExecuteTurnStart();
+            }
+            else
+            {
+                ComChannel.RaiseShowSkipTurnOnStun(_name);
+                NeutralTurnEnd();
+            }
         }
     }
     public virtual void OnTurnEnd()
     {
         _turnChannel.RaiseEndCurrentTurn(this);
+    }
+    public virtual void NeutralTurnEnd()
+    {
+        _animatorStateController.PlayIdle();
+        OnTurnEnd();
     }
     public virtual void ExecuteTurnStart()
     {

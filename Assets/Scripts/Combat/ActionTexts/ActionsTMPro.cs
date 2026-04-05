@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using static UnityEngine.LowLevelPhysics2D.PhysicsLayers;
 
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class ActionsTMPro : MonoBehaviour
@@ -19,6 +18,8 @@ public class ActionsTMPro : MonoBehaviour
         _combatChannel.PlayerRunStarted += OnPlayerStartedRun;
         _combatChannel.ShowPlayerRunResult += OnShowPlayerRunResult;
         _combatChannel.IdleTurn += OnIdleTurn;
+        _combatChannel.OnEntityKilled += OnEntityKilled;
+        _combatChannel.ShowSkipTurnOnStun += OnSkipTurnOnStun;
     }
     private void OnDisable()
     {
@@ -27,6 +28,8 @@ public class ActionsTMPro : MonoBehaviour
         _combatChannel.PlayerRunStarted -= OnPlayerStartedRun;
         _combatChannel.ShowPlayerRunResult -= OnShowPlayerRunResult;
         _combatChannel.IdleTurn -= OnIdleTurn;
+        _combatChannel.OnEntityKilled -= OnEntityKilled;
+        _combatChannel.ShowSkipTurnOnStun -= OnSkipTurnOnStun;
     }
     private void OnShowAttackText(string attackName, string attackerName, string targetName)
     {
@@ -47,5 +50,13 @@ public class ActionsTMPro : MonoBehaviour
     private void OnIdleTurn(string enemyName)
     {
         _text.text = $"<color=red>{enemyName}</color> observes your fear...";
+    }
+    private void OnEntityKilled(string deadName)
+    {
+        _text.text = $"<color=red>{deadName}</color> dies in an agonizing way...";
+    }
+    private void OnSkipTurnOnStun(string entityName)
+    {
+        _text.text = $"<color=red>{entityName}</color> is stunned and can't move.";
     }
 }

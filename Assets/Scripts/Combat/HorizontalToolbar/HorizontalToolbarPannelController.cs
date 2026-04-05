@@ -20,7 +20,7 @@ public class HorizontalToolbarPannelController : MonoBehaviour
         _selectionChannel.SelectionConfirmed += HideToolbar;
         _turnChangeChannel.HideUIOnEndActions += HideToolbar;
         _selectionChannel.SelectionEnd += ShowToolBar;
-        _turnChangeChannel.UpdateCurrentTurnUser += OnPlayerTurnStarted;
+        _turnChangeChannel.OnPlayerTurnStarted += ShowToolBar;
     }
     private void OnDisable()
     {
@@ -28,7 +28,7 @@ public class HorizontalToolbarPannelController : MonoBehaviour
         _selectionChannel.SelectionConfirmed -= HideToolbar;
         _turnChangeChannel.HideUIOnEndActions -= HideToolbar;
         _selectionChannel.SelectionEnd -= ShowToolBar;
-        _turnChangeChannel.UpdateCurrentTurnUser -= OnPlayerTurnStarted;
+        _turnChangeChannel.OnPlayerTurnStarted -= ShowToolBar;
     }
 
     private void HideToolbar()
@@ -41,13 +41,5 @@ public class HorizontalToolbarPannelController : MonoBehaviour
     {
         _animator.ResetTrigger(Disappearing);
         _animator.SetTrigger(Appearing);
-    }
-
-    private void OnPlayerTurnStarted(BaseEntityController entity)
-    {
-        if (entity == _playerEntity)
-        {
-            ShowToolBar();
-        }
     }
 }

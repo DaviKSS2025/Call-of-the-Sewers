@@ -25,7 +25,6 @@ public class SceneChangeController : MonoBehaviour
     }
     private void OnSceneStartFromMenu(SceneNames targetMap)
     {
-        Debug.Log("Chegou aqui!");
         SceneManager.LoadScene(targetMap.ToString());
     }
     private void OnNewGameStarted()

@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class AttackOptionButton : OptionCombatBaseButton
@@ -21,6 +20,7 @@ public class AttackOptionButton : OptionCombatBaseButton
         {
             _playerController.AttackController.StartAttackAnimation(_playerController.AttackList[0]);
             _selectionChannel.RaiseSelectionConfirmed();
+            _button.interactable = false;
         }
     }
 
@@ -40,7 +40,6 @@ public class AttackOptionButton : OptionCombatBaseButton
     {
         EventSystem.current.SetSelectedGameObject(gameObject);
         _selecting = false;
-
-        ChangeVerticalButtonNavigation(Navigation.Mode.Automatic);
+        base.ResetButton();
     }
 }

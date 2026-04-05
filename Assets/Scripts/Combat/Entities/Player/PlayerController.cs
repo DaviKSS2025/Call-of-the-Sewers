@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 
 public class PlayerController : BaseEntityController
 {
@@ -22,11 +21,13 @@ public class PlayerController : BaseEntityController
     }
     public override void Start()
     {
+        _name = SaveManager.Instance.Data.PlayerData.PlayerName;
         base.Start();
-        _runManager = new RunManager(_stats,_runChance.RunChancePercentage, _sceneChangeChannel, _combatChannel, _name.Name);
+        _runManager = new RunManager(_stats,_runChance.RunChancePercentage, _sceneChangeChannel, _combatChannel, _name);
     }
     public override void ExecuteTurnStart()
     {
+       _turnChannel.RaiseOnPlayerTurnStarted();
        _selectionChannel.RaiseSelectionEnd();
     }
     public override void OnAnimationEvent(string eventName)
@@ -59,24 +60,4 @@ public class PlayerController : BaseEntityController
             }
         }
     }
-    private void NeutralTurnEnd()
-    {
-        _animatorStateController.PlayIdle();
-        OnTurnEnd();
-    }
-
-    /*private IEnumerator WaitForAnimation(string stateName)
-    {
-        // 1. Aguarda o Animator transicionar para o estado (evita pegar o estado anterior)
-        yield return new WaitUntil(() => _animator.GetCurrentAnimatorStateInfo(0).IsName(stateName));
-
-        // 2. Aguarda a animação terminar (NormalizedTime >= 1 significa 100% concluída)
-        while (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
-        {
-            yield return null;
-        }
-
-        // Lógica de desfecho
-        //HandleRunResult();
-    }*/
 }

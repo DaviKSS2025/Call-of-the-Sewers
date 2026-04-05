@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "EnemyDatabase", menuName = "Scriptable Objects/EnemyDatabase")]
+[CreateAssetMenu(fileName = "EnemyDatabase", menuName = "Databases/EnemyDatabase")]
 public class EnemyDatabase : ScriptableObject
 {
     [Serializable]
@@ -20,8 +20,6 @@ public class EnemyDatabase : ScriptableObject
             if (e.type == type)
                 return e.prefab;
         }
-
-        Debug.LogError($"Enemy {type} não encontrado");
         return null;
     }
 }

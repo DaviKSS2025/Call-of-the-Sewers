@@ -34,6 +34,7 @@ public class GuardianStrategy : IEnemyStrategy
     }
     public void ExecuteIdleTurn()
     {
+        _animatorStateController.PlayIdleTurn();
         _combatChannel.RaiseIdleTurn(_name);
     }
 }

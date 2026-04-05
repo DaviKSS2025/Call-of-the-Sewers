@@ -9,20 +9,31 @@ public class InitializeCombatController : MonoBehaviour
     [SerializeField] private TurnChangeChannel _turnChangeChannel;
     [SerializeField] private CombatChannel _combatChannel;
     [SerializeField] private PlayerController _playerController;
+    [SerializeField] private GameObject _victoryCanvas;
+    [SerializeField] private GameObject _defeatCanvas;
     private SelectTargetController _selectTargetController;
     private CombatController _combatController;
     private TurnBasedController _turnBasedController;
-    [SerializeField] private List<BaseEntityController> _turnOrder = new();
+    private TurnOrderManager _turnOrderManager;
+    private List<BaseEntityController> _turnOrder = new();
 
     private void Start()
     {
         SpawnEntities();
         RaiseMonsterAppear();
+        InitializeTurnOrderManager();
         InitializeSelectionSystem();
         InitializeCombatSystem();
         ExecuteFirstTurn();
+        SubscribeEndGameEvents();
     }
-
+    private void SubscribeEndGameEvents()
+    {
+        _turnOrderManager.OnEndGame += DisableDependencies;
+        _turnOrderManager.OnPlayerVictory += OnPlayerVictory;
+        _turnOrderManager.OnPlayerDefeated += OnPlayerDefeated;
+    }
+    #region Initialize Combat Logic
     private void SpawnEntities()
     {
         _turnOrder.Clear();
@@ -43,6 +54,11 @@ public class InitializeCombatController : MonoBehaviour
             }
         }
     }
+    private void InitializeTurnOrderManager()
+    {
+        _turnOrderManager = new TurnOrderManager(_turnChangeChannel, _turnOrder);
+        _turnOrderManager.Initialize();
+    }
     private void InitializeSelectionSystem()
     {
         _selectTargetController = new SelectTargetController(_selectionChannel,_turnOrder);
@@ -58,10 +74,25 @@ public class InitializeCombatController : MonoBehaviour
         _turnBasedController = new TurnBasedController(_turnChangeChannel, _turnOrder);
         _turnBasedController.StartTurns();
     }
+#endregion
     private void OnDisable()
+    {
+        DisableDependencies();
+    }
+    private void DisableDependencies()
     {
         _selectTargetController.OnDisable();
         _combatController.OnDisable();
         _turnBasedController.OnDisable();
+        _turnOrderManager.OnDisable();
+        _turnOrderManager.OnEndGame -= DisableDependencies;
+    }
+    private void OnPlayerVictory()
+    {
+        _victoryCanvas.SetActive(true);
+    }
+    private void OnPlayerDefeated()
+    {
+        _defeatCanvas.SetActive(true);
     }
 }

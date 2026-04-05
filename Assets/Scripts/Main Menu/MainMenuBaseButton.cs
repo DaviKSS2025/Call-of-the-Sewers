@@ -6,12 +6,10 @@ public class MainMenuBaseButton : MonoBehaviour
     [SerializeField] protected SFXEventChannel _audioChannel;
     [SerializeField] protected SimpleSFXEvent _selectSound;
     [SerializeField] protected SimpleSFXEvent _useSound;
-    protected InputSystem_Actions _inputActions;
 
     private void Awake()
     {
         _button = GetComponent<Button>();
-        _inputActions = new InputSystem_Actions();
     }
     public virtual void OnSelected()
     {

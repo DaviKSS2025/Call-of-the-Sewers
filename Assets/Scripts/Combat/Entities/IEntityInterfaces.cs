@@ -17,5 +17,7 @@ public interface IAnimationHandler
     void PlayAttackStart(int attackIndex);
     void PlayAttackEnd();
     void PlayPreparing();
+
+    void PlayIdleTurn();
 }
 

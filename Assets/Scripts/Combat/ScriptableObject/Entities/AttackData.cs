@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "AttackData", menuName = "Attacks/AttackData")]
@@ -8,8 +9,24 @@ public class AttackData : ScriptableObject
     [SerializeField] private string _attackName;
     [SerializeField] private int _attackChance;
     [SerializeField] private int _criticalChance;
-    [SerializeField] private StatusEffectData _statusEffect;
 
+    [Serializable] 
+    public struct StatusEffectEntry
+    {
+        [SerializeField] private StatusEffectData _statusEffect;
+        [SerializeField] private int _statusEffectChance;
+
+        public int StatusChance
+        {
+            get => _statusEffectChance;
+        }
+        public StatusEffectData StatusType
+        {
+            get => _statusEffect;
+        }
+    }
+
+    [SerializeField] private List<StatusEffectEntry> _statusList;
     public float Damage
     {
         get => _damage;
@@ -26,8 +43,8 @@ public class AttackData : ScriptableObject
     {
         get => _criticalChance;
     }
-    public StatusEffectData StatusEffect
+    public List<StatusEffectEntry> StatusList
     {
-        get => _statusEffect;
+        get => _statusList;
     }
 }

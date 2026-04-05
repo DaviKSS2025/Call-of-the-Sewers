@@ -1,12 +1,9 @@
-using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class TurnBasedController
 {
     private TurnChangeChannel _turnChangeChannel;
     private List<BaseEntityController> _entityList;
-
 
     public TurnBasedController(TurnChangeChannel turnChangeChannel, List<BaseEntityController> entityList)
     {

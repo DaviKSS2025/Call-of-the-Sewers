@@ -51,14 +51,14 @@ public class CombatController
     }
     private void OnAttackRequested()
     {
-        _lastTargetedEntity.Stats.OnSufferingAttack(_lastAttackUsed, _lastEntityActed.AttackController.AttackMultiplier);
         _combatChannel.RaiseShowAttackText(_lastAttackUsed.AttackName, _lastEntityActed.EntityNameString, _lastTargetedEntity.EntityNameString);
+        _lastTargetedEntity.Stats.OnSufferingAttack(_lastAttackUsed, _lastEntityActed.AttackController.AttackMultiplier, _lastEntityActed.AttackController.CriticalChanceMultiplier);
     }
     private void OnRandomAttackRequested(TargetType entityType)
     {
         BaseEntityController randomTarget = RollRandomTarget(entityType);
-        _lastTargetedEntity.Stats.OnSufferingAttack(_lastAttackUsed, _lastEntityActed.AttackController.AttackMultiplier);
         _combatChannel.RaiseShowAttackText(_lastAttackUsed.AttackName, _lastEntityActed.EntityNameString, randomTarget.EntityNameString);
+        _lastTargetedEntity.Stats.OnSufferingAttack(_lastAttackUsed, _lastEntityActed.AttackController.AttackMultiplier, _lastEntityActed.AttackController.CriticalChanceMultiplier);
     }
     private BaseEntityController RollRandomTarget(TargetType entityType)
     {

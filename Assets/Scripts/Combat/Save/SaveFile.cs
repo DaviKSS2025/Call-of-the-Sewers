@@ -6,8 +6,8 @@ using System.Collections.Generic;
 public class CharacterData
 {
     public string PlayerName;
-    public Armors CurrentArmor;
-    public Weapons CurrentWeapon;
+    public ArmorType CurrentArmor = ArmorType.Shirt;
+    public WeaponType CurrentWeapon = WeaponType.Pistol;
     public int CurrentHealth = 100;
     public int CurrentMana = 100;
 }
@@ -28,11 +28,11 @@ public class SaveFile
     public bool ChoosedNickName;
     public List<ConsumableItemData> Items;
 
-    public static SaveFile CreateNewGame(Weapons playerStartingWeapon,Armors playerStartingArmor)
+    public static SaveFile CreateNewGame()
     {
         return new SaveFile
         {
-            PlayerData = CreateDefaultPlayer(playerStartingWeapon, playerStartingArmor),
+            PlayerData = CreateDefaultPlayer(),
             NPCData = new List<AllyNPC>(),
             Items = new List<ConsumableItemData>(),
             WorldPosition = Vector2.zero,
@@ -41,15 +41,15 @@ public class SaveFile
         };
     }
 
-    private static CharacterData CreateDefaultPlayer(Weapons playerStartingWeapon, Armors playerStartingArmor)
+    private static CharacterData CreateDefaultPlayer()
     {
         return new CharacterData
         {
             PlayerName = null,
             CurrentHealth = 100,
             CurrentMana = 100,
-            CurrentWeapon = playerStartingWeapon,
-            CurrentArmor = playerStartingArmor,
+            CurrentWeapon = WeaponType.Pistol,
+            CurrentArmor = ArmorType.Shirt,
         };
     }
 }

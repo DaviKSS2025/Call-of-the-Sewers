@@ -16,6 +16,7 @@ public class GuardianController : EnemyController
     }
     public override void ExecuteTurnStart()
     {
+        base.ExecuteTurnStart();
         _enemyStrategy.ChooseStrategy();
     }
     public override void OnAnimationEvent(string eventName)
@@ -26,12 +27,19 @@ public class GuardianController : EnemyController
         }
         else if (eventName == "AttackEnd")
         {
-            _animatorStateController.PlayIdle();
-            OnTurnEnd();
+            NeutralTurnEnd();
         }
         else if (eventName == "PrepareEnd")
         {
             _attackController.ChooseRandomAttack();
+        }
+        else if (eventName == "DeathEnd")
+        {
+            _animatorStateController.PlayDeath();
+        }
+        else if (eventName == "IdleTurnEnd")
+        {
+            NeutralTurnEnd();
         }
     }
 }

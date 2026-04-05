@@ -10,4 +10,8 @@ public class GuardianAnimatorStateController : AnimatorStateController, IAnimati
     {
         _animator.SetTrigger(Preparing);
     }
+    public override void PlayIdleTurn()
+    {
+        _animator.SetTrigger(IdleTurn);
+    }
 }

@@ -14,6 +14,8 @@ public class CombatChannel : ScriptableObject
     public Action<bool, string> PlayerRunResult;
     public Action<string> ShowPlayerRunResult;
     public Action<string> IdleTurn;
+    public Action<string> OnEntityKilled;
+    public Action<string> ShowSkipTurnOnStun;
     public void RaiseAttackRequested(AttackData attack)
     {
         UpdateLastAttackUsed?.Invoke(attack);
@@ -51,5 +53,13 @@ public class CombatChannel : ScriptableObject
     public void RaiseIdleTurn(string enemyName)
     {
         IdleTurn?.Invoke(enemyName);
+    }
+    public void RaiseEntityKilled(string deadName)
+    {
+        OnEntityKilled?.Invoke(deadName);
+    }
+    public void RaiseShowSkipTurnOnStun(string entityName)
+    {
+        ShowSkipTurnOnStun?.Invoke(entityName);
     }
 }
