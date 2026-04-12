@@ -6,7 +6,7 @@ public class PlayerController : BaseEntityController
     [SerializeField] private SceneChangeChannel _sceneChangeChannel;
     [SerializeField] private CharacterStatsUI _playerStatsUI;
     private RunManager _runManager;
-    
+    private SkillManager _skillManager;
     public RunManager RunManager
     {
         get => _runManager;
@@ -24,6 +24,8 @@ public class PlayerController : BaseEntityController
         _name = SaveManager.Instance.Data.PlayerData.PlayerName;
         base.Start();
         _runManager = new RunManager(_stats,_runChance.RunChancePercentage, _sceneChangeChannel, _combatChannel, _name);
+        _skillManager = new SkillManager(this);
+        _skillManager.Initialize();
     }
     public override void ExecuteTurnStart()
     {
@@ -58,6 +60,11 @@ public class PlayerController : BaseEntityController
             {
                 NeutralTurnEnd();
             }
+        }
+        else if (eventName == "SkillEnd")
+        {
+            _skillManager.SkillEnd();
+            _combatChannel.RaiseSkillEnd();
         }
     }
 }

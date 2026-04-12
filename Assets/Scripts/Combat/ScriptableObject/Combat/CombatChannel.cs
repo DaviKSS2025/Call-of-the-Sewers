@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "CombatChannel", menuName = "Channels/CombatChannel")]
@@ -16,6 +17,16 @@ public class CombatChannel : ScriptableObject
     public Action<string> IdleTurn;
     public Action<string> OnEntityKilled;
     public Action<string> ShowSkipTurnOnStun;
+    public Action<SkillData> OnSkillUsed;
+    public Action<TargetType, StatusEffectData, int, int> OnGlobalStatusEffectUsed;
+    public Action<string> ShowGlobalStatusEffectUsed;
+    public Action SkillEnd;
+    public Action ChoosingSkill;
+    public Action CancelChoosingSkill;
+    public Action<string, string, string> ShowSkillText;
+    public Action<int, List<StatusEffectEntry>, int> TargetAttackSkillRequested;
+    public Action HideSkillUI;
+
     public void RaiseAttackRequested(AttackData attack)
     {
         UpdateLastAttackUsed?.Invoke(attack);
@@ -61,5 +72,35 @@ public class CombatChannel : ScriptableObject
     public void RaiseShowSkipTurnOnStun(string entityName)
     {
         ShowSkipTurnOnStun?.Invoke(entityName);
+    }
+    public void RaiseSkillUsed(SkillData skill)
+    {
+        OnSkillUsed?.Invoke(skill);
+        HideSkillUI?.Invoke();
+    }
+    public void RaiseGlobalStatusEffectUsed(TargetType targets, StatusEffectData statusEffect, int statusChance, string globalStatusMessage, int duration)
+    {
+        OnGlobalStatusEffectUsed?.Invoke(targets, statusEffect, statusChance, duration);
+        ShowGlobalStatusEffectUsed?.Invoke(globalStatusMessage);
+    }
+    public void RaiseSkillEnd()
+    {
+        SkillEnd?.Invoke();
+    }
+    public void RaiseChoosingSkill()
+    {
+        ChoosingSkill?.Invoke();
+    }
+    public void RaiseCancelChoosingSkill()
+    {
+        CancelChoosingSkill?.Invoke();
+    }
+    public void RaiseTargetAttackSkillRequested(int damage, List<StatusEffectEntry> statusList, int criticalChance)
+    {
+        TargetAttackSkillRequested?.Invoke(damage, statusList, criticalChance);
+    }
+    public void RaiseShowTargetSkillText(string skillName, string attackerName, string targetName)
+    {
+        ShowSkillText?.Invoke(skillName, attackerName, targetName);
     }
 }

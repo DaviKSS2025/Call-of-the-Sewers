@@ -12,6 +12,7 @@ public abstract class BaseEntityController : MonoBehaviour
     [SerializeField] protected CombatChannel _combatChannel;
     [SerializeField] protected SFXEventChannel _SFXChannel;
     [SerializeField] protected SelectionChannel _selectionChannel;
+    [SerializeField] protected InputChannel _inputChannel;
     protected Animator _animator;
     protected AnimatorStateController _animatorStateController;
     protected AttackController _attackController;
@@ -94,6 +95,10 @@ public abstract class BaseEntityController : MonoBehaviour
     {
         get => _statusEffectDurationTMPro;
     }
+    public InputChannel ThisInputChannel
+    {
+        get => _inputChannel;
+    }
     #endregion
 
     #region Monobehaviour
@@ -119,6 +124,8 @@ public abstract class BaseEntityController : MonoBehaviour
         SetupStatsController();
     }
     #endregion
+
+    #region GenericComponents;
     protected abstract void SetupAnimationController();
     protected abstract void SetupStatsController();
 
@@ -131,6 +138,7 @@ public abstract class BaseEntityController : MonoBehaviour
     {
         _stats = statsController;
     }
+    #endregion
     #region TurnMethods
     public virtual void OnTurnStart(BaseEntityController entity)
     {
@@ -164,5 +172,16 @@ public abstract class BaseEntityController : MonoBehaviour
     #endregion
     public virtual void OnAnimationEvent(string eventName)
     {
+    }
+    public virtual void DeathClears()
+    {
+        foreach (Image statusImage in _statusEffectSlots)
+        {
+            statusImage.enabled = false;
+        }
+        foreach (TextMeshProUGUI statusText in _statusEffectDurationTMPro)
+        {
+            statusText.enabled = false;
+        }
     }
 }

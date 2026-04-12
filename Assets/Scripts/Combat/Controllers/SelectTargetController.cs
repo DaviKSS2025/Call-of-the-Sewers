@@ -1,45 +1,56 @@
-using UnityEngine.InputSystem;
 using System.Collections.Generic;
+using System.Diagnostics;
+using UnityEngine;
 public class SelectTargetController
 {
     private SelectionChannel _selectionChannel;
-    private InputSystem_Actions _inputActions;
+    private TurnChangeChannel _turnChangeChannel;
+    private InputChannel _inputChannel;
     private List<BaseEntityController> _turnOrder = new();
     private List<BaseEntityController> _currentTargetList = new();
     private bool isPlayerSelectingTargets;
     private int _selectionIndex;
     private TargetType _entityType = TargetType.Enemy;
-    public SelectTargetController(SelectionChannel selectionChannel, List<BaseEntityController> turnOrder)
+    public SelectTargetController(SelectionChannel selectionChannel, List<BaseEntityController> turnOrder, TurnChangeChannel turnChangeChannel, InputChannel inputChannel)
     {
         _selectionChannel = selectionChannel;
         _turnOrder = turnOrder;
+        _turnChangeChannel = turnChangeChannel;
+        _inputChannel = inputChannel;
     }
     public void Initialize()
     {
-        _inputActions = new InputSystem_Actions();
-        _inputActions.UI.Enable();
-
-        _inputActions.UI.RightPressed.performed += OnRightPerformed;
-        _inputActions.UI.LeftPressed.performed += OnLeftPerformed;
-        _inputActions.UI.Cancel.performed += OnCancelPerformed;
-
         _selectionChannel.SelectionStarted += StartSelection;
-        _selectionChannel.SelectionConfirmed += StopSelection;
+
+        _turnChangeChannel.OnTurnOrderChanged += UpdateTurnOrder;
     }
     public void OnDisable()
     {
-        _inputActions.Disable();
-
-        _inputActions.UI.RightPressed.performed -= OnRightPerformed;
-        _inputActions.UI.LeftPressed.performed -= OnLeftPerformed;
-        _inputActions.UI.Cancel.performed -= OnCancelPerformed;
+        UnsubscribeSelectionEvents();
 
         _selectionChannel.SelectionStarted -= StartSelection;
+
+        _turnChangeChannel.OnTurnOrderChanged -= UpdateTurnOrder;
+    }
+    private void SubscribeSelectionEvents()
+    {
+        _inputChannel.OnUIRight += OnRightPerformed;
+        _inputChannel.OnUILeft += OnLeftPerformed;
+        _inputChannel.OnUICancel += OnCancelPerformed;
+
+        _selectionChannel.SelectionConfirmed += StopSelection;
+    }
+    private void UnsubscribeSelectionEvents()
+    {
+        _inputChannel.OnUIRight -= OnRightPerformed;
+        _inputChannel.OnUILeft -= OnLeftPerformed;
+        _inputChannel.OnUICancel -= OnCancelPerformed;
+
         _selectionChannel.SelectionConfirmed -= StopSelection;
     }
-
     private void StartSelection(TargetType entityType)
     {
+        SubscribeSelectionEvents();
         _currentTargetList.Clear();
         foreach (BaseEntityController entity in _turnOrder)
         {
@@ -61,8 +72,9 @@ public class SelectTargetController
     private void StopSelection()
     {
         isPlayerSelectingTargets = false;
+        UnsubscribeSelectionEvents();
     }
-    private void OnCancelPerformed(InputAction.CallbackContext context)
+    private void OnCancelPerformed()
     {
         if (isPlayerSelectingTargets)
         {
@@ -70,11 +82,11 @@ public class SelectTargetController
             _selectionChannel.RaiseSelectionEnd();
         }
     }
-    private void OnRightPerformed(InputAction.CallbackContext context)
+    private void OnRightPerformed()
     {
         NavigateOnTargetSelectionArray(1);
     }
-    private void OnLeftPerformed(InputAction.CallbackContext context)
+    private void OnLeftPerformed()
     {
         NavigateOnTargetSelectionArray(-1);
     }
@@ -97,5 +109,9 @@ public class SelectTargetController
     private void UpdateTargetName()
     {
         _selectionChannel.RaiseNewTargetSelected(_currentTargetList[_selectionIndex]);
+    }
+    private void UpdateTurnOrder(List<BaseEntityController> turnOrder)
+    {
+        _turnOrder = turnOrder;
     }
 }

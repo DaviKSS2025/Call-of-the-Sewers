@@ -11,14 +11,19 @@ public class PlayerStats : StatsController
         _playerStatsUI.Initialize(entity.EntityNameString, this, entity.SurvStats.MaxHealth, _entity.SurvStats.MaxMana);
     }
 
-    public override void TakeDamage(AttackData attack, float damageMultiplier, float criticalChanceMultiplier)
+    public override void TakeDamage(int baseDamage, float damageMultiplier, float criticalChanceMultiplier, int baseCriticalChance)
     {
-        base.TakeDamage(attack, damageMultiplier, criticalChanceMultiplier);
+        base.TakeDamage(baseDamage, damageMultiplier, criticalChanceMultiplier, baseCriticalChance);
         _playerStatsUI.OnHealthChanged();
     }
     public override void TakeExactDamage(int damage)
     {
         base.TakeExactDamage(damage);
         _playerStatsUI.OnHealthChanged();
+    }
+    public override void UseMana(int manaCost)
+    {
+        base.UseMana(manaCost);
+        _playerStatsUI.OnManaChanged();
     }
 }

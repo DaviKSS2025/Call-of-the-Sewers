@@ -5,8 +5,8 @@ public class EnemyGenerator : MonoBehaviour
 {
     [SerializeField] private EnemyDatabase _database;
 
-    private int _chanceToSpawnMultiples = 15;
-    private int _decreaseChanceToMultipleSpawn = 15;
+    private int _chanceToSpawnMultiples = 105;
+    private int _decreaseChanceToMultipleSpawn = 105;
 
     public List<BaseEntityController> Initialize()
     {

@@ -10,6 +10,7 @@ public class CombatController
     private SelectionChannel _selectionChannel;
     private TurnChangeChannel _turnChangeChannel;
     private List<BaseEntityController> _entityList;
+    private SkillData _lastSkillUsed;
 
     public CombatController(CombatChannel combatChannel, SelectionChannel selection, TurnChangeChannel turnChangeChannel, List<BaseEntityController> entityList)
     {
@@ -27,6 +28,10 @@ public class CombatController
         _combatChannel.AttackRequested += OnAttackRequested;
         _combatChannel.RandomAttackRequested += OnRandomAttackRequested;
         _combatChannel.PlayerRunResult += OnPlayerRunResult;
+        _turnChangeChannel.OnTurnOrderChanged += UpdateTurnOrder;
+        _combatChannel.OnGlobalStatusEffectUsed += ApplyGlobalStatusEffect;
+        _combatChannel.TargetAttackSkillRequested += OnTargetAttackSkillRequested;
+        _combatChannel.OnSkillUsed += UpdateLastSkillUsed;
     }
     public void OnDisable()
     {
@@ -36,6 +41,10 @@ public class CombatController
         _combatChannel.AttackRequested -= OnAttackRequested;
         _combatChannel.RandomAttackRequested -= OnRandomAttackRequested;
         _combatChannel.PlayerRunResult -= OnPlayerRunResult;
+        _turnChangeChannel.OnTurnOrderChanged -= UpdateTurnOrder;
+        _combatChannel.OnGlobalStatusEffectUsed -= ApplyGlobalStatusEffect;
+        _combatChannel.TargetAttackSkillRequested -= OnTargetAttackSkillRequested;
+        _combatChannel.OnSkillUsed -= UpdateLastSkillUsed;
     }
     private void UpdateLastEntityActed(BaseEntityController lastEntityActed)
     {
@@ -49,16 +58,25 @@ public class CombatController
     {
         _lastAttackUsed = lastAttackUsed;
     }
+    private void UpdateLastSkillUsed(SkillData skill)
+    {
+        _lastSkillUsed = skill;
+    }
     private void OnAttackRequested()
     {
         _combatChannel.RaiseShowAttackText(_lastAttackUsed.AttackName, _lastEntityActed.EntityNameString, _lastTargetedEntity.EntityNameString);
-        _lastTargetedEntity.Stats.OnSufferingAttack(_lastAttackUsed, _lastEntityActed.AttackController.AttackMultiplier, _lastEntityActed.AttackController.CriticalChanceMultiplier);
+        _lastTargetedEntity.Stats.OnSufferingAttack(_lastAttackUsed.Damage, _lastEntityActed.AttackController.AttackMultiplier, _lastEntityActed.AttackController.CriticalChanceMultiplier, _lastAttackUsed.StatusList, _lastAttackUsed.CriticalChance);
+    }
+    private void OnTargetAttackSkillRequested(int damage, List<StatusEffectEntry> statusList, int criticalChance)
+    {
+        _combatChannel.RaiseShowTargetSkillText(_lastSkillUsed.Name, _lastEntityActed.EntityNameString, _lastTargetedEntity.EntityNameString);
+        _lastTargetedEntity.Stats.OnSufferingAttack(damage, _lastEntityActed.AttackController.AttackMultiplier, _lastEntityActed.AttackController.CriticalChanceMultiplier,statusList, criticalChance);
     }
     private void OnRandomAttackRequested(TargetType entityType)
     {
         BaseEntityController randomTarget = RollRandomTarget(entityType);
         _combatChannel.RaiseShowAttackText(_lastAttackUsed.AttackName, _lastEntityActed.EntityNameString, randomTarget.EntityNameString);
-        _lastTargetedEntity.Stats.OnSufferingAttack(_lastAttackUsed, _lastEntityActed.AttackController.AttackMultiplier, _lastEntityActed.AttackController.CriticalChanceMultiplier);
+        _lastTargetedEntity.Stats.OnSufferingAttack(_lastAttackUsed.Damage, _lastEntityActed.AttackController.AttackMultiplier, _lastEntityActed.AttackController.CriticalChanceMultiplier, _lastAttackUsed.StatusList, _lastAttackUsed.CriticalChance);
     }
     private BaseEntityController RollRandomTarget(TargetType entityType)
     {
@@ -96,6 +114,20 @@ public class CombatController
                     _combatChannel.RaiseShowPlayerRunResult($"<color=red>{enemy.EntityNameString}</color> interrupts <color=red>{playerName}</color> during his escape!");
                     break;
                 }
+            }
+        }
+    }
+    private void UpdateTurnOrder(List<BaseEntityController> turnOrder)
+    {
+        _entityList = turnOrder;
+    }
+    private void ApplyGlobalStatusEffect(TargetType targets, StatusEffectData statusEffect, int statusChance, int duration)
+    {
+        foreach (BaseEntityController entity in _entityList)
+        {
+            if (entity.EntityType == targets)
+            {
+                entity.StatusManager.ApplyEffect(statusEffect, statusChance, duration);
             }
         }
     }

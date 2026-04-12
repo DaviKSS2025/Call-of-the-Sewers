@@ -14,10 +14,12 @@ public class TurnBasedController
     {
         _turnChangeChannel.RaiseUpdateCurrentTurnUser(_entityList[0]);
         _turnChangeChannel.EndCurrentTurn += StartNextTurn;
+        _turnChangeChannel.OnTurnOrderChanged += UpdateTurnOrder;
     }
     public void OnDisable()
     {
         _turnChangeChannel.EndCurrentTurn -= StartNextTurn;
+        _turnChangeChannel.OnTurnOrderChanged -= UpdateTurnOrder;
     }
 
     private void StartNextTurn(BaseEntityController entity)
@@ -25,5 +27,9 @@ public class TurnBasedController
         int currentIndex = _entityList.IndexOf(entity);
         int indexToGo = currentIndex < _entityList.Count - 1 ? currentIndex + 1 : 0;
         _turnChangeChannel.RaiseUpdateCurrentTurnUser(_entityList[indexToGo]);
+    }
+    private void UpdateTurnOrder(List<BaseEntityController> turnOrder)
+    {
+        _entityList = turnOrder;
     }
 }

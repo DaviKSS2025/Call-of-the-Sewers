@@ -7,6 +7,7 @@ public class InitializeCombatController : MonoBehaviour
     [SerializeField] private NPCGenerator _NPCGenerator;
     [SerializeField] private SelectionChannel _selectionChannel;
     [SerializeField] private TurnChangeChannel _turnChangeChannel;
+    [SerializeField] private InputChannel _inputChannel;
     [SerializeField] private CombatChannel _combatChannel;
     [SerializeField] private PlayerController _playerController;
     [SerializeField] private GameObject _victoryCanvas;
@@ -61,7 +62,7 @@ public class InitializeCombatController : MonoBehaviour
     }
     private void InitializeSelectionSystem()
     {
-        _selectTargetController = new SelectTargetController(_selectionChannel,_turnOrder);
+        _selectTargetController = new SelectTargetController(_selectionChannel,_turnOrder, _turnChangeChannel, _inputChannel);
         _selectTargetController.Initialize();
     }
     private void InitializeCombatSystem()

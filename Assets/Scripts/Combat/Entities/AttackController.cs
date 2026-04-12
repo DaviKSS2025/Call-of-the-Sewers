@@ -36,7 +36,6 @@ public class AttackController
                 return;
             }
         }
-        //StartIdleTurn();
     }
     public void StartAttackAnimation(AttackData currentAttack)
     {

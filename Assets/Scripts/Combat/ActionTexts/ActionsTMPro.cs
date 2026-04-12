@@ -20,6 +20,8 @@ public class ActionsTMPro : MonoBehaviour
         _combatChannel.IdleTurn += OnIdleTurn;
         _combatChannel.OnEntityKilled += OnEntityKilled;
         _combatChannel.ShowSkipTurnOnStun += OnSkipTurnOnStun;
+        _combatChannel.ShowGlobalStatusEffectUsed += OnShowGlobalStatusEffectUsed;
+        _combatChannel.ShowSkillText += OnShowTargetAttackSkillText;
     }
     private void OnDisable()
     {
@@ -30,6 +32,8 @@ public class ActionsTMPro : MonoBehaviour
         _combatChannel.IdleTurn -= OnIdleTurn;
         _combatChannel.OnEntityKilled -= OnEntityKilled;
         _combatChannel.ShowSkipTurnOnStun -= OnSkipTurnOnStun;
+        _combatChannel.ShowGlobalStatusEffectUsed -= OnShowGlobalStatusEffectUsed;
+        _combatChannel.ShowSkillText -= OnShowTargetAttackSkillText;
     }
     private void OnShowAttackText(string attackName, string attackerName, string targetName)
     {
@@ -58,5 +62,13 @@ public class ActionsTMPro : MonoBehaviour
     private void OnSkipTurnOnStun(string entityName)
     {
         _text.text = $"<color=red>{entityName}</color> is stunned and can't move.";
+    }
+    private void OnShowGlobalStatusEffectUsed(string globalStatusUsage)
+    {
+        _text.text = globalStatusUsage;
+    }
+    private void OnShowTargetAttackSkillText(string skillName, string attackerName, string targetName)
+    {
+        _text.text = $"<color=red>{attackerName}</color> casts <color=red>{skillName}</color> against <color=red>{targetName}</color>!";
     }
 }

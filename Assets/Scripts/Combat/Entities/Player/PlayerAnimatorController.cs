@@ -11,4 +11,8 @@ public class PlayerAnimatorController : AnimatorStateController, IAnimationHandl
     {
         _animator.SetTrigger(Run);
     }
+    public override void PlaySkill()
+    {
+        _animator.SetTrigger(Skill);
+    }
 }

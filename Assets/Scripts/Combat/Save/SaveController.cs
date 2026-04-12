@@ -19,12 +19,4 @@ public class SaveController : MonoBehaviour
         SaveManager.Instance.Data.ChoosedNickName = true;
         SaveManager.Instance.Save();
     }
-    public void SetCurrentHealth(int currentHealth, int currentCharacter)
-    {
-        /*var data = SaveManager.Instance.Data.slots[currentCharacter];
-        data.CurrentHealth = currentHealth;
-
-        SaveManager.Instance.Save();*/
-    }
-
 }

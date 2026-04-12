@@ -11,6 +11,7 @@ public abstract class OptionCombatBaseButton : MonoBehaviour, IOptionCombatButto
     [SerializeField] protected SimpleSFXEvent _useSound;
     [SerializeField] protected TurnChangeChannel _turnChangeChannel;
     [SerializeField] protected PlayerController _playerController;
+    [SerializeField] protected CombatChannel _combatChannel;
     private void Awake()
     {
         _button = GetComponent<Button>();
@@ -26,11 +27,27 @@ public abstract class OptionCombatBaseButton : MonoBehaviour, IOptionCombatButto
     }
     public virtual void OnEnable()
     {
-        _turnChangeChannel.OnPlayerTurnStarted += ResetButton;
+        SubscribeEvents();
     }
     public virtual void OnDisable()
     {
+        UnsubscribeEvents();
+    }
+    public virtual void SubscribeEvents()
+    {
+        _turnChangeChannel.OnPlayerTurnStarted += ResetButton;
+        _combatChannel.ChoosingSkill += StartedSkillChoose;
+        _combatChannel.CancelChoosingSkill += ResetButton;
+    }
+    public virtual void UnsubscribeEvents()
+    {
         _turnChangeChannel.OnPlayerTurnStarted -= ResetButton;
+        _combatChannel.ChoosingSkill -= StartedSkillChoose;
+        _combatChannel.CancelChoosingSkill -= ResetButton;
+    }
+    public virtual void StartedSkillChoose()
+    {
+        _button.interactable = false;
     }
     public virtual void ResetButton()
     {

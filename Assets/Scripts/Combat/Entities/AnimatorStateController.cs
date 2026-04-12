@@ -15,6 +15,8 @@ public abstract class AnimatorStateController : IAnimationHandler
     protected static readonly int Run = Animator.StringToHash("Run");
     protected static readonly int Preparing = Animator.StringToHash("Preparing");
     protected static readonly int IdleTurn = Animator.StringToHash("IdleTurn");
+    protected static readonly int Skill = Animator.StringToHash("Skill");
+
     public AnimatorStateController(Animator animator)
     {
         _animator = animator;
@@ -61,6 +63,9 @@ public abstract class AnimatorStateController : IAnimationHandler
     {
     }
     public virtual void PlayIdleTurn()
+    {
+    }
+    public virtual void PlaySkill()
     {
     }
 }

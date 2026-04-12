@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 public abstract class StatsController
 {
@@ -17,14 +18,14 @@ public abstract class StatsController
     {
         _entity = entity;
     }
-    public void OnSufferingAttack(AttackData attack, float damageMultiplier, float criticalChanceMultiplier)
+    public void OnSufferingAttack(int baseDamage, float damageMultiplier, float criticalChanceMultiplier, List<StatusEffectEntry> statusList, int baseCriticalChance)
     {
-        TakeDamage(attack, damageMultiplier, criticalChanceMultiplier);
+        TakeDamage(baseDamage, damageMultiplier, criticalChanceMultiplier, baseCriticalChance);
+        ManageStatusEffect(statusList);
     }
-    public virtual void TakeDamage(AttackData attack, float damageMultiplier, float criticalChanceMultiplier)
+    public virtual void TakeDamage(int baseDamage, float damageMultiplier, float criticalChanceMultiplier, int baseCriticalChance)
     {
-        _currentHealth -= CalculateDamage(attack, damageMultiplier, criticalChanceMultiplier);
-        ManageStatusEffect(attack);
+        _currentHealth -= CalculateDamage(baseDamage, damageMultiplier, criticalChanceMultiplier, baseCriticalChance);
         ResolveAfterDamage();
     }
     public virtual void TakeExactDamage(int damage)
@@ -41,33 +42,27 @@ public abstract class StatsController
         }
         else
         {
+            _entity.DeathClears();
             _entity.AnimatorStateController.PlayDeath();
             _entity.ThisTurnChangeChannel.OnEntityDeath(_entity);
             _entity.ComChannel.RaiseEntityKilled(_entity.EntityNameString);
         }
     }
-    private void ManageStatusEffect(AttackData attack)
+    private void ManageStatusEffect(List<StatusEffectEntry> statusList)
     {
-        if (attack.StatusList.Count > 0)
+        if (statusList.Count > 0)
         {
-            foreach (AttackData.StatusEffectEntry status in attack.StatusList)
+            foreach (StatusEffectEntry status in statusList)
             {
-                if (RollStatusEffectChance(status.StatusChance))
-                {
-                    _entity.StatusManager.ApplyEffect(status.StatusType);
-                }
+                _entity.StatusManager.ApplyEffect(status.StatusType, status.StatusChance, status.Duration);
             }
         }
     }
-    private bool RollStatusEffectChance(int statusChance)
+    private int CalculateDamage(int baseDamage, float damageMultiplier, float criticalChanceMultiplier, int baseCriticalChance)
     {
-        return statusChance >= Random.Range(1, 101);
-    }
-    private int CalculateDamage(AttackData attack, float damageMultiplier, float criticalChanceMultiplier)
-    {
-        int damage = Mathf.RoundToInt(attack.Damage * damageMultiplier * (1 - _entity.SurvStats.Defense));
+        int damage = Mathf.RoundToInt(baseDamage * damageMultiplier * (1 - _entity.SurvStats.Defense));
         
-        if (RollCritical(attack.CriticalChance, criticalChanceMultiplier))
+        if (RollCritical(baseCriticalChance, criticalChanceMultiplier))
         {
             damage *= 2;
         }
@@ -77,7 +72,7 @@ public abstract class StatsController
     {
         return criticalChance*criticalChanceMultiplier >= Random.Range(1, 101);
     }
-    public void UseMana(int manaCost)
+    public virtual void UseMana(int manaCost)
     {
         _currentMana = Mathf.Max(0, _currentMana - manaCost);
     }

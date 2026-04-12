@@ -16,4 +16,4 @@ MonoBehaviour:
   _attackName: Bite
   _attackChance: 5
   _criticalChance: 20
-  _statusEffect: {fileID: 0}
+  _statusList: []

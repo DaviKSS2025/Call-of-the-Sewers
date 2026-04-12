@@ -10,6 +10,7 @@ public class CharacterData
     public WeaponType CurrentWeapon = WeaponType.Pistol;
     public int CurrentHealth = 100;
     public int CurrentMana = 100;
+    public List<SkillType> SkillList;
 }
 [Serializable]
 public class AllyNPC
@@ -37,7 +38,7 @@ public class SaveFile
             Items = new List<ConsumableItemData>(),
             WorldPosition = Vector2.zero,
             CurrentMapName = SceneNames.Sewers,
-            ChoosedNickName = false
+            ChoosedNickName = false,
         };
     }
 
@@ -50,6 +51,10 @@ public class SaveFile
             CurrentMana = 100,
             CurrentWeapon = WeaponType.Pistol,
             CurrentArmor = ArmorType.Shirt,
+            SkillList = new List<SkillType>()
+            {
+                SkillType.Darkness
+            }
         };
     }
 }

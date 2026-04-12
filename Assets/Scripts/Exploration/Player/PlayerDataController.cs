@@ -35,6 +35,10 @@ public class PlayerDataController : MonoBehaviour
     {
         RuntimeData.CurrentArmor = armor;
     }
+    public void AddSkill(SkillType skill)
+    {
+        RuntimeData.SkillList.Add(skill);
+    }
 
     public void Save()
     {
@@ -49,7 +53,8 @@ public class PlayerDataController : MonoBehaviour
             CurrentHealth = original.CurrentHealth,
             CurrentMana = original.CurrentMana,
             CurrentArmor = original.CurrentArmor,
-            CurrentWeapon = original.CurrentWeapon
+            CurrentWeapon = original.CurrentWeapon,
+            SkillList = original.SkillList
         };
     }
 }
