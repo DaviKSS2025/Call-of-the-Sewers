@@ -4,7 +4,7 @@ public class PlayerController : BaseEntityController
 {
     [SerializeField] private RunChance _runChance;
     [SerializeField] private SceneChangeChannel _sceneChangeChannel;
-    [SerializeField] private CharacterStatsUI _playerStatsUI;
+    [SerializeField] private PlayerStatsUI _playerStatsUI;
     private RunManager _runManager;
     private SkillManager _skillManager;
     public RunManager RunManager

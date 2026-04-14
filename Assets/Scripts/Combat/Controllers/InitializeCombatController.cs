@@ -12,6 +12,8 @@ public class InitializeCombatController : MonoBehaviour
     [SerializeField] private PlayerController _playerController;
     [SerializeField] private GameObject _victoryCanvas;
     [SerializeField] private GameObject _defeatCanvas;
+    [SerializeField] private GameObject _NPCStatusUI;
+    [SerializeField] private GameObject _allyStatusVerticalLayoutGroup;
     private SelectTargetController _selectTargetController;
     private CombatController _combatController;
     private TurnBasedController _turnBasedController;
@@ -21,6 +23,7 @@ public class InitializeCombatController : MonoBehaviour
     private void Start()
     {
         SpawnEntities();
+        ManageNPCStatusUI();
         RaiseMonsterAppear();
         InitializeTurnOrderManager();
         InitializeSelectionSystem();
@@ -43,6 +46,17 @@ public class InitializeCombatController : MonoBehaviour
 
         _turnOrder.AddRange(_NPCGenerator.Initialize());
         _turnOrder.AddRange(_enemyGenerator.Initialize());
+    }
+    private void ManageNPCStatusUI()
+    {
+        foreach (BaseEntityController entity in _turnOrder)
+        {
+            if (entity is NPCController npc)
+            {
+                npc.StatusUI = Instantiate(_NPCStatusUI, _allyStatusVerticalLayoutGroup.transform)
+                    .GetComponent<NPCStatusUI>();
+            }
+        }
     }
     private void RaiseMonsterAppear()
     {

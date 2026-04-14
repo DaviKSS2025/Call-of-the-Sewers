@@ -1,19 +1,17 @@
 using UnityEngine;
 
-public class GuardianStrategy : IEnemyStrategy
+public class GuardianStrategy : BaseStrategy, IEnemyStrategy
 {
-    private AnimatorStateController _animatorStateController;
     private int _idleTurnChance;
-    private CombatChannel _combatChannel;
     private string _name;
-    public GuardianStrategy(AnimatorStateController enemyAnimatorController, int idleTurnChance, CombatChannel combatChannel, string name) 
+    public GuardianStrategy(AnimatorStateController enemyAnimatorController, int idleTurnChance, CombatChannel combatChannel, string name) : base(enemyAnimatorController, combatChannel)
     { 
         _animatorStateController = enemyAnimatorController;
         _idleTurnChance = idleTurnChance;
         _combatChannel = combatChannel;
         _name = name;
     }
-    public void ChooseStrategy()
+    public override void ChooseStrategy()
     {
         if (RollIdleTurnChance(_idleTurnChance))
         {

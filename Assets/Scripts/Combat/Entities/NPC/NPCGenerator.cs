@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 public class NPCGenerator : MonoBehaviour
 {
-    [SerializeField] private GameObject NPCpannel;
+    //[SerializeField] private GameObject NPCpannel;
     [SerializeField] private NPCDatabase _database;
     private List<BaseEntityController> _generatedNPCS = new();
     public List<BaseEntityController> Initialize()
@@ -20,7 +20,7 @@ public class NPCGenerator : MonoBehaviour
     }
     private void SpawnAllyObjects()
     {
-        NPCpannel.SetActive(true);
+        //NPCpannel.SetActive(true);
         SpawnNPC();
     }
     private void SpawnNPC()

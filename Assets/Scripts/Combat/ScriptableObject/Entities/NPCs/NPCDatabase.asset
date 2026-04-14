@@ -15,8 +15,8 @@ MonoBehaviour:
   NPCS:
   - Type: 0
     NPCName: {fileID: 11400000, guid: dc01800eec56f424dada32072c82adac, type: 2}
-    StatusSprite: {fileID: 0}
-    Weapon: {fileID: 0}
-    Armor: {fileID: 0}
+    StatusSprite: {fileID: -1293192984778809801, guid: 58924f151c46bba49b19ce881e47811f, type: 3}
+    Weapon: {fileID: 11400000, guid: a5496edcffd4f844db54abde20f674ca, type: 2}
+    Armor: {fileID: 11400000, guid: a8cfbd1ffc1953b45ba9b8ae7368ba0f, type: 2}
     SurvivalStats: {fileID: 11400000, guid: 4bd73e3a5366e3f4f90b25a3ecf7ce08, type: 2}
-    prefab: {fileID: 0}
+    prefab: {fileID: 5631087910610705888, guid: 4c93822f3f4f734419116a60afe47cf9, type: 3}

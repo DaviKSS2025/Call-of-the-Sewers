@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.Diagnostics;
-using UnityEngine;
 public class SelectTargetController
 {
     private SelectionChannel _selectionChannel;

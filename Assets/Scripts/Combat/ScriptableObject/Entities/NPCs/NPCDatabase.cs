@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NPCDatabase", menuName = "Scriptable Objects/NPCDatabase")]
+[CreateAssetMenu(fileName = "NPCDatabase", menuName = "Databases/NPCDatabase")]
 public class NPCDatabase : ScriptableObject
 {
     [Serializable]
@@ -17,9 +17,6 @@ public class NPCDatabase : ScriptableObject
     }
 
     [SerializeField] private NPCEntry[] NPCS;
-
-
-
     public GameObject GetNPCPrefab(NPCType NPC)
     {
         NPCEntry currentNPC = CheckNPCExistence(NPC);

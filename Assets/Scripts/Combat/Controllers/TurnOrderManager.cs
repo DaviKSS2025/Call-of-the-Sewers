@@ -39,6 +39,7 @@ public class TurnOrderManager
     private void OnNPCDeath(BaseEntityController npc)
     {
         _turnOrder.Remove(npc);
+        _turnChangeChannel.RaiseTurnOrderChanged(_turnOrder);
     }
     private void OnEnemyDeath(BaseEntityController enemy)
     {
@@ -47,6 +48,7 @@ public class TurnOrderManager
         {
             if (firstEnemy.EntityType == TargetType.Enemy)
             {
+                _turnChangeChannel.RaiseTurnOrderChanged(_turnOrder);
                 return;
             }
         }

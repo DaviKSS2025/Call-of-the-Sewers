@@ -840,9 +840,9 @@ GameObject:
   - component: {fileID: 4080621633054144457}
   - component: {fileID: 6564921603486535880}
   - component: {fileID: 2756393685921052004}
-  - component: {fileID: 4903296069670908731}
+  - component: {fileID: 3639305159713655330}
   m_Layer: 5
-  m_Name: CharStatsPannel
+  m_Name: PlayerStatsPannel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -902,7 +902,7 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &4903296069670908731
+--- !u!114 &3639305159713655330
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -911,14 +911,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7772236498651818739}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcd7d066a76d2754f86e1fc19fb23c43, type: 3}
+  m_Script: {fileID: 11500000, guid: a1c321369fd07cc4aa656912811281d2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CharacterStatsUI
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStatsUI
   _healthSlider: {fileID: 3326811746542908750}
   _healthTMPro: {fileID: 5317142322326428387}
+  _characterName: {fileID: 4082859664614474870}
   _manaSlider: {fileID: 838493101448820266}
   _manaTMPro: {fileID: 4638483895054346248}
-  _characterName: {fileID: 4082859664614474870}
 --- !u!1 &8503738376322327233
 GameObject:
   m_ObjectHideFlags: 0

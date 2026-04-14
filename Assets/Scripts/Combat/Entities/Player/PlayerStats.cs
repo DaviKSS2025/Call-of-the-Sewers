@@ -1,16 +1,14 @@
-using UnityEngine;
-
 public class PlayerStats : StatsController
 {
-    private CharacterStatsUI _playerStatsUI;
-    public PlayerStats(BaseEntityController entity, CharacterStatsUI playerStatsUI) : base(entity)
+    private PlayerStatsUI _playerStatsUI;
+    public PlayerStats(BaseEntityController entity, PlayerStatsUI playerStatsUI) : base(entity)
     {
         _currentHealth = PlayerDataController.Instance.RuntimeData.CurrentHealth;
         _currentMana = PlayerDataController.Instance.RuntimeData.CurrentMana;
         _playerStatsUI = playerStatsUI;
-        _playerStatsUI.Initialize(entity.EntityNameString, this, entity.SurvStats.MaxHealth, _entity.SurvStats.MaxMana);
+        _playerStatsUI.Initialize(entity.EntityNameString, this, entity.SurvStats.MaxHealth);
+        _playerStatsUI.MaxMana = entity.SurvStats.MaxMana;
     }
-
     public override void TakeDamage(int baseDamage, float damageMultiplier, float criticalChanceMultiplier, int baseCriticalChance)
     {
         base.TakeDamage(baseDamage, damageMultiplier, criticalChanceMultiplier, baseCriticalChance);
