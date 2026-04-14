@@ -17,7 +17,14 @@ public abstract class NPCController : BaseEntityController
     }
     protected override void SetupStatsController()
     {
-        AssignStatsController(new DJonesStats(this, _statusUI));
+        foreach (AllyNPC npc in NPCDataController.Instance.RuntimeData)
+        {
+            if (npc.NPCInfo == _type)
+            {
+                AssignStatsController(new NPCStatsController(this, _statusUI, npc.CurrentHealth));
+                break;
+            }
+        }
     }
     protected void AssignStrategy<T>(T strategy) where T : INPCStrategy
     {

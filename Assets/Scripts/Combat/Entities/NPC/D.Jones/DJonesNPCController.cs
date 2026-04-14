@@ -1,5 +1,10 @@
 public class DJonesNPCController : NPCController
 {
+    public override void Awake()
+    {
+        _type = NPCType.DJones;
+        base.Awake();
+    }
     public override void OnAnimationEvent(string eventName)
     {
         if (eventName == "StartDamage")
