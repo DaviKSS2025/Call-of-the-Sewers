@@ -78,20 +78,25 @@ public class CombatController
         _combatChannel.RaiseShowAttackText(_lastAttackUsed.AttackName, _lastEntityActed.EntityNameString, randomTarget.EntityNameString);
         _lastTargetedEntity.Stats.OnSufferingAttack(_lastAttackUsed.Damage, _lastEntityActed.AttackController.AttackMultiplier, _lastEntityActed.AttackController.CriticalChanceMultiplier, _lastAttackUsed.StatusList, _lastAttackUsed.CriticalChance);
     }
-    private BaseEntityController RollRandomTarget(TargetType entityType)
+    private BaseEntityController RollRandomTarget(TargetType attackerType)
     {
-        TargetType targetType = entityType == TargetType.Enemy
-            ? TargetType.Player
-            : TargetType.Enemy;
+        List<TargetType> validTargets = attackerType switch
+        {
+            TargetType.Player => new List<TargetType> { TargetType.Enemy },
+            TargetType.NPC => new List<TargetType> { TargetType.Enemy },
+            TargetType.Enemy => new List<TargetType> { TargetType.Player, TargetType.NPC },
+            _ => null
+        };
+
+        if (validTargets == null)
+            return null;
 
         var targets = _entityList
-        .Where(e => e.EntityType != entityType)
-        .ToList();
+            .Where(e => validTargets.Contains(e.EntityType))
+            .ToList();
 
         if (targets.Count == 0)
-        {
             return null;
-        }
 
         var randomTarget = targets[Random.Range(0, targets.Count)];
 
