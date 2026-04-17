@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public abstract class BaseTargetAttackSkillBehaviour : BaseSkillBehaviour
 {
     protected TargetAttackSkillData _data;
@@ -9,6 +7,13 @@ public abstract class BaseTargetAttackSkillBehaviour : BaseSkillBehaviour
     }
     public override void PreparingSkill()
     {
+        if (_controller.EntityType == TargetType.NPC)
+        {
+            _controller.ComChannel.RaiseRandomTargetAttackSkillRequested(_controller.EntityType, _data.Damage, _data.StatusList, _data.CriticalChance);
+            _controller.AnimatorStateController.PlaySkill();
+            return;
+        }
+
         _controller.SelectionChannel.RaiseSelectionStarted(TargetType.Enemy);
         _controller.ThisInputChannel.OnUICancel += CancelingUse;
         _controller.ThisInputChannel.OnSubmit += UsingSkill;
@@ -23,8 +28,11 @@ public abstract class BaseTargetAttackSkillBehaviour : BaseSkillBehaviour
     }
     public override void OnSkillEnd()
     {
-        base.OnSkillEnd();
-        _controller.ThisInputChannel.OnSubmit -= UsingSkill;
+        if (_controller.EntityType != TargetType.NPC)
+        {
+            base.OnSkillEnd();
+            _controller.ThisInputChannel.OnSubmit -= UsingSkill;
+        }
         _controller.NeutralTurnEnd();
     }
     public override void CancelingUse()

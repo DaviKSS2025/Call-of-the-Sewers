@@ -32,6 +32,7 @@ public class CombatController
         _combatChannel.OnGlobalStatusEffectUsed += ApplyGlobalStatusEffect;
         _combatChannel.TargetAttackSkillRequested += OnTargetAttackSkillRequested;
         _combatChannel.OnSkillUsed += UpdateLastSkillUsed;
+        _combatChannel.RandomTargetRequested += OnRandomTargetSkillRequested;
     }
     public void OnDisable()
     {
@@ -45,6 +46,7 @@ public class CombatController
         _combatChannel.OnGlobalStatusEffectUsed -= ApplyGlobalStatusEffect;
         _combatChannel.TargetAttackSkillRequested -= OnTargetAttackSkillRequested;
         _combatChannel.OnSkillUsed -= UpdateLastSkillUsed;
+        _combatChannel.RandomTargetRequested -= OnRandomTargetSkillRequested;
     }
     private void UpdateLastEntityActed(BaseEntityController lastEntityActed)
     {
@@ -77,6 +79,13 @@ public class CombatController
         BaseEntityController randomTarget = RollRandomTarget(entityType);
         _combatChannel.RaiseShowAttackText(_lastAttackUsed.AttackName, _lastEntityActed.EntityNameString, randomTarget.EntityNameString);
         _lastTargetedEntity.Stats.OnSufferingAttack(_lastAttackUsed.Damage, _lastEntityActed.AttackController.AttackMultiplier, _lastEntityActed.AttackController.CriticalChanceMultiplier, _lastAttackUsed.StatusList, _lastAttackUsed.CriticalChance);
+    }
+    private void OnRandomTargetSkillRequested(TargetType entityType, int damage, List<StatusEffectEntry> statusList, int criticalChance)
+    {
+        BaseEntityController randomTarget = RollRandomTarget(entityType);
+        _combatChannel.RaiseShowTargetSkillText(_lastSkillUsed.Name, _lastEntityActed.EntityNameString, _lastTargetedEntity.EntityNameString);
+        _lastTargetedEntity.Stats.OnSufferingAttack(damage, _lastEntityActed.AttackController.AttackMultiplier, _lastEntityActed.AttackController.CriticalChanceMultiplier, statusList, criticalChance);
+
     }
     private BaseEntityController RollRandomTarget(TargetType attackerType)
     {

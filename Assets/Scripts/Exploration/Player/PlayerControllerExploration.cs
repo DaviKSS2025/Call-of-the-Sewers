@@ -61,11 +61,11 @@ public class PlayerControllerExploration : MonoBehaviour
         if (gameState == CurrentGameState.Gameplay)
         {
             EnableMovementInputs();
-            _movement.CantMove();
         }
         else
         {
             DisableMovementInputs();
+            _movement.CantMove();
         }
     }
 

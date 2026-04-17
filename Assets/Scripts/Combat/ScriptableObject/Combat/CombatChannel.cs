@@ -26,7 +26,7 @@ public class CombatChannel : ScriptableObject
     public Action<string, string, string> ShowSkillText;
     public Action<int, List<StatusEffectEntry>, int> TargetAttackSkillRequested;
     public Action HideSkillUI;
-
+    public Action<TargetType, int, List<StatusEffectEntry>, int> RandomTargetRequested;
     public void RaiseAttackRequested(AttackData attack)
     {
         UpdateLastAttackUsed?.Invoke(attack);
@@ -102,5 +102,9 @@ public class CombatChannel : ScriptableObject
     public void RaiseShowTargetSkillText(string skillName, string attackerName, string targetName)
     {
         ShowSkillText?.Invoke(skillName, attackerName, targetName);
+    }
+    public void RaiseRandomTargetAttackSkillRequested(TargetType entityType, int damage, List<StatusEffectEntry> statusList, int criticalChance)
+    {
+        RandomTargetRequested?.Invoke(entityType, damage, statusList, criticalChance);
     }
 }
