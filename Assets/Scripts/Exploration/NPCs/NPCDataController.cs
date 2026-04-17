@@ -45,8 +45,19 @@ public class NPCDataController : MonoBehaviour
         RuntimeData.Add(new AllyNPC
         {
             NPCInfo = npcType,
-            CurrentHealth = 100 // ou valor padrão
+            CurrentHealth = 100
         });
+    }
+    public void RemoveNPC(NPCType npcType)
+    {
+        for (int i = 0; i < RuntimeData.Count; i++)
+        {
+            if (RuntimeData[i].NPCInfo == npcType)
+            {
+                RuntimeData.RemoveAt(i);
+                break;
+            }
+        }
     }
 
     public void ApplyDamage(NPCType type, int value)

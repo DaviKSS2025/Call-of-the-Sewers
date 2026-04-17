@@ -39,7 +39,7 @@ public class NPCRecruiter : MonoBehaviour
         _recruitDialogue[0].SpeakerName = $"{_npcName.Name}";
         _recruitDialogue[1].DialogueLine = "Hi...? Who are you?";
         _recruitDialogue[1].SpeakerName = $"{SaveManager.Instance.Data.PlayerData.PlayerName}";
-        _recruitDialogue[2].DialogueLine = $"My name is {_npcName.Name}.";
+        _recruitDialogue[2].DialogueLine = $"My name is <color=red>{_npcName.Name}</color>.";
         _recruitDialogue[2].SpeakerName = $"{_npcName.Name}";
         _recruitDialogue[3].DialogueLine = "I fell into the sewer and lost my sense of direction.";
         _recruitDialogue[3].SpeakerName = $"{_npcName.Name}";
@@ -105,7 +105,7 @@ public class NPCRecruiter : MonoBehaviour
 
         _confirmRecruitDialogue = new DialogueStruct[1];
 
-        _confirmRecruitDialogue[0].DialogueLine = $"{_npcName.Name} joined your party.";
+        _confirmRecruitDialogue[0].DialogueLine = $"<color=red>{_npcName.Name}</color> joined your party.";
         _confirmRecruitDialogue[0].SpeakerName = "System";
 
         _dialogueChannel.RaiseDialogueRequested(_confirmRecruitDialogue);

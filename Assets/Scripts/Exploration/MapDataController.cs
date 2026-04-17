@@ -8,12 +8,12 @@ public class MapDataController : MonoBehaviour
     {
         public Vector2 WorldPosition;
         public SceneNames CurrentSceneName;
+        public bool UsedSacrificePlace;
     }
     public PositionData RuntimeData
     {
         get; private set;
     }
-
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -47,16 +47,23 @@ public class MapDataController : MonoBehaviour
         RuntimeData = data;
         return RuntimeData.WorldPosition;
     }
+    public void UsedSacrificePlace()
+    {
+        var data = RuntimeData;
+        data.UsedSacrificePlace = true;
+        RuntimeData = data;
+    }
     void Start()
     {
-        RuntimeData = Clone(SaveManager.Instance.Data.WorldPosition, SaveManager.Instance.Data.CurrentMapName);
+        RuntimeData = Clone(SaveManager.Instance.Data.WorldPosition, SaveManager.Instance.Data.CurrentMapName, SaveManager.Instance.Data.UsedSacrificePlace);
     }
-    private PositionData Clone(Vector2 originalPosition, SceneNames originalScene)
+    private PositionData Clone(Vector2 originalPosition, SceneNames originalScene, bool usedSacrificePlace)
     {
         return new PositionData
         {
             WorldPosition = originalPosition,
-            CurrentSceneName = originalScene
+            CurrentSceneName = originalScene,
+            UsedSacrificePlace = usedSacrificePlace
         };
     }
 }

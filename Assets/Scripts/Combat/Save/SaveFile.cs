@@ -28,7 +28,7 @@ public class SaveFile
     public SceneNames CurrentMapName = SceneNames.Sewers;
     public bool ChoosedNickName;
     public List<ConsumableItemData> Items;
-
+    public bool UsedSacrificePlace;
     public static SaveFile CreateNewGame()
     {
         return new SaveFile

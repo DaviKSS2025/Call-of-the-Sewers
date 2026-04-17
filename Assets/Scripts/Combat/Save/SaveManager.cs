@@ -29,13 +29,16 @@ public class SaveManager : MonoBehaviour
         Data.WorldPosition = MapDataController.Instance.GetPlayerPosition();
         Data.CurrentMapName = MapDataController.Instance.RuntimeData.CurrentSceneName;
         Data.Items = InventoryDataController.Instance.GetItemList();
+        Data.UsedSacrificePlace = MapDataController.Instance.RuntimeData.UsedSacrificePlace;
         Save();
+        //Debug.Log("Manual save requested!");
     }
 
     public void Save()
     {
         string json = JsonUtility.ToJson(Data, true);
         File.WriteAllText(Path, json);
+        //sDebug.Log("Save requested!");
     }
 
     public void LoadOrCreate()

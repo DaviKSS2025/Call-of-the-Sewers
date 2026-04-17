@@ -6,6 +6,7 @@ public class GameStateController : MonoBehaviour
     [SerializeField] private DialogueChannel _dialogueChannel;
     [SerializeField] private GameStateChannel _gameStateChannel;
     [SerializeField] private CutsceneChannel _cutsceneChannel;
+    [SerializeField] private ChoiceChannel _choiceChannel;
     [SerializeField] private CurrentGameState _gameState = CurrentGameState.Gameplay;
     private void OnEnable()
     {
@@ -13,6 +14,7 @@ public class GameStateController : MonoBehaviour
         _dialogueChannel.OnDialogueEnd += OnDialogueEnd;
         _inputChannel.OnMenuToggle += OnMenuToggle;
         _cutsceneChannel.OnBlackoutRequested += OnCutsceneStart;
+        _choiceChannel.ChoiceRequested += OnChoiceStart;
     }
     private void OnDisable()
     {
@@ -20,6 +22,7 @@ public class GameStateController : MonoBehaviour
         _dialogueChannel.OnDialogueEnd -= OnDialogueEnd;
         _inputChannel.OnMenuToggle -= OnMenuToggle;
         _cutsceneChannel.OnBlackoutRequested -= OnCutsceneStart;
+        _choiceChannel.ChoiceRequested -= OnChoiceStart;
     }
     private void Start()
     {
@@ -53,11 +56,16 @@ public class GameStateController : MonoBehaviour
     {
         ChangeGameState(CurrentGameState.Cutscene);
     }
+    private void OnChoiceStart()
+    {
+        ChangeGameState(CurrentGameState.Choice);
+    }
 }
 public enum CurrentGameState
 {
     Gameplay,
     StatusPannel,
     Dialogue,
-    Cutscene
+    Cutscene,
+    Choice
 }
