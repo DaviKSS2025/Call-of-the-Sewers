@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections;
 [RequireComponent(typeof(SpriteRenderer))]
 public class NPCRecruiter : MonoBehaviour
 {
@@ -49,6 +49,22 @@ public class NPCRecruiter : MonoBehaviour
         _recruitDialogue[5].SpeakerName = $"{_npcName.Name}";
         _recruitDialogue[6].DialogueLine = "Do you want to travel together? It would be safer if we joined forces.";
         _recruitDialogue[6].SpeakerName = $"{_npcName.Name}";
+
+
+        StartCoroutine(DestroyIfAlreadyRecruited());
+    }
+    private IEnumerator DestroyIfAlreadyRecruited()
+    {
+        yield return null;
+
+        if (NPCDataController.Instance.NPCHistoric.Contains(_type))
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            _spriteRenderer.enabled = true;
+        }
     }
 
     private void ManageInputs(CurrentGameState gameState)
@@ -109,6 +125,6 @@ public class NPCRecruiter : MonoBehaviour
         _confirmRecruitDialogue[0].SpeakerName = "System";
 
         _dialogueChannel.RaiseDialogueRequested(_confirmRecruitDialogue);
-        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 }

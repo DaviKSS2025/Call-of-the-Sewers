@@ -24,6 +24,7 @@ public class SaveFile
 {
     public CharacterData PlayerData;
     public List<AllyNPC> NPCData = new List<AllyNPC>();
+    public List<NPCType> AlreadyRecruitedNPCs = new List<NPCType>();
     public Vector2 WorldPosition = Vector2.zero;
     public SceneNames CurrentMapName = SceneNames.Sewers;
     public bool ChoosedNickName;

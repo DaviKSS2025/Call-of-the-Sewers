@@ -30,15 +30,14 @@ public class SaveManager : MonoBehaviour
         Data.CurrentMapName = MapDataController.Instance.RuntimeData.CurrentSceneName;
         Data.Items = InventoryDataController.Instance.GetItemList();
         Data.UsedSacrificePlace = MapDataController.Instance.RuntimeData.UsedSacrificePlace;
+        Data.AlreadyRecruitedNPCs = NPCDataController.Instance.NPCHistoric;
         Save();
-        //Debug.Log("Manual save requested!");
     }
 
     public void Save()
     {
         string json = JsonUtility.ToJson(Data, true);
         File.WriteAllText(Path, json);
-        //sDebug.Log("Save requested!");
     }
 
     public void LoadOrCreate()

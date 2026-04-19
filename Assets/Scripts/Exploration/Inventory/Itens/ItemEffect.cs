@@ -9,7 +9,7 @@ public abstract class ItemEffect : MonoBehaviour, IConsumableItem
     [SerializeField] protected Image _itemSprite;
     public virtual void OnUsed()
     {
-
+        InventoryDataController.Instance.OnItemUsed(_itemData);
     }
     public virtual void OnSelected()
     {

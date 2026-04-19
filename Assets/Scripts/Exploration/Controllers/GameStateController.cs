@@ -7,32 +7,35 @@ public class GameStateController : MonoBehaviour
     [SerializeField] private GameStateChannel _gameStateChannel;
     [SerializeField] private CutsceneChannel _cutsceneChannel;
     [SerializeField] private ChoiceChannel _choiceChannel;
+    [SerializeField] private InventoryChannel _inventoryChannel;
     [SerializeField] private CurrentGameState _gameState = CurrentGameState.Gameplay;
     private void OnEnable()
     {
         _dialogueChannel.OnDialogueStart += OnDialogueStart;
-        _dialogueChannel.OnDialogueEnd += OnDialogueEnd;
+        _dialogueChannel.OnDialogueEnd += EnableGameplay;
         _inputChannel.OnMenuToggle += OnMenuToggle;
         _cutsceneChannel.OnBlackoutRequested += OnCutsceneStart;
         _choiceChannel.ChoiceRequested += OnChoiceStart;
+        _inventoryChannel.InstantItemUsed += EnableGameplay;
     }
     private void OnDisable()
     {
         _dialogueChannel.OnDialogueStart -= OnDialogueStart;
-        _dialogueChannel.OnDialogueEnd -= OnDialogueEnd;
+        _dialogueChannel.OnDialogueEnd -= EnableGameplay;
         _inputChannel.OnMenuToggle -= OnMenuToggle;
         _cutsceneChannel.OnBlackoutRequested -= OnCutsceneStart;
         _choiceChannel.ChoiceRequested -= OnChoiceStart;
+        _inventoryChannel.InstantItemUsed -= EnableGameplay;
     }
     private void Start()
     {
-        ChangeGameState(CurrentGameState.Gameplay);
+        EnableGameplay();
     }
     private void OnDialogueStart()
     {
         ChangeGameState(CurrentGameState.Dialogue);
     }
-    private void OnDialogueEnd()
+    private void EnableGameplay()
     {
         ChangeGameState(CurrentGameState.Gameplay);
     }
@@ -44,7 +47,7 @@ public class GameStateController : MonoBehaviour
         }
         else if (_gameState == CurrentGameState.StatusPannel)
         {
-            ChangeGameState(CurrentGameState.Gameplay);
+            EnableGameplay();
         }
     }
     private void ChangeGameState(CurrentGameState gameState)

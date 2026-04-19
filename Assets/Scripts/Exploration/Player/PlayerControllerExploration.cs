@@ -1,8 +1,5 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
-//Mandatory components to work
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(SpriteRenderer))]
@@ -14,6 +11,7 @@ public class PlayerControllerExploration : MonoBehaviour
     private Animator _animator;
     private PlayerAnimatorControllerExploration _animatorController;
     private PlayerStatsExploration _stats;
+    private PlayerSanityDarknessDrain _sanityDarknessDrain;
     private PlayerMovement _movement;
     private SpriteRenderer _spriteRenderer;
 
@@ -22,6 +20,8 @@ public class PlayerControllerExploration : MonoBehaviour
     [SerializeField] private MenuController _menuController;
     [SerializeField] private InputChannel _inputChannel;
     [SerializeField] private GameStateChannel _gameStateChannel;
+    [SerializeField] private InventoryChannel _inventoryChannel;
+    [SerializeField] private DialogueChannel _dialogueChannel;
 
     private Vector2 _currentMoveInput;
     public Vector2 CurrentMoveInput => _currentMoveInput;
@@ -37,8 +37,6 @@ public class PlayerControllerExploration : MonoBehaviour
     {
         get => _movement;
     }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
@@ -54,8 +52,8 @@ public class PlayerControllerExploration : MonoBehaviour
     {
         _gameStateChannel.OnGameStateChange -= OnGameStateChanged;
         DisableMovementInputs();
+        DisableDependencies();
     }
-
     private void OnGameStateChanged(CurrentGameState gameState)
     {
         if (gameState == CurrentGameState.Gameplay)
@@ -68,7 +66,6 @@ public class PlayerControllerExploration : MonoBehaviour
             _movement.CantMove();
         }
     }
-
     private void EnableMovementInputs()
     {
         _inputChannel.OnMove -= OnMove;
@@ -78,6 +75,10 @@ public class PlayerControllerExploration : MonoBehaviour
     private void DisableMovementInputs()
     {
         _inputChannel.OnMove -= OnMove;
+    }
+    private void DisableDependencies()
+    {
+        _sanityDarknessDrain.OnDisable();
     }
     private void OnMove(Vector2 input)
     {
@@ -90,6 +91,8 @@ public class PlayerControllerExploration : MonoBehaviour
         _movement = new PlayerMovement(_rigidBody, _stats, _spriteRenderer);
         _animatorController = new PlayerAnimatorControllerExploration(_animator);
         _stats.Initialize();
+        _sanityDarknessDrain = new PlayerSanityDarknessDrain(_inventoryChannel, _gameStateChannel, _dialogueChannel);
+        _sanityDarknessDrain.Initialize();
 
         //State machine inicialization
         currentState = new PlayerMovingState(this);
@@ -97,14 +100,11 @@ public class PlayerControllerExploration : MonoBehaviour
 
         transform.position = MapDataController.Instance.RuntimeData.WorldPosition;
     }
-
-
     void Update()
     {
-        //State updates
         currentState.OnUpdate();
+        _sanityDarknessDrain.CheckDarkness();
     }
-
     public void ChangeState(IPlayerState newState)
     {
         if (currentState != null)
@@ -115,7 +115,6 @@ public class PlayerControllerExploration : MonoBehaviour
         currentState = newState;
         currentState.OnEnter();
     }
-
     public void OnAnimationEvent(string eventName)
     {
         currentState.HandleAnimationEvent(eventName);

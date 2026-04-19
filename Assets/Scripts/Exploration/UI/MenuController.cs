@@ -21,11 +21,15 @@ public class MenuController : MonoBehaviour
     {
         _gameStateChannel.OnGameStateChange += OnToggleMenuPerformed;
         _inventoryChannel.OpenSelectTargetOnStatusPannel += OpenStatusSelectionTarget;
+        _inventoryChannel.InstantItemUsed += CloseAllMenus;
+        _inventoryChannel.MatchesUsed += CloseAllMenus;
     }
     private void OnDisable()
     {
         _gameStateChannel.OnGameStateChange -= OnToggleMenuPerformed;
         _inventoryChannel.OpenSelectTargetOnStatusPannel -= OpenStatusSelectionTarget;
+        _inventoryChannel.InstantItemUsed -= CloseAllMenus;
+        _inventoryChannel.MatchesUsed -= CloseAllMenus;
     }
 
     private void OnToggleMenuPerformed(CurrentGameState gameState)
@@ -36,12 +40,7 @@ public class MenuController : MonoBehaviour
         }
         else if (gameState == CurrentGameState.Gameplay)
         {
-            _statusMenu.SetActive(false);
-            _inventoryMenu.SetActive(false);
-            _quitGameMenu.SetActive(false);
-            CancelSelectTarget();
-            ClosedMenu?.Invoke();
-            _mainMenu.SetActive(false);
+            CloseAllMenus();
         }
     }
     private void CancelSelectTarget()
@@ -79,5 +78,14 @@ public class MenuController : MonoBehaviour
         _verticalToolbar.SetActive(false);
         _inventoryMenu.SetActive(false);
         _statusMenu.SetActive(false);
+    }
+    public void CloseAllMenus()
+    {
+        _statusMenu.SetActive(false);
+        _inventoryMenu.SetActive(false);
+        _quitGameMenu.SetActive(false);
+        CancelSelectTarget();
+        ClosedMenu?.Invoke();
+        _mainMenu.SetActive(false);
     }
 }

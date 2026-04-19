@@ -39,6 +39,10 @@ public class PlayerDataController : MonoBehaviour
     {
         RuntimeData.SkillList.Add(skill);
     }
+    public void UseMana(int value)
+    {
+        RuntimeData.CurrentMana = Mathf.Max(0, RuntimeData.CurrentMana - value);
+    }
 
     public void Save()
     {

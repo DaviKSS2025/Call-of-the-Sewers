@@ -6,7 +6,7 @@ public class NPCDataController : MonoBehaviour
     public static NPCDataController Instance;
 
     public List<AllyNPC> RuntimeData { get; private set; }
-
+    public List<NPCType> NPCHistoric {  get; private set; }
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -22,6 +22,7 @@ public class NPCDataController : MonoBehaviour
     private void Start()
     {
         RuntimeData = CloneList(SaveManager.Instance.Data.NPCData);
+        NPCHistoric = SaveManager.Instance.Data.AlreadyRecruitedNPCs;
     }
 
     private List<AllyNPC> CloneList(List<AllyNPC> original)
@@ -47,6 +48,7 @@ public class NPCDataController : MonoBehaviour
             NPCInfo = npcType,
             CurrentHealth = 100
         });
+        NPCHistoric.Add(npcType);
     }
     public void RemoveNPC(NPCType npcType)
     {
@@ -58,21 +60,5 @@ public class NPCDataController : MonoBehaviour
                 break;
             }
         }
-    }
-
-    public void ApplyDamage(NPCType type, int value)
-    {
-        var npc = RuntimeData.Find(n => n.NPCInfo == type);
-
-        if (npc != null)
-        {
-            npc.CurrentHealth -= value;
-        }
-    }
-
-    public void Save()
-    {
-        SaveManager.Instance.Data.NPCData = CloneList(RuntimeData);
-        SaveManager.Instance.Save();
     }
 }
