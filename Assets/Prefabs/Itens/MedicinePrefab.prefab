@@ -275,6 +275,7 @@ MonoBehaviour:
   _inventoryChannel: {fileID: 11400000, guid: ca82eb96f6f20bd43bc653c0c7011f91, type: 2}
   _itemNameTMPro: {fileID: 410150786978661577}
   _itemSprite: {fileID: 8573248793675435463}
+  _healFactor: 40
 --- !u!114 &1197253725276798307
 MonoBehaviour:
   m_ObjectHideFlags: 0

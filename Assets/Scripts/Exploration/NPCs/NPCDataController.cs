@@ -61,4 +61,8 @@ public class NPCDataController : MonoBehaviour
             }
         }
     }
+    public void RecoverHealth(int value)
+    {
+        RuntimeData[0].CurrentHealth = Mathf.Min(100, RuntimeData[0].CurrentHealth + value);
+    }
 }

@@ -45,7 +45,7 @@ public class NPCCharacterStatusPannel : BaseCharacterStatusPannel
     }
     public override void UpdateSliders()
     {
-        _healthSlider.value = NPCDataController.Instance.RuntimeData[0].CurrentHealth / 100;
+        _healthSlider.value = (float)NPCDataController.Instance.RuntimeData[0].CurrentHealth / _database.GetNPCSurvivalStats(NPCDataController.Instance.RuntimeData[0].NPCInfo).MaxHealth;
     }
     private bool DoesCharacterExist()
     {

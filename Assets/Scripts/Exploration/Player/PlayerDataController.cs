@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class PlayerDataController : MonoBehaviour
 {
@@ -25,7 +26,11 @@ public class PlayerDataController : MonoBehaviour
 
     public void ApplyDamage(int value)
     {
-        RuntimeData.CurrentHealth -= value;
+        RuntimeData.CurrentHealth = Mathf.Max(0, RuntimeData.CurrentHealth - value);
+    }
+    public void RecoverHealth(int value)
+    {
+        RuntimeData.CurrentHealth = Mathf.Min(100, RuntimeData.CurrentHealth + value);
     }
     public void UpgradeWeapon(WeaponType weapon)
     {

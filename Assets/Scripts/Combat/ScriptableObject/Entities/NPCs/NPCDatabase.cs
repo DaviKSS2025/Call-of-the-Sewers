@@ -42,6 +42,11 @@ public class NPCDatabase : ScriptableObject
         NPCEntry currentNPC = CheckNPCExistence(NPC);
         return currentNPC.StatusSprite;
     }
+    public SurvivalStats GetNPCSurvivalStats(NPCType NPC)
+    {
+        NPCEntry currentNPC = CheckNPCExistence(NPC);
+        return currentNPC.SurvivalStats;
+    }
     private NPCEntry CheckNPCExistence(NPCType NPC)
     {
         foreach (NPCEntry npcFound in NPCS)

@@ -15,8 +15,10 @@ public class MenuController : MonoBehaviour
     [SerializeField] private Selectable _charPannelSelectable;
     [SerializeField] private Selectable _NPCPannelSelectable;
     [SerializeField] private GameStateChannel _gameStateChannel;
+    [SerializeField] private InputChannel _inputChannel;
     public Action OpenedMenu;
     public Action ClosedMenu;
+    private IConsumableEffectOnTarget _consumableUsed;
     private void Start()
     {
         _gameStateChannel.OnGameStateChange += OnToggleMenuPerformed;
@@ -48,14 +50,16 @@ public class MenuController : MonoBehaviour
         _charPannelSelectable.enabled = false;
         _NPCPannelSelectable.enabled = false;
     }
-    private void OpenStatusSelectionTarget()
+    private void OpenStatusSelectionTarget(IConsumableEffectOnTarget consumableEffect)
     {
         _verticalToolbar.SetActive(false);
         _inventoryMenu.SetActive(false);
         _statusMenu.SetActive(true);
         _charPannelSelectable.enabled = true;
         _NPCPannelSelectable.enabled = true;
+        _consumableUsed = consumableEffect;
         EventSystem.current.SetSelectedGameObject(_charPannel);
+        _inputChannel.OnSubmit += ManageTargetEffectSelection;
     }
     public void OpenStatusMenu()
     {
@@ -87,5 +91,18 @@ public class MenuController : MonoBehaviour
         CancelSelectTarget();
         ClosedMenu?.Invoke();
         _mainMenu.SetActive(false);
+        _inputChannel.OnSubmit -= ManageTargetEffectSelection;
+    }
+    private void ManageTargetEffectSelection()
+    {
+        if (_charPannel == EventSystem.current.currentSelectedGameObject)
+        {
+            _consumableUsed.Execute(TargetType.Player);
+        }
+        else
+        {
+            _consumableUsed.Execute(TargetType.NPC);
+        }
+        CloseAllMenus();
     }
 }

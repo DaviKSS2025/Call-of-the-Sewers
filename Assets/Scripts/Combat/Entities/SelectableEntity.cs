@@ -3,7 +3,8 @@ public enum TargetType
 {
     Player,
     NPC,
-    Enemy
+    Enemy,
+    None
 }
 public class SelectableEntity
 {

@@ -1,9 +1,26 @@
 using UnityEngine;
 
-public class MedicineEffect : ItemEffect
+public class MedicineEffect : ItemEffect, IConsumableEffectOnTarget
 {
+    [SerializeField] private int _healFactor;
     public override void OnUsed()
     {
-        _inventoryChannel.RaiseItemUsedOnTarget(_itemData);
+        _inventoryChannel.RaiseItemUsedOnTarget(this);
     }
+    public void Execute(TargetType type)
+    {
+        if (type == TargetType.Player)
+        {
+            PlayerDataController.Instance.RecoverHealth(_healFactor);
+        }
+        else
+        {
+            NPCDataController.Instance.RecoverHealth(_healFactor);
+        }
+        InventoryDataController.Instance.OnItemUsed(_itemData);
+    }
+}
+public interface IConsumableEffectOnTarget
+{
+    void Execute(TargetType type);
 }

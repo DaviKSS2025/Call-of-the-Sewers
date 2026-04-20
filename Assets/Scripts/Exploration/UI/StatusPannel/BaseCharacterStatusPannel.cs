@@ -5,8 +5,6 @@ public abstract class BaseCharacterStatusPannel : MonoBehaviour
 {
     [SerializeField] protected TextMeshProUGUI _characterName;
     [SerializeField] protected Image _characterImage;
-    [SerializeField] protected GameObject _statusEffectContainers;
-    [SerializeField] protected Image[] _statusEffectSlots;
     [SerializeField] protected Slider _healthSlider;
     [SerializeField] protected TextMeshProUGUI _healthValue;
     [SerializeField] protected Image _weaponImage;

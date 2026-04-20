@@ -4,8 +4,7 @@ using System;
 public class InventoryChannel : ScriptableObject
 {
     public Action<string> ItemSelected;
-    public Action<ConsumableItemData> ItemUsedOnTarget;
-    public Action OpenSelectTargetOnStatusPannel;
+    public Action<IConsumableEffectOnTarget> OpenSelectTargetOnStatusPannel;
     public Action<TorchEffect> TorchUsed;
     public Action TorchActive;
     public Action MatchesUsed;
@@ -17,10 +16,9 @@ public class InventoryChannel : ScriptableObject
     {
         ItemSelected?.Invoke(itemDescription);
     }
-    public void RaiseItemUsedOnTarget(ConsumableItemData itemUsed)
+    public void RaiseItemUsedOnTarget(IConsumableEffectOnTarget itemEffectUsed)
     {
-        ItemUsedOnTarget?.Invoke(itemUsed);
-        OpenSelectTargetOnStatusPannel?.Invoke();
+        OpenSelectTargetOnStatusPannel?.Invoke(itemEffectUsed);
     }
     public void RaiseTorchUsed(TorchEffect torch)
     {
