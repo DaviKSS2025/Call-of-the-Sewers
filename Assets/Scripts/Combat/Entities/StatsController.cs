@@ -58,7 +58,7 @@ public abstract class StatsController
             }
         }
     }
-    private int CalculateDamage(int baseDamage, float damageMultiplier, float criticalChanceMultiplier, int baseCriticalChance)
+    public virtual int CalculateDamage(int baseDamage, float damageMultiplier, float criticalChanceMultiplier, int baseCriticalChance)
     {
         int damage = Mathf.RoundToInt(baseDamage * damageMultiplier * (1 - _entity.SurvStats.Defense));
         
@@ -68,12 +68,15 @@ public abstract class StatsController
         }
         return damage;
     }
-    private bool RollCritical(int criticalChance, float criticalChanceMultiplier)
+    protected bool RollCritical(int criticalChance, float criticalChanceMultiplier)
     {
         return criticalChance*criticalChanceMultiplier >= Random.Range(1, 101);
     }
     public virtual void UseMana(int manaCost)
     {
         _currentMana = Mathf.Max(0, _currentMana - manaCost);
+    }
+    public virtual void SubscribeEvents()
+    {
     }
 }

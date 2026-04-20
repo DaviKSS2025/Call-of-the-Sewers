@@ -28,6 +28,7 @@ public class InitializeCombatController : MonoBehaviour
         InitializeTurnOrderManager();
         InitializeSelectionSystem();
         InitializeCombatSystem();
+        DealInitialManaDamage();
         ExecuteFirstTurn();
         SubscribeEndGameEvents();
     }
@@ -83,6 +84,18 @@ public class InitializeCombatController : MonoBehaviour
     {
         _combatController = new CombatController(_combatChannel, _selectionChannel, _turnChangeChannel, _turnOrder);
         _combatController.Initialize();
+    }
+    private void DealInitialManaDamage()
+    {
+        int manaDamage = 0;
+        foreach(BaseEntityController entity in _turnOrder)
+        {
+            if (entity is EnemyController enemy)
+            {
+                manaDamage += enemy.ManaDamageInitial.ManaDamage;
+            }
+        }
+        _combatChannel.InitialManaDamage(_playerController, manaDamage);
     }
     private void ExecuteFirstTurn()
     {

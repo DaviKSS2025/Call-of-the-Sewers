@@ -26,6 +26,7 @@ public class PlayerController : BaseEntityController
         _runManager = new RunManager(_stats,_runChance.RunChancePercentage, _sceneChangeChannel, _combatChannel, _name);
         _skillManager = new SkillManager(this);
         _skillManager.Initialize();
+        _stats.SubscribeEvents();
     }
     public override void ExecuteTurnStart()
     {

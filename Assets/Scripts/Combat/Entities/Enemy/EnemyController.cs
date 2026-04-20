@@ -4,11 +4,17 @@ public abstract class EnemyController : BaseEntityController
 {
     [SerializeField] protected EntityName _entityName;
     [SerializeField] protected IdleChance _idleChance;
+    [SerializeField] protected InitialManaDamage _initialManaDamage;
+
     protected IEnemyStrategy _enemyStrategy;
 
     public IdleChance IdleChancePercentage
     {
         get => _idleChance;
+    }
+    public InitialManaDamage ManaDamageInitial
+    {
+        get => _initialManaDamage;
     }
     public override void Awake()
     {

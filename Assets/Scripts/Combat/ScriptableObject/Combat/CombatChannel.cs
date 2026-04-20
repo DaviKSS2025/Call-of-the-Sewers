@@ -27,6 +27,7 @@ public class CombatChannel : ScriptableObject
     public Action<int, List<StatusEffectEntry>, int> TargetAttackSkillRequested;
     public Action HideSkillUI;
     public Action<TargetType, int, List<StatusEffectEntry>, int> RandomTargetRequested;
+    public Action<PlayerController, int> InitialManaDamage;
     public void RaiseAttackRequested(AttackData attack)
     {
         UpdateLastAttackUsed?.Invoke(attack);
@@ -106,5 +107,9 @@ public class CombatChannel : ScriptableObject
     public void RaiseRandomTargetAttackSkillRequested(TargetType entityType, int damage, List<StatusEffectEntry> statusList, int criticalChance)
     {
         RandomTargetRequested?.Invoke(entityType, damage, statusList, criticalChance);
+    }
+    public void RaiseInitialManaDamage(PlayerController playerController, int damage)
+    {
+        InitialManaDamage?.Invoke(playerController, damage);
     }
 }

@@ -33,6 +33,7 @@ public class CombatController
         _combatChannel.TargetAttackSkillRequested += OnTargetAttackSkillRequested;
         _combatChannel.OnSkillUsed += UpdateLastSkillUsed;
         _combatChannel.RandomTargetRequested += OnRandomTargetSkillRequested;
+        _combatChannel.InitialManaDamage += ApplyInitialManaDamageToPlayer;
     }
     public void OnDisable()
     {
@@ -47,6 +48,7 @@ public class CombatController
         _combatChannel.TargetAttackSkillRequested -= OnTargetAttackSkillRequested;
         _combatChannel.OnSkillUsed -= UpdateLastSkillUsed;
         _combatChannel.RandomTargetRequested -= OnRandomTargetSkillRequested;
+        _combatChannel.InitialManaDamage -= ApplyInitialManaDamageToPlayer;
     }
     private void UpdateLastEntityActed(BaseEntityController lastEntityActed)
     {
@@ -144,5 +146,9 @@ public class CombatController
                 entity.StatusManager.ApplyEffect(statusEffect, statusChance, duration);
             }
         }
+    }
+    private void ApplyInitialManaDamageToPlayer(PlayerController controller, int damage)
+    {
+        controller.Stats.UseMana(damage);
     }
 }
