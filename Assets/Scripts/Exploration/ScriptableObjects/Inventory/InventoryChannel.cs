@@ -44,4 +44,8 @@ public class InventoryChannel : ScriptableObject
     {
         EnteredEnteredMatchesTriggerArea?.Invoke(isEntering);
     }
+    public void RaiseInstantItemUsed()
+    {
+        InstantItemUsed?.Invoke();
+    }
 }

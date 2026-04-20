@@ -74,7 +74,7 @@ public class CandlePlace : MonoBehaviour
                 InventoryDataController.Instance.OnItemUsed(_matchesData);
                 isTurnOn = true;
                 SetupLight();
-                _inventoryChannel.EnteredLightArea(true);
+                _inventoryChannel.RaiseEnteredLightArea(true);
             }
             else
             {

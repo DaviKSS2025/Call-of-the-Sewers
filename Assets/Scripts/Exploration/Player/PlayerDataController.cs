@@ -43,6 +43,10 @@ public class PlayerDataController : MonoBehaviour
     {
         RuntimeData.CurrentMana = Mathf.Max(0, RuntimeData.CurrentMana - value);
     }
+    public void RecoverMana(int value)
+    {
+        RuntimeData.CurrentMana = Mathf.Min(100, RuntimeData.CurrentMana + value);
+    }
 
     public void Save()
     {

@@ -304,6 +304,7 @@ MonoBehaviour:
   _inventoryChannel: {fileID: 11400000, guid: ca82eb96f6f20bd43bc653c0c7011f91, type: 2}
   _itemNameTMPro: {fileID: 410150786978661577}
   _itemSprite: {fileID: 8573248793675435463}
+  _manaHealFactor: 40
 --- !u!1 &5255435836775030755
 GameObject:
   m_ObjectHideFlags: 0

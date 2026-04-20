@@ -15,4 +15,4 @@ MonoBehaviour:
   _name: Neurostimulants
   _description: A remedy capable of purifying your thoughts even in the darkness.
   _sprite: {fileID: 0}
-  _effect: {fileID: 0}
+  _manaHealFactor: 40
