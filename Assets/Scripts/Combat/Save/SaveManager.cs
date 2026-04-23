@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-
+using Newtonsoft.Json;
 public class SaveManager : MonoBehaviour
 {
     public static SaveManager Instance { get; private set; }
@@ -26,17 +26,16 @@ public class SaveManager : MonoBehaviour
     {
         Data.PlayerData = PlayerDataController.Instance.RuntimeData;
         Data.NPCData = NPCDataController.Instance.RuntimeData;
-        Data.WorldPosition = MapDataController.Instance.GetPlayerPosition();
-        Data.CurrentMapName = MapDataController.Instance.RuntimeData.CurrentSceneName;
-        Data.Items = InventoryDataController.Instance.GetItemList();
-        Data.UsedSacrificePlace = MapDataController.Instance.RuntimeData.UsedSacrificePlace;
         Data.AlreadyRecruitedNPCs = NPCDataController.Instance.NPCHistoric;
+        Data.ExplorationData = MapDataController.Instance.GetSaveInfo();
+        Data.Items = InventoryDataController.Instance.GetItemList();
+        Data.KeyIds = InventoryDataController.Instance.GetKeyIDs();
         Save();
     }
 
     public void Save()
     {
-        string json = JsonUtility.ToJson(Data, true);
+        string json = JsonConvert.SerializeObject(Data, Formatting.Indented);
         File.WriteAllText(Path, json);
     }
 
@@ -47,7 +46,7 @@ public class SaveManager : MonoBehaviour
             try
             {
                 string json = File.ReadAllText(Path);
-                Data = JsonUtility.FromJson<SaveFile>(json);
+                Data = JsonConvert.DeserializeObject<SaveFile>(json);
             }
             catch
             {
@@ -73,10 +72,13 @@ public class SaveManager : MonoBehaviour
 
     void ValidateData()
     {
-        if (Data.NPCData == null)
-            Data.NPCData = new List<AllyNPC>();
+        Data ??= SaveFile.CreateNewGame();
 
-        if (Data.PlayerData == null)
-            Data.PlayerData = new CharacterData();
+        Data.NPCData ??= new List<AllyNPC>();
+        Data.Items ??= new List<ConsumableItemData>();
+        Data.KeyIds ??= new List<string>();
+
+        Data.PlayerData ??= new CharacterData();
+        Data.ExplorationData ??= new MapExplorationData();
     }
 }

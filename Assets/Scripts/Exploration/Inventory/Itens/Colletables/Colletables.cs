@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public abstract class Colletables : MonoBehaviour
 {
@@ -26,6 +25,7 @@ public abstract class Colletables : MonoBehaviour
     {
         if (gameState == CurrentGameState.Gameplay)
         {
+            _inputChannel.OnInteract -= OnPlayerPickup;
             _inputChannel.OnInteract += OnPlayerPickup;
         }
         else

@@ -98,7 +98,7 @@ public class PlayerControllerExploration : MonoBehaviour
         currentState = new PlayerMovingState(this);
         currentState.OnEnter();
 
-        transform.position = MapDataController.Instance.RuntimeData.WorldPosition;
+        transform.position = new Vector2(MapDataController.Instance.RuntimeExplorationData.WorldPosX, MapDataController.Instance.RuntimeExplorationData.WorldPosY);
     }
     void Update()
     {

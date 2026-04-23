@@ -4,16 +4,8 @@ public class MapDataController : MonoBehaviour
 {
     public static MapDataController Instance;
     [SerializeField] private SceneChangeChannel _sceneChangeChannel;
-    public struct PositionData 
-    {
-        public Vector2 WorldPosition;
-        public SceneNames CurrentSceneName;
-        public bool UsedSacrificePlace;
-    }
-    public PositionData RuntimeData
-    {
-        get; private set;
-    }
+
+    public MapExplorationData RuntimeExplorationData;
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -28,6 +20,7 @@ public class MapDataController : MonoBehaviour
     private void OnEnable()
     {
         _sceneChangeChannel.GoToTargetScene += UpdateSceneNameOnChange;
+        RuntimeExplorationData = SaveManager.Instance.Data.ExplorationData;
     }
     private void OnDisable()
     {
@@ -35,35 +28,33 @@ public class MapDataController : MonoBehaviour
     }
     private void UpdateSceneNameOnChange(SceneNames nextScene)
     {
-        var data = RuntimeData;
-        data.CurrentSceneName = nextScene;
-        RuntimeData = data;
+        RuntimeExplorationData.CurrentMapName = nextScene;
     }
     public Vector2 GetPlayerPosition()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        var data = RuntimeData;
-        data.WorldPosition = player.transform.position;
-        RuntimeData = data;
-        return RuntimeData.WorldPosition;
+        RuntimeExplorationData.WorldPosX = player.transform.position.x;
+        RuntimeExplorationData.WorldPosY = player.transform.position.y;
+        return new Vector2(RuntimeExplorationData.WorldPosX, RuntimeExplorationData.WorldPosY);
     }
     public void UsedSacrificePlace()
     {
-        var data = RuntimeData;
-        data.UsedSacrificePlace = true;
-        RuntimeData = data;
+        RuntimeExplorationData.UsedSacrificePlace = true;
     }
-    void Start()
+    public void OpenDoor(string doorName)
     {
-        RuntimeData = Clone(SaveManager.Instance.Data.WorldPosition, SaveManager.Instance.Data.CurrentMapName, SaveManager.Instance.Data.UsedSacrificePlace);
-    }
-    private PositionData Clone(Vector2 originalPosition, SceneNames originalScene, bool usedSacrificePlace)
-    {
-        return new PositionData
+        if (RuntimeExplorationData.OpenedDoors.ContainsKey(doorName))
         {
-            WorldPosition = originalPosition,
-            CurrentSceneName = originalScene,
-            UsedSacrificePlace = usedSacrificePlace
-        };
+            RuntimeExplorationData.OpenedDoors[doorName] = true;
+        }
+        else
+        {
+            RuntimeExplorationData.OpenedDoors.Add(doorName, true);
+        }
+    }
+    public MapExplorationData GetSaveInfo()
+    {
+        GetPlayerPosition();
+        return RuntimeExplorationData;
     }
 }

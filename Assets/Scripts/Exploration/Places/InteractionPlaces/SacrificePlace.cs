@@ -39,7 +39,7 @@ public class SacrificePlace : InteractionPlace
         base.Start();
         SetupAfterSacrificedDialogue();
 
-        hasSacrificed = MapDataController.Instance.RuntimeData.UsedSacrificePlace;
+        hasSacrificed = MapDataController.Instance.RuntimeExplorationData.UsedSacrificePlace;
         _choiceList.Add(new ChoiceOption("Yes.", new AcceptSacrificeEffect(this)));
         _choiceList.Add(new ChoiceOption("No.", new NegateSacrificeEffect(this)));
     }
