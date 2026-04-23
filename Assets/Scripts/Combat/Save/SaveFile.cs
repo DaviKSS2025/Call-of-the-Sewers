@@ -23,12 +23,21 @@ public class AllyNPC
 public class MapExplorationData
 {
    public Dictionary<string, bool> OpenedDoors = new Dictionary<string, bool>();
-   public Dictionary<string, bool> DeadEnemies = new Dictionary<string, bool>();
+   public Dictionary<EnemiesExplorationData, bool> EnemyExplorationInfo = new Dictionary<EnemiesExplorationData, bool>();
    public Dictionary<string, bool> CollectedItems = new Dictionary<string, bool>();
+   public Dictionary<string, bool> LitCandles = new Dictionary<string, bool>();
    public bool UsedSacrificePlace;
    public float WorldPosX = 0;
    public float WorldPosY = 0;   
    public SceneNames CurrentMapName = SceneNames.Sewers;
+}
+[Serializable]
+public struct EnemiesExplorationData
+{
+    public string ID;
+    public bool Dead;
+    public float WorldPosX;
+    public float WorldPosY;
 }
 
 [Serializable]
@@ -77,8 +86,9 @@ public class SaveFile
         return new MapExplorationData
         {
             OpenedDoors = new Dictionary<string, bool>(),
-            DeadEnemies = new Dictionary<string, bool>(),
+            EnemyExplorationInfo = new Dictionary<EnemiesExplorationData, bool>(),
             CollectedItems = new Dictionary<string, bool>(),
+            LitCandles = new Dictionary<string, bool>(),
             UsedSacrificePlace = false,
             WorldPosX = 0,
             WorldPosY = 0,

@@ -8,6 +8,7 @@ public class CandlePlace : MonoBehaviour
     [SerializeField] private InventoryChannel _inventoryChannel;
     [SerializeField] private InputChannel _inputChannel;
     [SerializeField] private ConsumableItemData _matchesData;
+    [SerializeField] private string _id;
     private Light2D _light;
     private float _turnOnLightIntensity = 0.8f;
     private CircleCollider2D _lightRangeCollider;
@@ -48,7 +49,7 @@ public class CandlePlace : MonoBehaviour
     }
     private void CheckIfLightIsTurnOn()
     {
-        isTurnOn = Random.value < 0.5f;
+        isTurnOn = MapDataController.Instance.RuntimeExplorationData.LitCandles.TryGetValue(_id, out bool savedState) ? savedState : Random.value < 0.5f;
 
         SetupLight();
     }
@@ -64,6 +65,7 @@ public class CandlePlace : MonoBehaviour
         {
             _lightRangeCollider.enabled = false;
         }
+        MapDataController.Instance.LightCandle(_id, isTurnOn);
     }
     private void TryLightCandle()
     {

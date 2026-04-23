@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class InventoryListUIManager : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class InventoryListUIManager : MonoBehaviour
     private List<GameObject> _generatedItems = new();
 
     [SerializeField] private ConsumableItemData _testItem;
+
     private void OnEnable()
     {
         InventoryDataController.Instance.OnItemAdded(_testItem);

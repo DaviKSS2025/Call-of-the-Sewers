@@ -43,14 +43,11 @@ public class MapDataController : MonoBehaviour
     }
     public void OpenDoor(string doorName)
     {
-        if (RuntimeExplorationData.OpenedDoors.ContainsKey(doorName))
-        {
-            RuntimeExplorationData.OpenedDoors[doorName] = true;
-        }
-        else
-        {
-            RuntimeExplorationData.OpenedDoors.Add(doorName, true);
-        }
+        RuntimeExplorationData.OpenedDoors[doorName] = true;
+    }
+    public void LightCandle(string candleID, bool state)
+    {
+        RuntimeExplorationData.LitCandles[candleID] = state;
     }
     public MapExplorationData GetSaveInfo()
     {
