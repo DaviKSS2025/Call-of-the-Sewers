@@ -11,7 +11,24 @@ public class CharacterData
     public int CurrentHealth = 100;
     public int CurrentMana = 100;
     public List<SkillType> SkillList;
+    public TorchData TorchData = new TorchData(0, 0);
 }
+
+[Serializable]
+public class TorchData 
+{
+    private float _duration = 0;
+    private float _intensity = 0;
+    public TorchData(float duration, float intensity)
+    {
+        _duration = duration;
+        _intensity = intensity;
+    }
+
+    public float RemainingDuration => _duration;
+    public float Intensity => _intensity;
+}
+
 [Serializable]
 public class AllyNPC
 {
@@ -83,7 +100,7 @@ public class SaveFile
             Items = new List<ConsumableItemData>(),
             KeyIds = new List<string>(),
             ChoosedNickName = false,
-            ExplorationData = ResetExploration()
+            ExplorationData = ResetExploration(),
         };
     }
 
@@ -101,7 +118,8 @@ public class SaveFile
                 SkillType.Darkness,
                 SkillType.DarkFire,
                 SkillType.DarkHold
-            }
+            },
+            TorchData = new TorchData(0, 0)
         };
     }
 

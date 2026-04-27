@@ -1,12 +1,10 @@
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 
 public class PlayerDataController : MonoBehaviour
 {
     public static PlayerDataController Instance;
 
     public CharacterData RuntimeData { get; private set; }
-
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -19,11 +17,10 @@ public class PlayerDataController : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    void Start()
+    void OnEnable()
     {
         RuntimeData = Clone(SaveManager.Instance.Data.PlayerData);
     }
-
     public void ApplyDamage(int value)
     {
         RuntimeData.CurrentHealth = Mathf.Max(0, RuntimeData.CurrentHealth - value);
@@ -51,6 +48,14 @@ public class PlayerDataController : MonoBehaviour
     public void RecoverMana(int value)
     {
         RuntimeData.CurrentMana = Mathf.Min(100, RuntimeData.CurrentMana + value);
+    }
+    public void UpdateTorchValues(TorchData data)
+    {
+        RuntimeData.TorchData = data;
+    }
+    public TorchData GetTorchValues()
+    {
+        return RuntimeData.TorchData;
     }
 
     public void Save()

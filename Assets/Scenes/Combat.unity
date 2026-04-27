@@ -1230,6 +1230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 539571065}
   - component: {fileID: 539571067}
+  - component: {fileID: 539571068}
   - component: {fileID: 539571066}
   m_Layer: 5
   m_Name: Background
@@ -1295,6 +1296,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 539571064}
   m_CullTransparentMesh: 1
+--- !u!114 &539571068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539571064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed301fc6454dd6348b12ae3a5b66774b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BackgroundCombatImage
+  _database: {fileID: 11400000, guid: ee73cb6456a64c94a8f9ee8568631987, type: 2}
 --- !u!1 &570283239
 GameObject:
   m_ObjectHideFlags: 0

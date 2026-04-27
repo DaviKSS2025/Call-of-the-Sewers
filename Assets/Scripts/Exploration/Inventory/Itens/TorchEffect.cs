@@ -4,7 +4,6 @@ public class TorchEffect : ItemEffect
 {
     [SerializeField] private float _torchDuration;
     [SerializeField] private float _torchLightIntensity;
-
     public float TorchDuration
     {
         get => _torchDuration;

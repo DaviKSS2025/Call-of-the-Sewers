@@ -5,6 +5,7 @@ public class PlayerLightController : MonoBehaviour
 {
     [SerializeField] private InventoryChannel _inventoryChannel;
     [SerializeField] private GameStateChannel _gameStateChannel;
+    [SerializeField] private CutsceneChannel _cutsceneChannel;
     private Light2D _light;
     private float _currentTorchDuration;
     private float _originalLightIntensity;
@@ -16,13 +17,19 @@ public class PlayerLightController : MonoBehaviour
     }
     private void OnEnable()
     {
-        _inventoryChannel.TorchUsed += TurnOnTorch;
+        _inventoryChannel.TorchUsed += TorchLit;
         _gameStateChannel.OnGameStateChange += OnGameStateChange;
+        _cutsceneChannel.OnCombatTransitionCutscene += UpdateTorchInfo;
     }
     private void OnDisable()
     {
-        _inventoryChannel.TorchUsed -= TurnOnTorch;
+        _inventoryChannel.TorchUsed -= TorchLit;
         _gameStateChannel.OnGameStateChange -= OnGameStateChange;
+        _cutsceneChannel.OnCombatTransitionCutscene -= UpdateTorchInfo;
+    }
+    private void Start()
+    {
+        TurnOnTorch(PlayerDataController.Instance.RuntimeData.TorchData.Intensity, PlayerDataController.Instance.RuntimeData.TorchData.RemainingDuration);
     }
     private void Update()
     {
@@ -42,15 +49,24 @@ public class PlayerLightController : MonoBehaviour
             TurnOffTorch();
         }
     }
-    private void TurnOnTorch(TorchEffect torch)
+    private void TorchLit(TorchEffect torch)
     {
-        _light.intensity = _originalLightIntensity * torch.TorchLightIntensity;
-        _currentTorchDuration = torch.TorchDuration;
+        TurnOnTorch(torch.TorchLightIntensity, torch.TorchDuration);
+    }
+    private void TurnOnTorch(float intensity, float duration)
+    {
+        _light.intensity = _originalLightIntensity * intensity;
+        _currentTorchDuration = duration;
     }
     private void TurnOffTorch()
     {
         _light.intensity = _originalLightIntensity;
         _inventoryChannel.RaiseTorchEnd();
+    }
+    private void UpdateTorchInfo()
+    {
+        TorchData currentTorch = new TorchData(_currentTorchDuration, _light.intensity / _originalLightIntensity);
+        PlayerDataController.Instance.UpdateTorchValues(currentTorch);
     }
     private void OnGameStateChange(CurrentGameState gameState)
     {
