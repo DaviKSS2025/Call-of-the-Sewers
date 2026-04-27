@@ -1,13 +1,12 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
-
 public class ColletableWeapon : Colletables
 {
     [SerializeField] private Weapons _weapon;
     [SerializeField] private WeaponDatabase _weaponDatabase;
     private Weapons _playerCurrentWeapon;
-    public void Start()
+    public override void Start()
     {
+        base.Start();
         _itemName = _weapon.Name;
         _equipmentType = "weapon";
     }
@@ -36,5 +35,10 @@ public class ColletableWeapon : Colletables
     public override string GetCurrentEquipmentName()
     {
         return _playerCurrentWeapon.Name;
+    }
+    public override bool CheckIfWasAlreadyPicked()
+    {
+        MapDataController.Instance.RuntimeExplorationData.CollectedItems.TryGetValue(_weapon.Name, out bool wasFind);
+        return wasFind;
     }
 }

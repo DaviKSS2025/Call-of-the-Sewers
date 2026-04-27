@@ -23,7 +23,7 @@ public class AllyNPC
 public class MapExplorationData
 {
    public Dictionary<string, bool> OpenedDoors = new Dictionary<string, bool>();
-   public Dictionary<EnemiesExplorationData, bool> EnemyExplorationInfo = new Dictionary<EnemiesExplorationData, bool>();
+   public Dictionary<string, EnemiesExplorationData> EnemyExplorationInfo = new Dictionary<string, EnemiesExplorationData>();
    public Dictionary<string, bool> CollectedItems = new Dictionary<string, bool>();
    public Dictionary<string, bool> LitCandles = new Dictionary<string, bool>();
    public bool UsedSacrificePlace;
@@ -34,10 +34,34 @@ public class MapExplorationData
 [Serializable]
 public struct EnemiesExplorationData
 {
-    public string ID;
-    public bool Dead;
-    public float WorldPosX;
-    public float WorldPosY;
+    [SerializeField] private string _id;
+    [SerializeField] private EnemyType _enemyType;
+    private bool _dead;
+    private float _worldPosX;
+    private float _worldPosY;
+    public string Id
+    {
+        get => _id;
+    }
+    public EnemyType EnemyType
+    {
+        get => _enemyType;
+    }
+    public bool Dead
+    {
+        get => _dead;
+        set => _dead = value;
+    }
+    public float WorldPosX
+    {
+        get => _worldPosX;
+        set => _worldPosX = value;
+    }
+    public float WorldPosY
+    {
+        get => _worldPosY;
+        set => _worldPosY = value;
+    }
 }
 
 [Serializable]
@@ -86,7 +110,7 @@ public class SaveFile
         return new MapExplorationData
         {
             OpenedDoors = new Dictionary<string, bool>(),
-            EnemyExplorationInfo = new Dictionary<EnemiesExplorationData, bool>(),
+            EnemyExplorationInfo = new Dictionary<string, EnemiesExplorationData>(),
             CollectedItems = new Dictionary<string, bool>(),
             LitCandles = new Dictionary<string, bool>(),
             UsedSacrificePlace = false,

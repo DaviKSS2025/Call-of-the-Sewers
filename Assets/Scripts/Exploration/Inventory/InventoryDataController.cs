@@ -5,7 +5,7 @@ public class InventoryDataController : MonoBehaviour
 {
     public static InventoryDataController Instance;
 
-    private List<ConsumableItemData> ItemList;
+    private List<ConsumableItemData> InventoryList;
     private List<string> KeyIDS;
 
     void Awake()
@@ -19,7 +19,7 @@ public class InventoryDataController : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        ItemList = Clone(SaveManager.Instance.Data.Items);
+        InventoryList = Clone(SaveManager.Instance.Data.Items);
         KeyIDS = SaveManager.Instance.Data.KeyIds;
     }
     private List<ConsumableItemData> Clone(List<ConsumableItemData> original)
@@ -28,7 +28,7 @@ public class InventoryDataController : MonoBehaviour
     }
     public List<ConsumableItemData> GetItemList() 
     { 
-        return ItemList;
+        return InventoryList;
     }
     public List<string> GetKeyIDs()
     {
@@ -36,11 +36,11 @@ public class InventoryDataController : MonoBehaviour
     }
     public void OnItemUsed(ConsumableItemData itemType)
     {
-        ItemList.Remove(itemType);
+        InventoryList.Remove(itemType);
     }
     public void OnItemAdded(ConsumableItemData itemType)
     {
-        ItemList.Add(itemType);
+        InventoryList.Add(itemType);
     }
     public void AddKey(string keyName)
     {

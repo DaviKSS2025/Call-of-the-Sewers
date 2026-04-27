@@ -1,5 +1,6 @@
-using UnityEngine;
 using System;
+using System.Diagnostics;
+using UnityEngine;
 
 [CreateAssetMenu(fileName = "SceneChangeChannel", menuName = "Channels/SceneChangeChannel")]
 public class SceneChangeChannel : ScriptableObject

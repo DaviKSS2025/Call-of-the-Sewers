@@ -5,8 +5,8 @@ public class EnemyGenerator : MonoBehaviour
 {
     [SerializeField] private EnemyDatabase _database;
 
-    private int _chanceToSpawnMultiples = 105;
-    private int _decreaseChanceToMultipleSpawn = 105;
+    private int _chanceToSpawnMultiples = 15;
+    private int _decreaseChanceToMultipleSpawn = 15;
 
     public List<BaseEntityController> Initialize()
     {
@@ -19,13 +19,13 @@ public class EnemyGenerator : MonoBehaviour
 
     private void ManageStartEnemySpawn(List<BaseEntityController> enemies)
     {
-        SpawnEnemy(CombatContext.LastEncounteredEnemy, enemies);
+        SpawnEnemy(MapDataController.Instance.EnemyEncounteredInCombat.EnemyType, enemies);
 
         while (WillSpawnMultipleEnemies())
         {
             _chanceToSpawnMultiples -= _decreaseChanceToMultipleSpawn;
 
-            SpawnEnemy(CombatContext.LastEncounteredEnemy, enemies);
+            SpawnEnemy(MapDataController.Instance.EnemyEncounteredInCombat.EnemyType, enemies);
         }
     }
 

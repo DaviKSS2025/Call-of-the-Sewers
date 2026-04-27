@@ -7,8 +7,9 @@ public class ColletableArmor : Colletables
     [SerializeField] private ArmorDatabase _armorDatabase;
     private Armors _playerCurrentArmor;
 
-    public void Start()
+    public override void Start()
     {
+        base.Start();
         _itemName = _armor.Name;
         _equipmentType = "armor";
     }
@@ -38,5 +39,10 @@ public class ColletableArmor : Colletables
     public override string GetCurrentEquipmentName()
     {
         return _playerCurrentArmor.Name;
+    }
+    public override bool CheckIfWasAlreadyPicked()
+    {
+        MapDataController.Instance.RuntimeExplorationData.CollectedItems.TryGetValue(_armor.Name, out bool wasFind);
+        return wasFind;
     }
 }

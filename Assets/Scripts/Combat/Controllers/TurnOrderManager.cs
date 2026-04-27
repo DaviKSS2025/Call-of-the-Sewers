@@ -56,6 +56,7 @@ public class TurnOrderManager
     }
     private void PlayerVictory()
     {
+        MapDataController.Instance.EnemyDeathOnCombat();
         OnEndGame?.Invoke();
         OnPlayerVictory?.Invoke();
     }

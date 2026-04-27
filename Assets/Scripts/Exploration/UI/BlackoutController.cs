@@ -1,8 +1,17 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class BlackoutController : MonoBehaviour
 {
     [SerializeField] private CutsceneChannel _cutsceneChannel;
+    private Animator _animator;
+
+    private static int HalfBlackout = Animator.StringToHash("HalfBlackout");
+
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
+    }
 
     public void OnBlackoutMiddle()
     {
@@ -12,5 +21,9 @@ public class BlackoutController : MonoBehaviour
     {
         _cutsceneChannel.RaiseCutsceneEnd();
         gameObject.SetActive(false);
+    }
+    public void PlayHalfBlackout()
+    {
+        _animator.SetTrigger(HalfBlackout);
     }
 }

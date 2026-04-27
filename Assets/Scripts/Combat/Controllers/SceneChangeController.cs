@@ -8,14 +8,14 @@ public class SceneChangeController : MonoBehaviour
     private void OnEnable()
     {
         _sceneChangeChannel.SceneChanged += OnSceneChanged;
-        _sceneChangeChannel.GoToTargetScene += OnSceneStartFromMenu;
+        _sceneChangeChannel.GoToTargetScene += OnGoToTargetScene;
         _sceneChangeChannel.NewGameStarted += OnNewGameStarted;
     }
 
     private void OnDisable()
     {
         _sceneChangeChannel.SceneChanged -= OnSceneChanged;
-        _sceneChangeChannel.GoToTargetScene -= OnSceneStartFromMenu;
+        _sceneChangeChannel.GoToTargetScene -= OnGoToTargetScene;
         _sceneChangeChannel.NewGameStarted -= OnNewGameStarted;
     }
 
@@ -23,7 +23,7 @@ public class SceneChangeController : MonoBehaviour
     {
         SceneManager.LoadScene(SaveManager.Instance.Data.ExplorationData.CurrentMapName.ToString());
     }
-    private void OnSceneStartFromMenu(SceneNames targetMap)
+    private void OnGoToTargetScene(SceneNames targetMap)
     {
         SceneManager.LoadScene(targetMap.ToString());
     }

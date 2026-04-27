@@ -4,13 +4,6 @@ public class ColletableKey : Colletables
 {
     [SerializeField] private DoorNames _doorName;
 
-    private void Start()
-    {
-        if (InventoryDataController.Instance.GetKeyIDs().Contains(_doorName.DoorName))
-        {
-            Destroy(gameObject);
-        }
-    }
     public override void OnPlayerPickup()
     {
         if (_insideRange)
@@ -24,5 +17,9 @@ public class ColletableKey : Colletables
 
             _dialogueChannel.RaiseDialogueRequested(pickupKeyDialogue);
         }
+    }
+    public override bool CheckIfWasAlreadyPicked()
+    {
+        return InventoryDataController.Instance.GetKeyIDs().Contains(_doorName.DoorName);
     }
 }

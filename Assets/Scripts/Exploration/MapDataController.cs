@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class MapDataController : MonoBehaviour
@@ -5,7 +6,12 @@ public class MapDataController : MonoBehaviour
     public static MapDataController Instance;
     [SerializeField] private SceneChangeChannel _sceneChangeChannel;
 
-    public MapExplorationData RuntimeExplorationData;
+    private MapExplorationData _runTimeExplorationData;
+    private EnemiesExplorationData _enemyEncounteredInCombat;
+
+    public MapExplorationData RuntimeExplorationData => _runTimeExplorationData;
+    public EnemiesExplorationData EnemyEncounteredInCombat => _enemyEncounteredInCombat;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -20,7 +26,7 @@ public class MapDataController : MonoBehaviour
     private void OnEnable()
     {
         _sceneChangeChannel.GoToTargetScene += UpdateSceneNameOnChange;
-        RuntimeExplorationData = SaveManager.Instance.Data.ExplorationData;
+        _runTimeExplorationData = SaveManager.Instance.Data.ExplorationData;
     }
     private void OnDisable()
     {
@@ -28,30 +34,60 @@ public class MapDataController : MonoBehaviour
     }
     private void UpdateSceneNameOnChange(SceneNames nextScene)
     {
-        RuntimeExplorationData.CurrentMapName = nextScene;
+        if (nextScene == SceneNames.Sewers || nextScene == SceneNames.Dungeons)
+        {
+            RuntimeExplorationData.CurrentMapName = nextScene;
+        }
     }
     public Vector2 GetPlayerPosition()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        RuntimeExplorationData.WorldPosX = player.transform.position.x;
-        RuntimeExplorationData.WorldPosY = player.transform.position.y;
-        return new Vector2(RuntimeExplorationData.WorldPosX, RuntimeExplorationData.WorldPosY);
+        _runTimeExplorationData.WorldPosX = player.transform.position.x;
+        _runTimeExplorationData.WorldPosY = player.transform.position.y;
+        return new Vector2(_runTimeExplorationData.WorldPosX, _runTimeExplorationData.WorldPosY);
     }
     public void UsedSacrificePlace()
     {
-        RuntimeExplorationData.UsedSacrificePlace = true;
+        _runTimeExplorationData.UsedSacrificePlace = true;
     }
     public void OpenDoor(string doorName)
     {
-        RuntimeExplorationData.OpenedDoors[doorName] = true;
+        _runTimeExplorationData.OpenedDoors[doorName] = true;
     }
     public void LightCandle(string candleID, bool state)
     {
-        RuntimeExplorationData.LitCandles[candleID] = state;
+        _runTimeExplorationData.LitCandles[candleID] = state;
     }
     public MapExplorationData GetSaveInfo()
     {
         GetPlayerPosition();
-        return RuntimeExplorationData;
+        return _runTimeExplorationData;
+    }
+    public void EnemyCombatTriggered(string enemyId)
+    {
+        if (_runTimeExplorationData.EnemyExplorationInfo.TryGetValue(enemyId, out EnemiesExplorationData enemy))
+        {
+            _enemyEncounteredInCombat = enemy;
+        }
+        GetPlayerPosition();
+    }
+    public void UpdateEnemyPositions(EnemiesExplorationData enemiesData)
+    {
+        if (RuntimeExplorationData.EnemyExplorationInfo.ContainsKey(enemiesData.Id))
+        {
+            RuntimeExplorationData.EnemyExplorationInfo[enemiesData.Id] = enemiesData;
+        }
+        else
+        {
+            RuntimeExplorationData.EnemyExplorationInfo.Add(enemiesData.Id, enemiesData);
+        }
+    }
+    public void EnemyDeathOnCombat()
+    {
+        if(_runTimeExplorationData.EnemyExplorationInfo.TryGetValue(_enemyEncounteredInCombat.Id, out EnemiesExplorationData enemy))
+        {
+            enemy.Dead = true;
+            _runTimeExplorationData.EnemyExplorationInfo[_enemyEncounteredInCombat.Id] = enemy;
+        }
     }
 }

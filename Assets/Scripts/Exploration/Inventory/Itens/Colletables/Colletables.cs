@@ -21,6 +21,13 @@ public abstract class Colletables : MonoBehaviour
         _gameStateChannel.OnGameStateChange -= SwitchInputsOnGameStateChange;
         _dialogueChannel.OnDialogueEnd -= DestroyOnDialogueEnd;
     }
+    public virtual void Start()
+    {
+        if (CheckIfWasAlreadyPicked())
+        {
+            Destroy(gameObject);
+        }
+    }
     public virtual void SwitchInputsOnGameStateChange(CurrentGameState gameState)
     {
         if (gameState == CurrentGameState.Gameplay)
@@ -81,4 +88,5 @@ public abstract class Colletables : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    public abstract bool CheckIfWasAlreadyPicked();
 }
