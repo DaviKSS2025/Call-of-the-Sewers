@@ -21,9 +21,13 @@ public class PlayerDataController : MonoBehaviour
     {
         RuntimeData = Clone(SaveManager.Instance.Data.PlayerData);
     }
-    public void ApplyDamage(int value)
+    public void SetHealth(int value)
     {
-        RuntimeData.CurrentHealth = Mathf.Max(0, RuntimeData.CurrentHealth - value);
+        RuntimeData.CurrentHealth = Mathf.Max(0, value);
+    }
+    public void SetMana(int value)
+    {
+        RuntimeData.CurrentMana = Mathf.Max(0, value);
     }
     public void RecoverHealth(int value)
     {

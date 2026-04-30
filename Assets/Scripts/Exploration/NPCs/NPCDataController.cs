@@ -65,4 +65,15 @@ public class NPCDataController : MonoBehaviour
     {
         RuntimeData[0].CurrentHealth = Mathf.Min(100, RuntimeData[0].CurrentHealth + value);
     }
+    public void SetHealth(int value, NPCType npcType)
+    {
+        for (int i = 0; i < RuntimeData.Count; i++)
+        {
+            if (RuntimeData[i].NPCInfo == npcType)
+            {
+                RuntimeData[i].CurrentHealth = Mathf.Max(0, value);
+                break;
+            }
+        }
+    }
 }

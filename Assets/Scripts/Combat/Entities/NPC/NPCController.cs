@@ -11,6 +11,11 @@ public abstract class NPCController : BaseEntityController
     {
         set => _statusUI = value;
     }
+    public NPCType NPCType
+    {
+        get => _type;
+        set => _type = value;
+    }
     protected override void SetupAnimationController()
     {
         AssignAnimationController(new DJonesAnimatorController(_animator));

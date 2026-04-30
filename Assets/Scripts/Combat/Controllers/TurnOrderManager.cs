@@ -57,6 +57,7 @@ public class TurnOrderManager
     private void PlayerVictory()
     {
         MapDataController.Instance.EnemyDeathOnCombat();
+        SaveAlliesStats();
         OnEndGame?.Invoke();
         OnPlayerVictory?.Invoke();
     }
@@ -68,5 +69,22 @@ public class TurnOrderManager
     public void OnDisable()
     {
         _turnChangeChannel.OnEntityDeath -= OnEntityDeath;
+    }
+    private void SaveAlliesStats()
+    {
+        foreach (BaseEntityController entity in _turnOrder)
+        {
+            if (entity.EntityType == TargetType.Player)
+            {
+                PlayerDataController.Instance.SetHealth(entity.Stats.CurrentHealth);
+                PlayerDataController.Instance.SetMana(entity.Stats.CurrentMana);
+            }
+            else if (entity.EntityType == TargetType.NPC) 
+            {
+                NPCController npcController = entity as NPCController;
+                NPCDataController.Instance.SetHealth(entity.Stats.CurrentHealth, npcController.NPCType);
+            }
+        }
+
     }
 }
