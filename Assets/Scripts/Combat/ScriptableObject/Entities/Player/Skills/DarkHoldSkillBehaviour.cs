@@ -11,7 +11,6 @@ public class DarkHoldSkillBehaviour : BaseTargetAttackSkillBehaviour
         InstanceNewStunEffect();
         _controller.ThisInputChannel.OnUICancel -= CancelingUse;
         _controller.ThisInputChannel.OnSubmit -= UsingSkill;
-        _controller.ComChannel.RaiseTargetAttackSkillRequested(_data.Damage, _statusList, _data.CriticalChance);
         base.UsingSkill();
         _controller.SelectionChannel.RaiseSelectionConfirmed();
     }

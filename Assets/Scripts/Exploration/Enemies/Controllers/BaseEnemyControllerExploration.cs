@@ -123,6 +123,7 @@ public class BaseEnemyControllerExploration : MonoBehaviour, IBaseControllers
     {
         MapDataController.Instance.EnemyCombatTriggered(_enemyTriggerContext.Id);
         _cutsceneChannel.RaiseHalfBlackoutRequested();
+        _agent.enabled = false;
         enabled = false;
     }
     private void UpdatePositionSavedOnTransitions()

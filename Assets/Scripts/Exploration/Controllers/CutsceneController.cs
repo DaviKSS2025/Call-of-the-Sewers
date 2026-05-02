@@ -1,11 +1,12 @@
+using Unity.Cinemachine;
 using UnityEngine;
-
 public class CutsceneController : MonoBehaviour
 {
     [SerializeField] private CutsceneChannel _cutsceneChannel;
     [SerializeField] private SceneChangeChannel _sceneChangeChannel;
     [SerializeField] private GameObject _blackoutObject;
     [SerializeField] private BlackoutController _blackoutController;
+    [SerializeField] private CinemachineCamera _zoomedCamera;
 
     private void OnEnable()
     {
@@ -37,5 +38,6 @@ public class CutsceneController : MonoBehaviour
     {
         _blackoutObject.SetActive(true);
         _blackoutController.PlayHalfBlackout();
+        _zoomedCamera.enabled = true;   
     }
 }
