@@ -5,11 +5,8 @@ public class InventoryListUIManager : MonoBehaviour
     [SerializeField] private ItemDatabase _itemDatabase;
     private List<GameObject> _generatedItems = new();
 
-    [SerializeField] private ConsumableItemData _testItem;
-
     private void OnEnable()
     {
-        InventoryDataController.Instance.OnItemAdded(_testItem);
         GenerateItemPrefabs();
     }
 

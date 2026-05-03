@@ -28,6 +28,7 @@ public class CombatChannel : ScriptableObject
     public Action HideSkillUI;
     public Action<TargetType, int, List<StatusEffectEntry>, int> RandomTargetRequested;
     public Action<PlayerController, int> InitialManaDamage;
+    public Action<TargetType, int> OnGlobalHealRequested;
     public void RaiseAttackRequested(AttackData attack)
     {
         UpdateLastAttackUsed?.Invoke(attack);
@@ -111,5 +112,9 @@ public class CombatChannel : ScriptableObject
     public void RaiseInitialManaDamage(PlayerController playerController, int damage)
     {
         InitialManaDamage?.Invoke(playerController, damage);
+    }
+    public void RaiseGlobalHealRequested(TargetType targetType, int healAmount)
+    {
+        OnGlobalHealRequested?.Invoke(targetType, healAmount);
     }
 }

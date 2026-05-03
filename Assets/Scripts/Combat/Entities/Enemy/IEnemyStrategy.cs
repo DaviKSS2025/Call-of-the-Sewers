@@ -8,6 +8,5 @@ public interface IEnemyStrategy
 public interface INPCStrategy
 {
     void ChooseStrategy();
-    void UseSkill();
     void PrepareAttack();
 }

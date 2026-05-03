@@ -1,32 +1,30 @@
 public abstract class BaseSkillBehaviour
 {
-    public SkillData Data { get; }
-    protected BaseEntityController _controller;
+    protected SkillData _data;
     protected string _stringToShow;
     protected string _target;
-    public BaseEntityController Controller
+    protected ISkillUser _user;
+
+    public SkillData Data
     {
-        set => _controller = value;
+        get => _data;
     }
-    public BaseSkillBehaviour(SkillData data)
+    public BaseSkillBehaviour(SkillData data, ISkillUser user)
     {
-        Data = data;
+        _data = data;
+        _user = user;
     }
     public virtual void PreparingSkill()
     {
-        _stringToShow = $"<color=red>{_controller.EntityNameString}</color> cast <color=red>{Data.Name}</color> on <color=red>{_target}</color>";
+        _stringToShow = $"<color=red>{_user.ControllerName}</color> cast <color=red>{Data.Name}</color> on <color=red>{_target}</color>";
     }
-    public virtual void UsingSkill()
-    {
-        _controller.Stats.UseMana(Data.ManaCost);
-        _controller.AnimatorStateController.PlaySkill();
-    }
+    public abstract void UsingSkill();
     public virtual void OnSkillEnd()
     {
-        _controller.ThisInputChannel.OnUICancel -= CancelingUse;
+        _user.OnSkillEnd();
     }
     public virtual void CancelingUse()
     {
-        _controller.ThisInputChannel.OnUICancel -= CancelingUse;
+        _user.CancelingUse();
     }
 }

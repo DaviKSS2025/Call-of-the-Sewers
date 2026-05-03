@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System;
-public class TurnOrderManager
+public class TurnOrderManager : IEntityListHandler
 {
     private TurnChangeChannel _turnChangeChannel;
     private List<BaseEntityController> _turnOrder = new();
@@ -12,10 +12,15 @@ public class TurnOrderManager
         _turnChangeChannel = turnChangeChannel;
         _turnOrder = turnOrder;
     }
+    public List<BaseEntityController> TurnOrder
+    {
+        get => _turnOrder;
+    }
 
     public void Initialize()
     {
         _turnChangeChannel.OnEntityDeath += OnEntityDeath;
+        _turnChangeChannel.OnPlayerRan += SaveAlliesStats;
     }
     private void OnEntityDeath(BaseEntityController entity)
     {
@@ -69,6 +74,7 @@ public class TurnOrderManager
     public void OnDisable()
     {
         _turnChangeChannel.OnEntityDeath -= OnEntityDeath;
+        _turnChangeChannel.OnPlayerRan -= SaveAlliesStats;
     }
     private void SaveAlliesStats()
     {
@@ -86,5 +92,12 @@ public class TurnOrderManager
             }
         }
 
+    }
+}
+public interface IEntityListHandler
+{
+    public List<BaseEntityController> TurnOrder
+    {
+        get;
     }
 }

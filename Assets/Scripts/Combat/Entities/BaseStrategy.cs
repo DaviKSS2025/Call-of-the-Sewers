@@ -8,6 +8,10 @@ public abstract class BaseStrategy
         _animatorStateController = animatorController;
         _combatChannel = combatChannel;
     }
-
     public abstract void ChooseStrategy();
+
+    public virtual void PrepareAttack()
+    {
+        _animatorStateController.PlayPreparing();
+    }
 }

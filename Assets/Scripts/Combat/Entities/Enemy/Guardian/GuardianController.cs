@@ -14,11 +14,6 @@ public class GuardianController : EnemyController
     {
         AssignStrategy(new GuardianStrategy(_animatorStateController, _idleChance.IdleChancePercentage, _combatChannel, EntityNameString));
     }
-    public override void ExecuteTurnStart()
-    {
-        base.ExecuteTurnStart();
-        _enemyStrategy.ChooseStrategy();
-    }
     public override void OnAnimationEvent(string eventName)
     {
         if (eventName == "StartDamage")

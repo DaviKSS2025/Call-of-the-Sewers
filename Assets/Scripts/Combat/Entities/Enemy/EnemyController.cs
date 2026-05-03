@@ -26,6 +26,10 @@ public abstract class EnemyController : BaseEntityController
         base.Start();
         SetupStrategy();
     }
+    public override void ExecuteTurnStart()
+    {
+        _enemyStrategy.ChooseStrategy();
+    }
     protected abstract void SetupStrategy();
     protected void AssignStrategy<T>(T strategy) where T : IEnemyStrategy
     {

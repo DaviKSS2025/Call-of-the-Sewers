@@ -32,6 +32,12 @@ public class PlayerController : BaseEntityController
     {
        _turnChannel.RaiseOnPlayerTurnStarted();
        _selectionChannel.RaiseSelectionEnd();
+       _skillManager.PrepareToListenEvents();
+    }
+    public override void NeutralTurnEnd()
+    {
+        _skillManager.OnDisable();
+        base.NeutralTurnEnd();
     }
     public override void OnAnimationEvent(string eventName)
     {
@@ -55,6 +61,7 @@ public class PlayerController : BaseEntityController
         {
             if (_runManager.WasRunSuccesfull)
             {
+                _turnChannel.RaisePlayerRan();
                 _runManager.ExecuteRun();
             }
             else
@@ -64,8 +71,11 @@ public class PlayerController : BaseEntityController
         }
         else if (eventName == "SkillEnd")
         {
+            Debug.Log("Executou fim da skill player!");
             _skillManager.SkillEnd();
+            _skillManager.OnDisable();
             _combatChannel.RaiseSkillEnd();
+            NeutralTurnEnd();
         }
     }
 }

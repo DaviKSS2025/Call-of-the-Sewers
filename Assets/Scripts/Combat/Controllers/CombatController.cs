@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 public class CombatController
 {
@@ -35,6 +36,7 @@ public class CombatController
         _combatChannel.OnSkillUsed += UpdateLastSkillUsed;
         _combatChannel.RandomTargetRequested += OnRandomTargetSkillRequested;
         _combatChannel.InitialManaDamage += ApplyInitialManaDamageToPlayer;
+        _combatChannel.OnGlobalHealRequested += OnGlobalHealRequested;
     }
     public void OnDisable()
     {
@@ -50,6 +52,7 @@ public class CombatController
         _combatChannel.OnSkillUsed -= UpdateLastSkillUsed;
         _combatChannel.RandomTargetRequested -= OnRandomTargetSkillRequested;
         _combatChannel.InitialManaDamage -= ApplyInitialManaDamageToPlayer;
+        _combatChannel.OnGlobalHealRequested -= OnGlobalHealRequested;
     }
     private void UpdateLastEntityActed(BaseEntityController lastEntityActed)
     {
@@ -88,7 +91,29 @@ public class CombatController
         BaseEntityController randomTarget = RollRandomTarget(entityType);
         _combatChannel.RaiseShowTargetSkillText(_lastSkillUsed.Name, _lastEntityActed.EntityNameString, _lastTargetedEntity.EntityNameString);
         _lastTargetedEntity.Stats.OnSufferingAttack(damage, _lastEntityActed.AttackController.AttackMultiplier, _lastEntityActed.AttackController.CriticalChanceMultiplier, statusList, criticalChance);
-
+    }
+    private void OnGlobalHealRequested(TargetType entityType, int healAmount)
+    {
+        if (entityType != TargetType.Enemy)
+        {
+            foreach(BaseEntityController entity in _entityList)
+            {
+                if (entity.EntityType != TargetType.Enemy)
+                {
+                    entity.Stats.RestoreHealth(healAmount);
+                }
+            }
+        }
+        else
+        {
+            foreach (BaseEntityController entity in _entityList)
+            {
+                if (entity.EntityType == TargetType.Enemy)
+                {
+                    entity.Stats.RestoreHealth(healAmount);
+                }
+            }
+        }
     }
     private BaseEntityController RollRandomTarget(TargetType attackerType)
     {

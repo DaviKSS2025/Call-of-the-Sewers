@@ -2,36 +2,23 @@ using System.Collections.Generic;
 public class DarkHoldSkillBehaviour : BaseTargetAttackSkillBehaviour
 {
     private List<StatusEffectEntry> _statusList = new List<StatusEffectEntry>();
-    public DarkHoldSkillBehaviour(TargetAttackSkillData data) : base(data)
+    public DarkHoldSkillBehaviour(TargetAttackSkillData data, ISkillUser user) : base(data, user)
     {
-        _data = data;
+        _targetData = data;
     }
-    public override void UsingSkill()
-    {
-        InstanceNewStunEffect();
-        _controller.ThisInputChannel.OnUICancel -= CancelingUse;
-        _controller.ThisInputChannel.OnSubmit -= UsingSkill;
-        base.UsingSkill();
-        _controller.SelectionChannel.RaiseSelectionConfirmed();
-    }
-
     private void InstanceNewStunEffect()
     {
         _statusList.Clear();
-
-        StatusEffectEntry baseEntry = _data.StatusList[0];
-
-        StatusEffectEntry newEntry = new StatusEffectEntry(baseEntry.StatusType, baseEntry.StatusChance, IncreaseStunDurationWithLessMana());
-
-        _statusList.Add(newEntry);
+        _statusList.Add(new StatusEffectEntry(_data.StatusList[0].StatusType, _data.StatusList[0].StatusChance, IncreaseStunDurationWithLessMana()));
     }
     private int IncreaseStunDurationWithLessMana()
     {
-        if (_controller.Stats.CurrentMana > _controller.SurvStats.MaxMana * 0.8f)
+
+        if (_user.CurrentMana > _user.MaxMana * 0.8f)
         {
             return 1;
         }
-        else if (_controller.Stats.CurrentMana > _controller.SurvStats.MaxMana * 0.5f)
+        else if (_user.CurrentMana > _user.MaxMana * 0.5f)
         {
             return 2;
         }
@@ -39,5 +26,10 @@ public class DarkHoldSkillBehaviour : BaseTargetAttackSkillBehaviour
         {
             return 3;
         }
+    }
+    public override List<StatusEffectEntry> GetStatusList()
+    {
+        InstanceNewStunEffect();
+        return _statusList;
     }
 }

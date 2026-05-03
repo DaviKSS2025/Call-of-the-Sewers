@@ -21,7 +21,7 @@ public abstract class SkillData : ScriptableObject
     {
         return ManaCost;
     }
-    public abstract BaseSkillBehaviour CreateInstance();
+    public abstract BaseSkillBehaviour CreateInstance(ISkillUser user);
 }
 
 [Serializable]

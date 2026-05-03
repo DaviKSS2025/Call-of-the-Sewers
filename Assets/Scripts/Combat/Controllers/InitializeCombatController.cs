@@ -18,14 +18,14 @@ public class InitializeCombatController : MonoBehaviour
     private CombatController _combatController;
     private TurnBasedController _turnBasedController;
     private TurnOrderManager _turnOrderManager;
-    private List<BaseEntityController> _turnOrder = new();
+    [SerializeField] private List<BaseEntityController> _turnOrder = new();
 
     private void Start()
     {
         SpawnEntities();
-        ManageNPCStatusUI();
         RaiseMonsterAppear();
         InitializeTurnOrderManager();
+        ManageNPCStatusUI();
         InitializeSelectionSystem();
         InitializeCombatSystem();
         DealInitialManaDamage();
@@ -54,8 +54,8 @@ public class InitializeCombatController : MonoBehaviour
         {
             if (entity is NPCController npc)
             {
-                npc.StatusUI = Instantiate(_NPCStatusUI, _allyStatusVerticalLayoutGroup.transform)
-                    .GetComponent<NPCStatusUI>();
+                npc.StatusUI = Instantiate(_NPCStatusUI, _allyStatusVerticalLayoutGroup.transform).GetComponent<NPCStatusUI>();
+                npc.EntityListHandler = _turnOrderManager;
             }
         }
     }

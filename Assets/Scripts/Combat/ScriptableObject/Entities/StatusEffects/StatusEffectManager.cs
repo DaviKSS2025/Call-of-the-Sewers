@@ -10,6 +10,12 @@ public class StatusEffectManager
     {
         _entity = entity;
     }
+
+    public List<StatusEffectInstance> ActiveEffects 
+    { 
+        get => _activeEffects;
+    }
+
     public void ApplyEffect(StatusEffectData data, int statusChance, int statusDuration)
     {
         bool alreadyHasEffect = _activeEffects.Any(e => e.Data == data);

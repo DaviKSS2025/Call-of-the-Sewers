@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class DarkHoldTargetSkillData : TargetAttackSkillData
 {
-    public override BaseSkillBehaviour CreateInstance()
+    public override BaseSkillBehaviour CreateInstance(ISkillUser user)
     {
-        return new DarkHoldSkillBehaviour(this);
+        return new DarkHoldSkillBehaviour(this, user);
     }
 }

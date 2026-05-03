@@ -586,7 +586,7 @@ Animator:
   m_GameObject: {fileID: 5631087910610705888}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 099893c9d60f51642a0904de0727e5c8, type: 2}
+  m_Controller: {fileID: 9100000, guid: 948f58a05c9b96543b119dc7ccd8db4c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -628,6 +628,11 @@ MonoBehaviour:
   - {fileID: 5647612145078023988}
   _survivalStats: {fileID: 11400000, guid: 4bd73e3a5366e3f4f90b25a3ecf7ce08, type: 2}
   _entityName: {fileID: 11400000, guid: dc01800eec56f424dada32072c82adac, type: 2}
+  _type: 0
+  _darkHold: {fileID: 11400000, guid: c21fc0626d56a5a419869c2ec0521b82, type: 2}
+  _darkFire: {fileID: 11400000, guid: a690523569654e54ab6e551448284df8, type: 2}
+  _darkHealing: {fileID: 11400000, guid: 10508edc293fac347be3e741468260c8, type: 2}
+  _darkness: {fileID: 11400000, guid: 4814fcf441c0eb3488695306ec045a6a, type: 2}
 --- !u!1 &6032681707712947433
 GameObject:
   m_ObjectHideFlags: 0

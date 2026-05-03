@@ -77,6 +77,10 @@ public abstract class StatsController
     {
         _currentMana = Mathf.Max(0, _currentMana - manaCost);
     }
+    public virtual void RestoreHealth(int healthAmount)
+    {
+        _currentHealth = Mathf.Min(_entity.SurvStats.MaxHealth, _currentHealth + healthAmount);
+    }
     public virtual void SubscribeEvents()
     {
     }

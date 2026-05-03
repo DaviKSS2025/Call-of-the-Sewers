@@ -15,6 +15,7 @@ public class GameStateController : MonoBehaviour
         _dialogueChannel.OnDialogueEnd += EnableGameplay;
         _inputChannel.OnMenuToggle += OnMenuToggle;
         _cutsceneChannel.OnBlackoutRequested += OnCutsceneStart;
+        _cutsceneChannel.OnHalfBlackoutRequested += OnCutsceneStart;
         _choiceChannel.ChoiceRequested += OnChoiceStart;
         _inventoryChannel.InstantItemUsed += EnableGameplay;
     }
@@ -24,6 +25,7 @@ public class GameStateController : MonoBehaviour
         _dialogueChannel.OnDialogueEnd -= EnableGameplay;
         _inputChannel.OnMenuToggle -= OnMenuToggle;
         _cutsceneChannel.OnBlackoutRequested -= OnCutsceneStart;
+        _cutsceneChannel.OnHalfBlackoutRequested -= OnCutsceneStart;
         _choiceChannel.ChoiceRequested -= OnChoiceStart;
         _inventoryChannel.InstantItemUsed -= EnableGameplay;
     }

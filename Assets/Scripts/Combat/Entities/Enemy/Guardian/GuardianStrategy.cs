@@ -26,10 +26,6 @@ public class GuardianStrategy : BaseStrategy, IEnemyStrategy
     {
         return Random.Range(0, 101) <= idleTurnChance;
     }
-    public void PrepareAttack()
-    {
-        _animatorStateController.PlayPreparing();
-    }
     public void ExecuteIdleTurn()
     {
         _animatorStateController.PlayIdleTurn();

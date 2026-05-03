@@ -9,4 +9,8 @@ public class DJonesAnimatorController : AnimatorStateController, IAnimationHandl
     {
         _animator.SetTrigger(Preparing);
     }
+    public override void PlaySkill()
+    {
+        _animator.SetTrigger(Skill);
+    }
 }

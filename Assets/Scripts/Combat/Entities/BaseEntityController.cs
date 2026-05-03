@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -110,6 +111,7 @@ public abstract class BaseEntityController : MonoBehaviour
     }
     public virtual void OnEnable()
     {
+        _turnChannel.UpdateCurrentTurnUser -= OnTurnStart;
         _turnChannel.UpdateCurrentTurnUser += OnTurnStart;
     }
     public virtual void OnDisable()
@@ -144,7 +146,6 @@ public abstract class BaseEntityController : MonoBehaviour
     {
         if (entity == this)
         {
-            
             if (!_statusEffectManager.ExecuteStatusEffectsAndSkipTurnIfStunned())
             {
                 ExecuteTurnStart();
@@ -165,9 +166,7 @@ public abstract class BaseEntityController : MonoBehaviour
         _animatorStateController.PlayIdle();
         OnTurnEnd();
     }
-    public virtual void ExecuteTurnStart()
-    {
-    }
+    public abstract void ExecuteTurnStart();
 
     #endregion
     public virtual void OnAnimationEvent(string eventName)

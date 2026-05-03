@@ -1,31 +1,18 @@
+using UnityEngine;
+
 public class DJonesNPCController : NPCController
 {
-    public override void Awake()
+    [SerializeField] private SkillData _darkHold;
+    [SerializeField] private SkillData _darkFire;
+    [SerializeField] private SkillData _darkHealing;
+    [SerializeField] private SkillData _darkness;
+ 
+    protected override void SetupSkillManager()
     {
-        _type = NPCType.DJones;
-        base.Awake();
+        AssignSkillManager(new DJonesSkillManager(this));
     }
-    public override void OnAnimationEvent(string eventName)
+    protected override void SetupStrategy()
     {
-        if (eventName == "StartDamage")
-        {
-            _attackController.LaunchRandomAttack();
-        }
-        else if (eventName == "AttackEnd")
-        {
-            NeutralTurnEnd();
-        }
-        else if (eventName == "PrepareEnd")
-        {
-            _attackController.ChooseRandomAttack();
-        }
-        else if (eventName == "DeathEnd")
-        {
-            _animatorStateController.PlayDeath();
-        }
-        else if (eventName == "IdleTurnEnd")
-        {
-            NeutralTurnEnd();
-        }
+        AssignStrategy(new DJonesStrategy(_animatorStateController, _combatChannel, _darkHold, _darkFire, _darkHealing, _darkness, _entityListHandler));
     }
 }

@@ -1,10 +1,7 @@
-using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
-using System.Linq;
 public class NPCGenerator : MonoBehaviour
 {
-    //[SerializeField] private GameObject NPCpannel;
     [SerializeField] private NPCDatabase _database;
     private List<BaseEntityController> _generatedNPCS = new();
     public List<BaseEntityController> Initialize()
@@ -13,19 +10,14 @@ public class NPCGenerator : MonoBehaviour
 
         if (isNPCAlive())
         {
-            SpawnAllyObjects();
+            SpawnNPC();
         }
 
         return _generatedNPCS;
     }
-    private void SpawnAllyObjects()
-    {
-        //NPCpannel.SetActive(true);
-        SpawnNPC();
-    }
     private void SpawnNPC()
     {
-        foreach (AllyNPC npc in SaveManager.Instance.Data.NPCData)
+        foreach (AllyNPC npc in NPCDataController.Instance.RuntimeData)
         {
             GameObject prefab = _database.GetNPCPrefab(npc.NPCInfo);
 
@@ -36,7 +28,7 @@ public class NPCGenerator : MonoBehaviour
     }
     private bool isNPCAlive()
     {
-        return SaveManager.Instance.Data.NPCData != null && SaveManager.Instance.Data.NPCData.Count > 0;
+        return NPCDataController.Instance.RuntimeData != null && NPCDataController.Instance.RuntimeData.Count > 0;
     }
     
 }

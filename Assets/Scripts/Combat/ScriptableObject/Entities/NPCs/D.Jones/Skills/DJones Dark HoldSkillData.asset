@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b41e8189f47608941b5e800d19cd6b06, type: 3}
-  m_Name: DarkHoldTargetSkillData
+  m_Name: DJones Dark HoldSkillData
   m_EditorClassIdentifier: Assembly-CSharp::DarkHoldTargetSkillData
   _name: Dark Hold
-  _manaCost: 35
+  _manaCost: 0
   _statusList:
   - _statusEffect: {fileID: 11400000, guid: 0fd6e639b48c6424190f73ab2a2a6df9, type: 2}
-    _statusEffectChance: 65
+    _statusEffectChance: 40
     _duration: 1
   _damage: 15
   _criticalChance: 15

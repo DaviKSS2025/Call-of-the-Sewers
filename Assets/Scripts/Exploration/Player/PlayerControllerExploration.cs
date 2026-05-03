@@ -63,6 +63,7 @@ public class PlayerControllerExploration : MonoBehaviour
         else
         {
             DisableMovementInputs();
+            _currentMoveInput = Vector2.zero;
             _movement.CantMove();
         }
     }

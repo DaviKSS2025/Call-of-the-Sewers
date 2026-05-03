@@ -10,6 +10,7 @@ public class TurnChangeChannel : ScriptableObject
     public Action<BaseEntityController> OnEntityDeath;
     public Action OnPlayerTurnStarted;
     public Action<List<BaseEntityController>> OnTurnOrderChanged;
+    public Action OnPlayerRan;
     public void RaiseUpdateCurrentTurnUser(BaseEntityController entity)
     {
         UpdateCurrentTurnUser?.Invoke(entity);
@@ -33,5 +34,9 @@ public class TurnChangeChannel : ScriptableObject
     public void RaiseTurnOrderChanged(List<BaseEntityController> turnOrder)
     {
         OnTurnOrderChanged?.Invoke(turnOrder);
+    }
+    public void RaisePlayerRan()
+    {
+        OnPlayerRan?.Invoke();
     }
 }

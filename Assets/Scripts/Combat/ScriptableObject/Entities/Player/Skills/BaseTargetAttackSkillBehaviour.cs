@@ -1,34 +1,32 @@
+
+using System.Collections.Generic;
 public abstract class BaseTargetAttackSkillBehaviour : BaseSkillBehaviour
 {
-    protected TargetAttackSkillData _data;
-    public BaseTargetAttackSkillBehaviour(TargetAttackSkillData data) : base(data) 
+    protected TargetAttackSkillData _targetData;
+
+    public TargetAttackSkillData TargetData
     {
-        _data = data;
+        get => _targetData;
+    }
+    public BaseTargetAttackSkillBehaviour(TargetAttackSkillData data, ISkillUser user) : base(data, user)
+    {
+        _targetData = data;
     }
     public override void PreparingSkill()
     {
-        _controller.SelectionChannel.RaiseSelectionStarted(TargetType.Enemy);
-        _controller.ThisInputChannel.OnUICancel += CancelingUse;
-        _controller.ThisInputChannel.OnSubmit += UsingSkill;
+        _stringToShow = $"<color=red>{_user.ControllerName}</color> cast <color=red>{Data.Name}</color> on <color=red>{_target}</color>";
+        _user.PrepareTargetSkill();
     }
     public override void UsingSkill()
     {
-        _controller.ThisInputChannel.OnUICancel -= CancelingUse;
-        _controller.ThisInputChannel.OnSubmit -= UsingSkill;
-        _controller.ComChannel.RaiseTargetAttackSkillRequested(_data.Damage, _data.StatusList, _data.CriticalChance);
-        base.UsingSkill();
-        _controller.SelectionChannel.RaiseSelectionConfirmed();
+        _user.UsingTargetSkill();
     }
-    public override void OnSkillEnd()
+    public virtual int GetDamage()
     {
-        base.OnSkillEnd();
-        _controller.ThisInputChannel.OnSubmit -= UsingSkill;
-        _controller.NeutralTurnEnd();
+        return _targetData.Damage;
     }
-    public override void CancelingUse()
+    public virtual List<StatusEffectEntry> GetStatusList()
     {
-        base.CancelingUse();
-        _controller.ThisInputChannel.OnSubmit -= UsingSkill;
-        _controller.ComChannel.RaiseCancelChoosingSkill();
+        return _data.StatusList;
     }
 }

@@ -1,23 +1,12 @@
-using System.Diagnostics;
-
 public class DarkFireSkillBehaviour : BaseTargetAttackSkillBehaviour
 {
-    public DarkFireSkillBehaviour(TargetAttackSkillData data) : base(data) 
+    public DarkFireSkillBehaviour(TargetAttackSkillData data, ISkillUser user) : base(data, user)
     { 
-        _data = data;
+        _targetData = data;
     }
-    public override void UsingSkill()
+    public override int GetDamage()
     {
-        _controller.ThisInputChannel.OnUICancel -= CancelingUse;
-        _controller.ThisInputChannel.OnSubmit -= UsingSkill;
-        _controller.ComChannel.RaiseTargetAttackSkillRequested(UpdateDamageBasedOnMana(), _data.StatusList, _data.CriticalChance);
-        _controller.Stats.UseMana(Data.ManaCost);
-        _controller.AnimatorStateController.PlaySkill();
-        _controller.SelectionChannel.RaiseSelectionConfirmed();
-    }
-    private int UpdateDamageBasedOnMana()
-    {
-        float bonusMultiplier = (100f - _controller.Stats.CurrentMana) / 100f;
-        return (int)(_data.Damage * (1f + (bonusMultiplier * 0.5f)));
+        float bonusMultiplier = (100f - _user.CurrentMana) / 100f;
+        return (int)(_targetData.Damage * (1f + (bonusMultiplier * 0.5f)));
     }
 }

@@ -3,10 +3,11 @@ using UnityEngine;
 public abstract class NPCController : BaseEntityController
 {
     [SerializeField] private EntityName _entityName;
-    protected NPCType _type;
+    [SerializeField] protected NPCType _type;
     protected NPCStatusUI _statusUI;
     protected INPCStrategy _strategy;
-
+    protected SkillManager _skillManager;
+    protected IEntityListHandler _entityListHandler;
     public NPCStatusUI StatusUI
     {
         set => _statusUI = value;
@@ -15,6 +16,10 @@ public abstract class NPCController : BaseEntityController
     {
         get => _type;
         set => _type = value;
+    }
+    public IEntityListHandler EntityListHandler
+    {
+        set => _entityListHandler = value;
     }
     protected override void SetupAnimationController()
     {
@@ -35,10 +40,12 @@ public abstract class NPCController : BaseEntityController
     {
         _strategy = strategy;
     }
-    protected void SetupStrategy()
+    protected abstract void SetupStrategy();
+    protected void AssignSkillManager<T>(T skillManager) where T : SkillManager
     {
-        AssignStrategy(new DJonesStrategy(_animatorStateController, _combatChannel));
+        _skillManager = skillManager;
     }
+    protected abstract void SetupSkillManager();
 
     public override void Awake()
     {
@@ -49,33 +56,41 @@ public abstract class NPCController : BaseEntityController
     {
         base.Start();
         SetupStrategy();
+        SetupSkillManager();
     }
     public override void ExecuteTurnStart()
     {
-        base.ExecuteTurnStart();
+        _skillManager.PrepareToListenEvents();
         _strategy.ChooseStrategy();
+    }
+    public override void NeutralTurnEnd()
+    {
+        _skillManager.OnDisable();
+        base.NeutralTurnEnd();
     }
     public override void OnAnimationEvent(string eventName)
     {
-        /* if (eventName == "StartDamage")
-         {
-             _attackController.LaunchRandomAttack();
-         }
-         else if (eventName == "AttackEnd")
-         {
-             NeutralTurnEnd();
-         }
-         else if (eventName == "PrepareEnd")
-         {
-             _attackController.ChooseRandomAttack();
-         }
-         else if (eventName == "DeathEnd")
-         {
-             _animatorStateController.PlayDeath();
-         }
-         else if (eventName == "IdleTurnEnd")
-         {
-             NeutralTurnEnd();
-         }*/
+        if (eventName == "StartDamage")
+        {
+            _attackController.LaunchRandomAttack();
+        }
+        else if (eventName == "AttackEnd")
+        {
+            NeutralTurnEnd();
+        }
+        else if (eventName == "SkillEnd")
+        {
+            Debug.Log("Executou fim da skill npc!");
+            _skillManager.OnDisable();
+            NeutralTurnEnd();
+        }
+        else if (eventName == "PrepareEnd")
+        {
+            _attackController.ChooseRandomAttack();
+        }
+        else if (eventName == "DeathEnd")
+        {
+            _animatorStateController.PlayDeath();
+        }
     }
 }

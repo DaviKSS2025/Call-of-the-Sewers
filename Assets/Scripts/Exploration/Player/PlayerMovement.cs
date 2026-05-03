@@ -29,16 +29,19 @@ public class PlayerMovement
             _wasFacingLeft = direction.x < 0;
 
         _rigidBody.linearVelocity = direction * _playerStats.MaxMovementSpeed;
-        _spriteRenderer.flipX = _wasFacingLeft;
+        FlipSprite();
     }
     public void StartIdle()
     {
-        _rigidBody.linearVelocity = Vector2.zero;
-        _spriteRenderer.flipX = _wasFacingLeft;
+        CantMove();
+        FlipSprite();
     }
     public void CantMove()
     {
-        _rigidBody.linearVelocityX = 0;
-        _rigidBody.linearVelocityY = 0;
+        _rigidBody.linearVelocity = Vector2.zero;
+    }
+    private void FlipSprite()
+    {
+        _spriteRenderer.flipX = _wasFacingLeft;
     }
 }

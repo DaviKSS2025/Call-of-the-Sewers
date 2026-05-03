@@ -3,9 +3,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Darkness", menuName = "Player/Skills/Darkness")]
 public class DarknessSkillData : SkillData
 {
-    public override BaseSkillBehaviour CreateInstance()
+    public override BaseSkillBehaviour CreateInstance(ISkillUser user)
     {
-        return new DarknessSkillBehaviour(this, StatusList[0].StatusType, StatusList[0].StatusChance, StatusList[0].Duration);
+        return new DarknessSkillBehaviour(this, user, StatusList[0].StatusType, StatusList[0].StatusChance, StatusList[0].Duration);
     }
     public override int GetManaCost(BaseEntityController controller)
     {

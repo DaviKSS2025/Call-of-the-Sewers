@@ -27,6 +27,8 @@ public class BaseEnemyControllerExploration : MonoBehaviour, IBaseControllers
     [SerializeField] protected CutsceneChannel _cutsceneChannel;
     [SerializeField] protected DetectionData _detectionData;
     [SerializeField] protected EnemiesExplorationData _enemyTriggerContext;
+
+    protected float _timeToTriggerCombat = 3f;
     #endregion
 
     #region Properties to permit dependencies access
@@ -55,6 +57,10 @@ public class BaseEnemyControllerExploration : MonoBehaviour, IBaseControllers
     }
     void Update()
     {
+        if (_timeToTriggerCombat > 0)
+        {
+            _timeToTriggerCombat -= Time.deltaTime;
+        }
         _stateController.UseStateUpdate();
     }
     private void InitializeInspectorComponents()
@@ -114,7 +120,7 @@ public class BaseEnemyControllerExploration : MonoBehaviour, IBaseControllers
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.transform == _player)
+        if (other.transform == _player && _timeToTriggerCombat <= 0)
         {
             StartCombatTransition();
         }
