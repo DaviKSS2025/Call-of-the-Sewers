@@ -13,6 +13,7 @@ Musicas, 3:
 	Brigar BOSS, intensa e violenta. Morte iminente.
 
 Sons de menu:
+	Mover entre as opcoes;
 	Apertar botoes.
 	
 Usar LMMS e BFXR
