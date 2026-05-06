@@ -1,0 +1,13 @@
+Sons necessarios, 2 tipos:
+	EXPLORAR:
+		Passos, Grunhidos (inimigos), sons ambientes de esgoto. 
+	
+	COMBATE: 
+		Ataque, Magias (X magias), Apanhar, Morrer, Vitoria. 
+		E iguais pro inimigo.
+
+
+Musicas, 3:
+Explorar, calma e misteriosa. Fede a esgoto;
+Brigar, combate desconfortante, no fundo tem um som de morte;
+Brigar BOSS, intensa e violenta. Morte iminente.
