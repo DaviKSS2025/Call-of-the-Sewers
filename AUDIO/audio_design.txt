@@ -14,3 +14,5 @@ Musicas, 3:
 
 Sons de menu:
 	Apertar botoes.
+	
+Usar LMMS e BFXR
