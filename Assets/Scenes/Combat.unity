@@ -261,10 +261,10 @@ RectTransform:
   - {fileID: 800782391}
   m_Father: {fileID: 26153293}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 170.42708, y: -312.38458}
+  m_SizeDelta: {x: 340.85416, y: 119.18583}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &268570935
 MonoBehaviour:
@@ -1848,10 +1848,10 @@ RectTransform:
   - {fileID: 854120063}
   m_Father: {fileID: 26153293}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 170.42708, y: -185.98874}
+  m_SizeDelta: {x: 340.85416, y: 119.18583}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &853801641
 MonoBehaviour:
@@ -2382,6 +2382,26 @@ PrefabInstance:
       propertyPath: _sceneChangeChannel
       value: 
       objectReference: {fileID: 11400000, guid: 5ac8a99a8451a3a4294b6fba6f75e998, type: 2}
+    - target: {fileID: 3103831783420021766, guid: f80d8c3ccbefc124aa2e8f321688a792, type: 3}
+      propertyPath: _skillSprites.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3103831783420021766, guid: f80d8c3ccbefc124aa2e8f321688a792, type: 3}
+      propertyPath: '_skillSprites.Array.data[0]'
+      value: 
+      objectReference: {fileID: -4067061551648149986, guid: 932ee29fbeae01f409f293c0e0392b03, type: 3}
+    - target: {fileID: 3103831783420021766, guid: f80d8c3ccbefc124aa2e8f321688a792, type: 3}
+      propertyPath: '_skillSprites.Array.data[1]'
+      value: 
+      objectReference: {fileID: -8953693395243856627, guid: 31949f73702962144a6f85be3d1fc93c, type: 3}
+    - target: {fileID: 3103831783420021766, guid: f80d8c3ccbefc124aa2e8f321688a792, type: 3}
+      propertyPath: '_skillSprites.Array.data[2]'
+      value: 
+      objectReference: {fileID: -7886565881309212202, guid: 195c08b8cf6fdbc4bbeffb92958dd12d, type: 3}
+    - target: {fileID: 3103831783420021766, guid: f80d8c3ccbefc124aa2e8f321688a792, type: 3}
+      propertyPath: '_skillSprites.Array.data[3]'
+      value: 
+      objectReference: {fileID: 7795979093664085403, guid: 3c05d3d98b2b2d24889251ff34f761b3, type: 3}
     - target: {fileID: 4773786398391272191, guid: f80d8c3ccbefc124aa2e8f321688a792, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2408,11 +2428,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4773786398391272191, guid: f80d8c3ccbefc124aa2e8f321688a792, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 400
+      value: 1024
       objectReference: {fileID: 0}
     - target: {fileID: 4773786398391272191, guid: f80d8c3ccbefc124aa2e8f321688a792, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 400
+      value: 1024
       objectReference: {fileID: 0}
     - target: {fileID: 4773786398391272191, guid: f80d8c3ccbefc124aa2e8f321688a792, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2462,6 +2482,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4977491918471416608, guid: f80d8c3ccbefc124aa2e8f321688a792, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 500950068326538474, guid: 2096c24f558d90e43bfde39d80cdd491, type: 3}
     - target: {fileID: 4977491918471416608, guid: f80d8c3ccbefc124aa2e8f321688a792, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -3474,10 +3498,10 @@ RectTransform:
   - {fileID: 1622959087}
   m_Father: {fileID: 26153293}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 170.42708, y: -59.592915}
+  m_SizeDelta: {x: 340.85416, y: 119.18583}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1965060787
 MonoBehaviour:
@@ -3658,6 +3682,7 @@ MonoBehaviour:
   _defeatCanvas: {fileID: 485182492}
   _NPCStatusUI: {fileID: 5291699278686328056, guid: 10b3e3aa3d2047049812af2152907244, type: 3}
   _allyStatusVerticalLayoutGroup: {fileID: 1879565228}
+  _turnOrder: []
 --- !u!1001 &1772039667413587329
 PrefabInstance:
   m_ObjectHideFlags: 0
