@@ -75,7 +75,7 @@ public class BaseEnemyControllerExploration : MonoBehaviour, IBaseControllers
     public virtual void InitializeControllerDependencies()
     {
         _animatorController = new BaseAnimatorController(_animator);
-        _movementController = new BaseMovementController(_speed, transform, _agent);
+        _movementController = new BaseMovementController(_speed, transform, _agent, _animatorController);
         _detectionController = new BaseDetectionController(_player, _movementController, _detectionData);
         _stateController = new BaseEnemyStateMachineController(this, _patrolTargets, _player, _gameStateChannel);
         _stateController.Initialize();
@@ -94,7 +94,7 @@ public class BaseEnemyControllerExploration : MonoBehaviour, IBaseControllers
         if (MapDataController.Instance.RuntimeExplorationData.EnemyExplorationInfo.TryGetValue(_enemyTriggerContext.Id, out EnemiesExplorationData enemyData))
         {
             _animatorController = new BaseAnimatorController(_animator);
-            _movementController = new BaseMovementController(_speed, transform, _agent);
+            _movementController = new BaseMovementController(_speed, transform, _agent, _animatorController);
             _movementController.Teleport(new Vector2(enemyData.WorldPosX, enemyData.WorldPosY));
             return enemyData.Dead;
         }

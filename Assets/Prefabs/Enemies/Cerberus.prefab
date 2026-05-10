@@ -131,7 +131,7 @@ MonoBehaviour:
   - {fileID: 3339477101634604519}
   - {fileID: 1460556044622214985}
   _survivalStats: {fileID: 11400000, guid: e3a8d09615f80cf4596be991b9086195, type: 2}
-  _entityName: {fileID: 11400000, guid: 76369a332ead2834db1809df19482894, type: 2}
+  _entityName: {fileID: 11400000, guid: dca334f4bb02f1d4d917922fcd708ee0, type: 2}
   _idleChance: {fileID: 11400000, guid: b9911ea57600aef459497bbf382649aa, type: 2}
   _initialManaDamage: {fileID: 11400000, guid: 9acbd0be9811e714885c0698cde73502, type: 2}
 --- !u!1001 &3865530250327349906
