@@ -1,0 +1,15 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/UI_MainMenu.uss" />
+
+    <ui:VisualElement name="main-menu-ui" class="main-menu-ui">
+        <ui:VisualElement name="background" class="background" />
+
+        <ui:VisualElement name="titleImage" class="titleImage" />
+
+        <ui:VisualElement name="containerButtons" class="containerButtons">
+            <ui:Button name="continue-button" text="Continue" class="main-menu-button" />
+            <ui:Button name="new-game-button" text="New game" class="main-menu-button" />
+            <ui:Button name="quit-button" text="Quit" class="main-menu-button" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
