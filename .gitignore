@@ -1,0 +1,28 @@
+# Pastas geradas pela Unity (NÃO DEVEM IR PRO GITHUB)
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+
+# Arquivos de projeto de editores de código (VS Code, Visual Studio)
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Arquivos de sistema operacional
+.DS_Store
+Thumbs.db
