@@ -1,13 +1,20 @@
-# Pastas geradas pela Unity (NÃO DEVEM IR PRO GITHUB)
+# Unity folders
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
 [Bb]uild/
 [Bb]uilds/
 [Ll]ogs/
-[Mm]emoryCaptures/
+UserSettings/
 
-# Arquivos de projeto de editores de código (VS Code, Visual Studio)
+# Memory captures
+MemoryCaptures/
+
+# Asset meta data (opcional - normalmente NÃO ignorar)
+# *.meta
+
+# Visual Studio / Rider
+.vs/
 *.csproj
 *.unityproj
 *.sln
@@ -18,11 +25,7 @@
 *.pidb
 *.booproj
 *.svd
-*.pdb
-*.mdb
-*.opendb
-*.VC.db
 
-# Arquivos de sistema operacional
+# OS
 .DS_Store
 Thumbs.db
