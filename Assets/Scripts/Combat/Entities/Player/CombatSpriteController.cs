@@ -13,6 +13,6 @@ public class CombatSpriteController
 
     public void SortRandomSkillSprite()
     {
-        _image.sprite = _skillSprites[Random.Range(0, _skillSprites.Length)];
+        _image.sprite = _skillSprites[Random.Range(0, _skillSprites.Length-1)];
     }
 }
