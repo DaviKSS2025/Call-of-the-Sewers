@@ -721,7 +721,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 539571065}
-  - {fileID: 1472852525}
   - {fileID: 1922506619}
   - {fileID: 1059148408}
   - {fileID: 1398143161}
@@ -2975,17 +2974,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1472852524}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.48958337, y: 0.48958337, z: 0.48958337}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 331701078}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.33611566}
   m_AnchorMax: {x: 1, y: 0.74537873}
-  m_AnchoredPosition: {x: 0.5, y: 1.8374023}
-  m_SizeDelta: {x: 1, y: 4.9739075}
+  m_AnchoredPosition: {x: 959.9786, y: 558.8012}
+  m_SizeDelta: {x: 1920.9999, y: 427.96036}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1472852526
 MonoBehaviour:
@@ -4409,3 +4408,4 @@ SceneRoots:
   - {fileID: 726043967}
   - {fileID: 1727064159}
   - {fileID: 7738861}
+  - {fileID: 1472852525}
