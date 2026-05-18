@@ -1,0 +1,76 @@
+/* Tela inteira do menu de nomeacao. */
+.change-name-ui {
+    flex-grow: 1;
+    background-color: rgb(0, 0, 0);
+    border-left-width: 8px;
+    border-right-width: 8px;
+    border-top-width: 8px;
+    border-bottom-width: 8px;
+    border-left-color: rgb(50, 50, 50);
+    border-right-color: rgb(50, 50, 50);
+    border-top-color: rgb(50, 50, 50);
+    border-bottom-color: rgb(50, 50, 50);
+    justify-content: center;
+    align-items: center;
+}
+
+/* Painel cinza central do prototipo. */
+.name-panel {
+    width: 92%;
+    height: 55%;
+    min-height: 380px;
+    background-color: rgb(150, 150, 150);
+    flex-direction: row;
+    align-items: center;
+    padding: 32px;
+}
+
+/* Espaco para a imagem/rosto do personagem. */
+.portrait {
+    height: 100%;
+    max-width: 440px;
+    background-color: rgb(245, 245, 245);
+    -unity-background-scale-mode: scale-to-fit;
+    aspect-ratio: 1;
+    width: auto;
+}
+
+/* Area da pergunta e do campo de texto. */
+.input-area {
+    flex-grow: 1;
+    height: 100%;
+    margin-left: 56px;
+    justify-content: center;
+}
+
+/* Texto acima do input. */
+.prompt-label {
+    height: 68px;
+    margin-bottom: 48px;
+    color: white;
+    font-size: 32px;
+    -unity-text-align: middle-center;
+}
+
+/* Caixa onde o jogador digita o nome. */
+.name-input {
+    height: 68px;
+    background-color: white;
+    color: rgb(35, 35, 35);
+    font-size: 28px;
+    -unity-text-align: middle-center;
+}
+
+/* Elemento interno do TextField onde o texto digitado realmente aparece. */
+.name-input .unity-text-input {
+    background-color: white;
+    color: rgb(35, 35, 35);
+    font-size: 28px;
+    -unity-text-align: middle-center;
+}
+
+/* Placeholder do input. */
+.name-input .unity-text-input__placeholder {
+    color: rgb(160, 160, 160);
+    -unity-font-style: italic;
+}
