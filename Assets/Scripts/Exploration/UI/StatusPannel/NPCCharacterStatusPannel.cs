@@ -36,12 +36,6 @@ public class NPCCharacterStatusPannel : BaseCharacterStatusPannel
     public override void UpdateImages()
     {
         _characterImage.sprite = _database.GetNPCStatusSprite(NPCDataController.Instance.RuntimeData[0].NPCInfo);
-
-        Weapons npcWeapon = _database.GetNPCWeapon(NPCDataController.Instance.RuntimeData[0].NPCInfo);
-        _weaponImage.sprite = npcWeapon.WeaponSprite;
-
-        Armors npcArmor = _database.GetNPCArmor(NPCDataController.Instance.RuntimeData[0].NPCInfo);
-        _armorImage.sprite = npcArmor.ArmorSprite;
     }
     public override void UpdateSliders()
     {

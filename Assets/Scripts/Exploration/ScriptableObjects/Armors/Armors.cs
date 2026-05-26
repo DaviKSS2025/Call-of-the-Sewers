@@ -5,7 +5,6 @@ public class Armors : ScriptableObject
 {
     [SerializeField] private float _defenseMultiplier;
     [SerializeField] private string _name;
-    [SerializeField] private Sprite _armorSprite;
     [SerializeField] private ArmorType _armorType;
     public float DefenseMultiplier
     {
@@ -14,10 +13,6 @@ public class Armors : ScriptableObject
     public string Name
     {
         get => _name;
-    }
-    public Sprite ArmorSprite
-    {
-        get => _armorSprite;
     }
     public ArmorType ThisArmorType
     {

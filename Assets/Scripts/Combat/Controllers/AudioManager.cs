@@ -1,21 +1,15 @@
 using UnityEngine;
 using UnityEngine.Audio;
 
-/// <summary>
-///Central audio controller.
-///Listens to audio event channels and routes SFX and Music playback
-///through dedicated AudioSources and an AudioMixer for global volume control.
-///AudioManager does not know who requests sounds.
-///It only reacts to raised audio events, keeping systems decoupled.
-/// </summary>
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField] private AudioSource _SFXSource;
+    [SerializeField] private AudioSource[] _SFXSources;
     [SerializeField] private AudioSource _musicSource;
     [SerializeField] private SFXEventChannel _SFXChannel;
     [SerializeField] private MusicEventChannel _musicChannel;
-    [SerializeField] private AudioMixer _globalVolumeGroup; // Controls global Music/SFX volumes
     [SerializeField] private SimpleMusicEvent _menuStartMusic; // Music played on menu startup
+
+    private int _currentSource;
 
     public static AudioManager Instance { get; private set; }
     void Awake()
@@ -42,13 +36,19 @@ public class AudioManager : MonoBehaviour
     }
     private void Start()
     {
-        // Start menu music and apply saved volume preferences
         _musicChannel.RaiseEvent(_menuStartMusic);
     }
 
     private void PlaySFX(SimpleSFXEvent sfx)
     {
-        sfx.Play(_SFXSource);
+        sfx.Play(_SFXSources[_currentSource]);
+
+        _currentSource++;
+
+        if (_currentSource >= _SFXSources.Length)
+        {
+            _currentSource = 0;
+        }
     }
     private void PlayMusic(SimpleMusicEvent sfx)
     {
