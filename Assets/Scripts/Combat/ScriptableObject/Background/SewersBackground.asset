@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f07bf4d2c2c31e479cc0e729d7b6b1d, type: 3}
   m_Name: SewersBackground
   m_EditorClassIdentifier: Assembly-CSharp::BackgroundData
-  _sceneName: 0
-  _backgroundSprite: {fileID: 0}
+  _sceneName: 1
+  _backgroundSprite: {fileID: 21300000, guid: b30fc4216b9036f48a60f323bfa2d9d9, type: 3}
