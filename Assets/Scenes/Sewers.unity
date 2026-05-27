@@ -3341,7 +3341,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -1293192984778809801, guid: 58924f151c46bba49b19ce881e47811f, type: 3}
+  m_Sprite: {fileID: 5476996514510470646, guid: f23b8cc653b565547bd7150f7c425509, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3473,7 +3473,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5, y: 0.76}
+    oldSize: {x: 0.5, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -8278,17 +8278,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
---- !u!114 &894036116 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4278486330095376601, guid: 5afeebe8596c35f469f14ff0d6fd2a9b, type: 3}
-  m_PrefabInstance: {fileID: 894036112}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!114 &894036117 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 986746799338243565, guid: 5afeebe8596c35f469f14ff0d6fd2a9b, type: 3}
@@ -8311,17 +8300,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
---- !u!114 &894036119 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2326334082363623142, guid: 5afeebe8596c35f469f14ff0d6fd2a9b, type: 3}
-  m_PrefabInstance: {fileID: 894036112}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!114 &894036120 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6969899460339430861, guid: 5afeebe8596c35f469f14ff0d6fd2a9b, type: 3}
@@ -8740,10 +8718,8 @@ MonoBehaviour:
   _characterImage: {fileID: 894036125}
   _healthSlider: {fileID: 894036120}
   _healthValue: {fileID: 201148900}
-  _weaponImage: {fileID: 894036119}
   _weaponName: {fileID: 894036118}
   _weaponAttackPower: {fileID: 894036117}
-  _armorImage: {fileID: 894036116}
   _armorName: {fileID: 894036115}
   _armorDefensePower: {fileID: 894036114}
   _menuController: {fileID: 1708778052}
@@ -9576,10 +9552,8 @@ MonoBehaviour:
   _characterImage: {fileID: 176555873}
   _healthSlider: {fileID: 960889880}
   _healthValue: {fileID: 832679383}
-  _weaponImage: {fileID: 0}
   _weaponName: {fileID: 1834081981}
   _weaponAttackPower: {fileID: 2034547226}
-  _armorImage: {fileID: 0}
   _armorName: {fileID: 2119536301}
   _armorDefensePower: {fileID: 770797514}
   _menuController: {fileID: 1708778052}
