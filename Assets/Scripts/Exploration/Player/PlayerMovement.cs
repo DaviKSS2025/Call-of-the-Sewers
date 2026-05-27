@@ -7,13 +7,10 @@ public class PlayerMovement
 
     private Rigidbody2D _rigidBody;
     private PlayerStatsExploration _playerStats;
-    private SpriteRenderer _spriteRenderer;
-    private bool _wasFacingLeft;
-    public PlayerMovement(Rigidbody2D rigidBody, PlayerStatsExploration playerStats, SpriteRenderer spriteRenderer)
+    public PlayerMovement(Rigidbody2D rigidBody, PlayerStatsExploration playerStats)
     {
         _rigidBody = rigidBody;
         _playerStats = playerStats;
-        _spriteRenderer = spriteRenderer;
     }
 
     public void ApplyMovement(Vector2 input)
@@ -25,23 +22,14 @@ public class PlayerMovement
         else
             direction = new Vector2(0, Mathf.Sign(input.y));
 
-        if (direction.x != 0)
-            _wasFacingLeft = direction.x < 0;
-
         _rigidBody.linearVelocity = direction * _playerStats.MaxMovementSpeed;
-        FlipSprite();
     }
     public void StartIdle()
     {
         CantMove();
-        FlipSprite();
     }
     public void CantMove()
     {
         _rigidBody.linearVelocity = Vector2.zero;
-    }
-    private void FlipSprite()
-    {
-        _spriteRenderer.flipX = _wasFacingLeft;
     }
 }

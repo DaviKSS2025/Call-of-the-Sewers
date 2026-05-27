@@ -13,7 +13,6 @@ public class PlayerControllerExploration : MonoBehaviour
     private PlayerStatsExploration _stats;
     private PlayerSanityDarknessDrain _sanityDarknessDrain;
     private PlayerMovement _movement;
-    private SpriteRenderer _spriteRenderer;
 
     [SerializeField] private SurvivalStats _maxHealth;
     [SerializeField] private MovementSpeed _movementSpeed;
@@ -41,7 +40,6 @@ public class PlayerControllerExploration : MonoBehaviour
     {
         _rigidBody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
     private void OnEnable()
     {
@@ -89,7 +87,7 @@ public class PlayerControllerExploration : MonoBehaviour
     {
         //SOLID scripts incicialization
         _stats = new PlayerStatsExploration(_maxHealth.MaxHealth, _movementSpeed.WalkingSpeed);
-        _movement = new PlayerMovement(_rigidBody, _stats, _spriteRenderer);
+        _movement = new PlayerMovement(_rigidBody, _stats);
         _animatorController = new PlayerAnimatorControllerExploration(_animator);
         _stats.Initialize();
         _sanityDarknessDrain = new PlayerSanityDarknessDrain(_inventoryChannel, _gameStateChannel, _dialogueChannel);

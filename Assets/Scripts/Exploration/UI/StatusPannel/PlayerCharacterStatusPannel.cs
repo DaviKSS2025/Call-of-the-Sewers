@@ -29,12 +29,6 @@ public class PlayerCharacterStatusPannel : BaseCharacterStatusPannel
         _healthValue.text = PlayerDataController.Instance.RuntimeData.CurrentHealth.ToString();
         _sanityValue.text = PlayerDataController.Instance.RuntimeData.CurrentMana.ToString();
     }
-    public override void UpdateImages()
-    {
-        //_characterImage.sprite = _characterSprite;
-        _weaponImage.sprite = _currentWeapon.WeaponSprite;
-        _armorImage.sprite = _currentArmor.ArmorSprite;
-    }
     public override void UpdateSliders()
     {
         _healthSlider.value = PlayerDataController.Instance.RuntimeData.CurrentHealth /100f;

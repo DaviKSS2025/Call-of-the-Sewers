@@ -80,7 +80,6 @@ public abstract class NPCController : BaseEntityController
         }
         else if (eventName == "SkillEnd")
         {
-            Debug.Log("Executou fim da skill npc!");
             _skillManager.OnDisable();
             NeutralTurnEnd();
         }

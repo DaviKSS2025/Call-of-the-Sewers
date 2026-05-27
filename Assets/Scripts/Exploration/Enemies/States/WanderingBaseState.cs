@@ -11,7 +11,6 @@ public class WanderingBaseState : EnemyBaseState
     }
     public override void OnEnter()
     {
-        _controller.AnimatorController.PlayWandering();
         ChooseNewTarget();
     }
     public override void OnUpdate()

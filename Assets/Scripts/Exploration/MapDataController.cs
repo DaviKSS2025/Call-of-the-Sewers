@@ -34,7 +34,7 @@ public class MapDataController : MonoBehaviour
     }
     private void UpdateSceneNameOnChange(SceneNames nextScene)
     {
-        if (nextScene == SceneNames.Sewers || nextScene == SceneNames.Dungeons)
+        if (nextScene == SceneNames.Sewers)
         {
             RuntimeExplorationData.CurrentMapName = nextScene;
         }

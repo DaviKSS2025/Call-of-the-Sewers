@@ -536,7 +536,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 400}
+  m_SizeDelta: {x: 1024, y: 1024}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8271683684364542552
 CanvasRenderer:
@@ -566,7 +566,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 2247386078331002767, guid: 21921990d40b009478a73f17f3653ab7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -633,6 +633,11 @@ MonoBehaviour:
   _darkFire: {fileID: 11400000, guid: a690523569654e54ab6e551448284df8, type: 2}
   _darkHealing: {fileID: 11400000, guid: 10508edc293fac347be3e741468260c8, type: 2}
   _darkness: {fileID: 11400000, guid: 4814fcf441c0eb3488695306ec045a6a, type: 2}
+  _skillSprites:
+  - {fileID: 5749667170183413548, guid: 6770905aa2c01a047a499127483d2237, type: 3}
+  - {fileID: -9099181672278189167, guid: c4cc78e279c088d429983ed8225e7a15, type: 3}
+  - {fileID: -6339807164234845996, guid: 6dae4bb3dac287c49a67542d2a685baf, type: 3}
+  - {fileID: 1706603519290074463, guid: 4b0628384ffafa14c97e6b1c502823d9, type: 3}
 --- !u!1 &6032681707712947433
 GameObject:
   m_ObjectHideFlags: 0

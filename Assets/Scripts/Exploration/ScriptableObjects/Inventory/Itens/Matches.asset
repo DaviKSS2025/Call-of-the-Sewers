@@ -14,5 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ConsumableItemData
   _name: Matches
   _description: Simple matches, capable of lighting candles and other light sources.
-  _sprite: {fileID: 0}
-  _effect: {fileID: 0}
+  _sprite: {fileID: 21300000, guid: 1fa8a86c0b8c1dc4089f7ca7003cda0e, type: 3}

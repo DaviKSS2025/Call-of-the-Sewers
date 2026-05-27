@@ -6,11 +6,11 @@ public class BaseAnimatorController
 
     private static readonly int Death = Animator.StringToHash("Death");
     private static readonly int TakingDamage = Animator.StringToHash("TakingDamage");
-    private static readonly int Wandering = Animator.StringToHash("Wandering");
     private static readonly int Following = Animator.StringToHash("Following");
     private static readonly int Attack = Animator.StringToHash("Attack");
     private static readonly int Idle = Animator.StringToHash("Idle");
     private static readonly int AttackIndex = Animator.StringToHash("AttackIndex");
+    private static readonly int WalkingDirection = Animator.StringToHash("WalkingDirection");
 
     public BaseAnimatorController(Animator animator)
     {
@@ -25,9 +25,9 @@ public class BaseAnimatorController
     {
         _animator.SetTrigger(TakingDamage);
     }
-    public virtual void PlayWandering()
+    public virtual void PlayWandering(int walkingDirection)
     {
-        //_animator.SetTrigger(Wandering);
+        _animator.SetInteger(WalkingDirection, walkingDirection);
     }
     public virtual void PlayAttack(int attackIndex)
     {

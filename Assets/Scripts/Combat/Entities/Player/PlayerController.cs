@@ -1,15 +1,23 @@
 using UnityEngine;
-
+using UnityEngine.UI;
 public class PlayerController : BaseEntityController
 {
     [SerializeField] private RunChance _runChance;
     [SerializeField] private SceneChangeChannel _sceneChangeChannel;
     [SerializeField] private PlayerStatsUI _playerStatsUI;
+    [SerializeField] private Sprite[] _skillSprites;
+    private Image _image;
     private RunManager _runManager;
     private SkillManager _skillManager;
+    private CombatSpriteController _spriteController;
     public RunManager RunManager
     {
         get => _runManager;
+    }
+    public override void Awake()
+    {
+        base.Awake();
+        _image = GetComponent<Image>();
     }
     protected override void SetupAnimationController()
     {
@@ -26,6 +34,7 @@ public class PlayerController : BaseEntityController
         _runManager = new RunManager(_stats,_runChance.RunChancePercentage, _sceneChangeChannel, _combatChannel, _name);
         _skillManager = new SkillManager(this);
         _skillManager.Initialize();
+        _spriteController = new CombatSpriteController(_image, _skillSprites);
         _stats.SubscribeEvents();
     }
     public override void ExecuteTurnStart()
@@ -71,11 +80,14 @@ public class PlayerController : BaseEntityController
         }
         else if (eventName == "SkillEnd")
         {
-            Debug.Log("Executou fim da skill player!");
             _skillManager.SkillEnd();
             _skillManager.OnDisable();
             _combatChannel.RaiseSkillEnd();
             NeutralTurnEnd();
+        }
+        else if (eventName == "SkillStart")
+        {
+            _spriteController.SortRandomSkillSprite();
         }
     }
 }

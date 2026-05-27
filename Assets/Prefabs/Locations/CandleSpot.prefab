@@ -104,6 +104,7 @@ MonoBehaviour:
   _inventoryChannel: {fileID: 11400000, guid: ca82eb96f6f20bd43bc653c0c7011f91, type: 2}
   _inputChannel: {fileID: 11400000, guid: db916f9bc3f8a7a42b6ca3227ccb49d2, type: 2}
   _matchesData: {fileID: 11400000, guid: 15c8a381071342c449d9f393a532bdc1, type: 2}
+  _id: 
 --- !u!58 &7065235825410074973
 CircleCollider2D:
   m_ObjectHideFlags: 0
