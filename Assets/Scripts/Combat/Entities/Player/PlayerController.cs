@@ -80,7 +80,6 @@ public class PlayerController : BaseEntityController
         }
         else if (eventName == "SkillEnd")
         {
-            Debug.Log("Executou fim da skill player!");
             _skillManager.SkillEnd();
             _skillManager.OnDisable();
             _combatChannel.RaiseSkillEnd();
