@@ -1,0 +1,33 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/INVENTORY/InventoryStyle.uss?fileID=7433441132597879392&amp;guid=9339294769029a0dcbe0060672a17478&amp;type=3#InventoryStyle"/>
+    <ui:VisualElement name="inventory-root" class="inventory-root">
+        <ui:VisualElement name="inventory-tabs" class="inventory-tabs">
+            <ui:VisualElement name="tab-items" class="inventory-tab inventory-tab--active">
+                <ui:VisualElement class="tab-icon"/>
+                <ui:Label name="tab-items-label" text="Itens" class="tab-label"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="tab-equipment" class="inventory-tab">
+                <ui:VisualElement class="tab-icon"/>
+                <ui:Label name="tab-equipment-label" text="Equipamentos" class="tab-label"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="tab-documents" class="inventory-tab">
+                <ui:VisualElement class="tab-icon"/>
+                <ui:Label name="tab-documents-label" text="Documentos" class="tab-label"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="inventory-content" class="inventory-content">
+            <ui:VisualElement name="item-details-panel" class="item-details-panel">
+                <ui:VisualElement name="selected-item-icon" class="selected-item-icon"/>
+                <ui:VisualElement name="item-details-text" class="item-details-text">
+                    <ui:Label name="empty-state-label" text="Nenhum item selecionado" class="empty-state-label"/>
+                    <ui:Label name="selected-item-name" text="" class="selected-item-name"/>
+                    <ui:Label name="selected-item-effect" text="" class="selected-item-effect"/>
+                    <ui:Label name="selected-item-lore" text="" class="selected-item-lore"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:ScrollView name="items-scroll" mode="Vertical" class="items-scroll">
+                <ui:VisualElement name="inventory-items-grid" class="inventory-items-grid"/>
+            </ui:ScrollView>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
