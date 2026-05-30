@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class NPCStatsController : StatsController
 {
     protected CharacterStatsUI _NPCStatsUI;
@@ -21,6 +23,11 @@ public class NPCStatsController : StatsController
     public override void TakeExactDamage(int damage)
     {
         base.TakeExactDamage(damage);
+        _NPCStatsUI.OnHealthChanged();
+    }
+    public override void RestoreHealth(int healthAmount)
+    {
+        _currentHealth = Mathf.Min(_entity.SurvStats.MaxHealth, _currentHealth + healthAmount);
         _NPCStatsUI.OnHealthChanged();
     }
 }

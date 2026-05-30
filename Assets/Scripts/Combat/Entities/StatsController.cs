@@ -31,7 +31,7 @@ public abstract class StatsController
     }
     public virtual void TakeExactDamage(int damage)
     {
-        _currentHealth -= damage;
+        _currentHealth = Mathf.Max(_currentHealth - damage, 1);
         ResolveAfterDamage();
     }
     private void ResolveAfterDamage()

@@ -59,4 +59,9 @@ public class PlayerStats : StatsController
             UseMana(_NPCDeathPenalty);
         }
     }
+    public override void RestoreHealth(int healthAmount)
+    {
+        _currentHealth = Mathf.Min(_entity.SurvStats.MaxHealth, _currentHealth + healthAmount);
+        _playerStatsUI.OnHealthChanged();
+    }
 }

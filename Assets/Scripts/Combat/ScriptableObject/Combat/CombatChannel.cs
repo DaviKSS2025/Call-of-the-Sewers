@@ -29,6 +29,7 @@ public class CombatChannel : ScriptableObject
     public Action<TargetType, int, List<StatusEffectEntry>, int> RandomTargetRequested;
     public Action<PlayerController, int> InitialManaDamage;
     public Action<TargetType, int> OnGlobalHealRequested;
+    public Action<string, string> ShowGlobalHealRequested;
     public void RaiseAttackRequested(AttackData attack)
     {
         UpdateLastAttackUsed?.Invoke(attack);
@@ -116,5 +117,9 @@ public class CombatChannel : ScriptableObject
     public void RaiseGlobalHealRequested(TargetType targetType, int healAmount)
     {
         OnGlobalHealRequested?.Invoke(targetType, healAmount);
+    }
+    public void RaiseShowGlobalHealRequested(string skillUser, string skillName)
+    {
+        ShowGlobalHealRequested?.Invoke(skillUser, skillName);
     }
 }

@@ -112,6 +112,7 @@ public class CombatController
                 }
             }
         }
+        _combatChannel.RaiseShowGlobalHealRequested(_lastEntityActed.EntityNameString, _lastSkillUsed.Name);
     }
     private BaseEntityController RollRandomTarget(TargetType attackerType)
     {
