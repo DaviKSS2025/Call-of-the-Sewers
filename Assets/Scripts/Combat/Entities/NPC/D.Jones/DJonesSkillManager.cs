@@ -1,3 +1,4 @@
+using UnityEngine;
 public class DJonesSkillManager : SkillManager
 {
     public DJonesSkillManager(BaseEntityController controller) : base(controller) { }

@@ -21,8 +21,7 @@ public class NPCDataController : MonoBehaviour
 
     private void Start()
     {
-        RuntimeData = CloneList(SaveManager.Instance.Data.NPCData);
-        NPCHistoric = SaveManager.Instance.Data.AlreadyRecruitedNPCs;
+        CloneSave();
     }
 
     private List<AllyNPC> CloneList(List<AllyNPC> original)
@@ -75,5 +74,10 @@ public class NPCDataController : MonoBehaviour
                 break;
             }
         }
+    }
+    public void CloneSave()
+    {
+        RuntimeData = CloneList(SaveManager.Instance.Data.NPCData);
+        NPCHistoric = SaveManager.Instance.Data.AlreadyRecruitedNPCs;
     }
 }

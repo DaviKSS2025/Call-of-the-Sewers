@@ -8,6 +8,10 @@ public class PlayerCharacterStatusPannel : BaseCharacterStatusPannel
     [SerializeField] private TextMeshProUGUI _sanityValue;
     [SerializeField] private WeaponDatabase _weaponDatabase;
     [SerializeField] private ArmorDatabase _armorDatabase;
+    [SerializeField] private TextMeshProUGUI _weaponName;
+    [SerializeField] private TextMeshProUGUI _weaponAttackPower;
+    [SerializeField] private TextMeshProUGUI _armorName;
+    [SerializeField] private TextMeshProUGUI _armorDefensePower;
     private Weapons _currentWeapon;
     private Armors _currentArmor;
 
@@ -24,7 +28,7 @@ public class PlayerCharacterStatusPannel : BaseCharacterStatusPannel
         _armorName.text = _currentArmor.Name;
         int attackPower = (int)(_currentWeapon.DamageMultiplier * 100);
         _weaponAttackPower.text = attackPower.ToString();
-        int defensePower = (int)(_currentArmor.DefenseMultiplier * 100);
+        int defensePower = (int)(_currentArmor.DefenseMultiplier + 100);
         _armorDefensePower.text = defensePower.ToString();
         _healthValue.text = PlayerDataController.Instance.RuntimeData.CurrentHealth.ToString();
         _sanityValue.text = PlayerDataController.Instance.RuntimeData.CurrentMana.ToString();

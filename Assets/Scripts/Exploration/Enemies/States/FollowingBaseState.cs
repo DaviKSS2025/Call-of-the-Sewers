@@ -13,7 +13,6 @@ public class FollowingBaseState : EnemyBaseState
     }
     public override void OnEnter()
     {
-        _controller.AnimatorController.PlayFollowing();
         _currentTimeToStopTrackingPlayer = _maxTimeToStopTrackingPlayer;
     }
     public override void OnUpdate()

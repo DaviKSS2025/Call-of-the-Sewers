@@ -47,16 +47,16 @@ public class MenuController : MonoBehaviour
     }
     private void CancelSelectTarget()
     {
-        _charPannelSelectable.enabled = false;
-        _NPCPannelSelectable.enabled = false;
+        _charPannelSelectable.interactable = false;
+        _NPCPannelSelectable.interactable = false;
     }
     private void OpenStatusSelectionTarget(IConsumableEffectOnTarget consumableEffect)
     {
         _verticalToolbar.SetActive(false);
         _inventoryMenu.SetActive(false);
         _statusMenu.SetActive(true);
-        _charPannelSelectable.enabled = true;
-        _NPCPannelSelectable.enabled = true;
+        _charPannelSelectable.interactable = true;
+        _NPCPannelSelectable.interactable = NPCDataController.Instance.RuntimeData.Count > 0;
         _consumableUsed = consumableEffect;
         EventSystem.current.SetSelectedGameObject(_charPannel);
         _inputChannel.OnSubmit += ManageTargetEffectSelection;

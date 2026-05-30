@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 public class CombatController
 {
@@ -114,6 +112,7 @@ public class CombatController
                 }
             }
         }
+        _combatChannel.RaiseShowGlobalHealRequested(_lastEntityActed.EntityNameString, _lastSkillUsed.Name);
     }
     private BaseEntityController RollRandomTarget(TargetType attackerType)
     {

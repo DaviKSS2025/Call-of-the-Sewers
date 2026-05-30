@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d6d7a300e801a443a9a896cc577851c, type: 3}
   m_Name: Shirt
   m_EditorClassIdentifier: Assembly-CSharp::Armors
-  _defenseMultiplier: 1
+  _defenseMultiplier: 0
   _name: Shirt
-  _armorSprite: {fileID: -1293192984778809801, guid: 58924f151c46bba49b19ce881e47811f, type: 3}
+  _armorType: 0

@@ -154,4 +154,4 @@ MonoBehaviour:
   _inputChannel: {fileID: 11400000, guid: db916f9bc3f8a7a42b6ca3227ccb49d2, type: 2}
   _gameStateChannel: {fileID: 11400000, guid: 14d04bf9574aad5478d235597ed5955a, type: 2}
   _dialogueChannel: {fileID: 11400000, guid: c7c8516a1d846af4089186674f8c18d1, type: 2}
-  _doorName: {fileID: 0}
+  _doorName: {fileID: 11400000, guid: b5d24d161f6dd1249b782d97007542ff, type: 2}

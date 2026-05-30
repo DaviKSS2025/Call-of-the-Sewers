@@ -16,3 +16,4 @@ MonoBehaviour:
   _description: A small light source to illuminate your vision in the darkness. It
     lessens your fears.
   _sprite: {fileID: 21300000, guid: 9bc632b3335f81e4d8c149e44d880df7, type: 3}
+  _type: 2

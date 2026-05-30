@@ -42,11 +42,9 @@ public class MapExplorationData
    public Dictionary<string, bool> OpenedDoors = new Dictionary<string, bool>();
    public Dictionary<string, EnemiesExplorationData> EnemyExplorationInfo = new Dictionary<string, EnemiesExplorationData>();
    public Dictionary<string, bool> CollectedItems = new Dictionary<string, bool>();
-   public Dictionary<string, bool> LitCandles = new Dictionary<string, bool>();
    public bool UsedSacrificePlace;
-   public float WorldPosX = 0;
-   public float WorldPosY = 0;   
-   public SceneNames CurrentMapName = SceneNames.Sewers;
+   public float WorldPosX = -10.782f;
+   public float WorldPosY = -54.74f;   
 }
 [Serializable]
 public struct EnemiesExplorationData
@@ -88,7 +86,7 @@ public class SaveFile
     public List<AllyNPC> NPCData = new List<AllyNPC>();
     public List<NPCType> AlreadyRecruitedNPCs = new List<NPCType>();
     public bool ChoosedNickName;
-    public List<ConsumableItemData> Items;
+    public List<ItemType> Items;
     public List<string> KeyIds;
     public MapExplorationData ExplorationData;
     public static SaveFile CreateNewGame()
@@ -97,7 +95,18 @@ public class SaveFile
         {
             PlayerData = CreateDefaultPlayer(),
             NPCData = new List<AllyNPC>(),
-            Items = new List<ConsumableItemData>(),
+            Items = new List<ItemType>()
+            {
+                ItemType.Medicine,
+                ItemType.Medicine,
+                ItemType.Medicine,
+                ItemType.Neurostimulants,
+                ItemType.Neurostimulants,
+                ItemType.Neurostimulants,
+                ItemType.Torch,
+                ItemType.Torch,
+                ItemType.Torch
+            },
             KeyIds = new List<string>(),
             ChoosedNickName = false,
             ExplorationData = ResetExploration(),
@@ -130,11 +139,9 @@ public class SaveFile
             OpenedDoors = new Dictionary<string, bool>(),
             EnemyExplorationInfo = new Dictionary<string, EnemiesExplorationData>(),
             CollectedItems = new Dictionary<string, bool>(),
-            LitCandles = new Dictionary<string, bool>(),
             UsedSacrificePlace = false,
-            WorldPosX = 0,
-            WorldPosY = 0,
-            CurrentMapName = SceneNames.Sewers
+            WorldPosX = -10.782f,
+            WorldPosY = -54.74f,
         };
     }
 }
