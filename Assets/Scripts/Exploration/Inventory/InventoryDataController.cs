@@ -19,8 +19,7 @@ public class InventoryDataController : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        InventoryList = Clone(SaveManager.Instance.Data.Items);
-        KeyIDS = SaveManager.Instance.Data.KeyIds;
+        CloneSave();
     }
     private List<ItemType> Clone(List<ItemType> original)
     {
@@ -45,5 +44,10 @@ public class InventoryDataController : MonoBehaviour
     public void AddKey(string keyName)
     {
         KeyIDS.Add(keyName);
+    }
+    public void CloneSave()
+    {
+        InventoryList = Clone(SaveManager.Instance.Data.Items);
+        KeyIDS = SaveManager.Instance.Data.KeyIds;
     }
 }

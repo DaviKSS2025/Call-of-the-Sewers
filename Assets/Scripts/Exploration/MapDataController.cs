@@ -25,7 +25,7 @@ public class MapDataController : MonoBehaviour
     }
     private void OnEnable()
     {
-        _runTimeExplorationData = SaveManager.Instance.Data.ExplorationData;
+        CloneSave();
     }
     public Vector2 GetPlayerPosition()
     {
@@ -77,5 +77,9 @@ public class MapDataController : MonoBehaviour
             enemy.Dead = true;
             _runTimeExplorationData.EnemyExplorationInfo[_enemyEncounteredInCombat.Id] = enemy;
         }
+    }
+    public void CloneSave()
+    {
+        _runTimeExplorationData = SaveManager.Instance.Data.ExplorationData;
     }
 }

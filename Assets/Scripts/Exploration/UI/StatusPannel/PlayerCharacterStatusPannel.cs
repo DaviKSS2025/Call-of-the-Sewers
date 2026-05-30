@@ -8,6 +8,10 @@ public class PlayerCharacterStatusPannel : BaseCharacterStatusPannel
     [SerializeField] private TextMeshProUGUI _sanityValue;
     [SerializeField] private WeaponDatabase _weaponDatabase;
     [SerializeField] private ArmorDatabase _armorDatabase;
+    [SerializeField] private TextMeshProUGUI _weaponName;
+    [SerializeField] private TextMeshProUGUI _weaponAttackPower;
+    [SerializeField] private TextMeshProUGUI _armorName;
+    [SerializeField] private TextMeshProUGUI _armorDefensePower;
     private Weapons _currentWeapon;
     private Armors _currentArmor;
 

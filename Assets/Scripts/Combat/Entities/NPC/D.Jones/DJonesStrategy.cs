@@ -39,7 +39,7 @@ public class DJonesStrategy : BaseStrategy, INPCStrategy
                 {
                     haveBlindEnemies = true;
                 }
-                else if (entity.StatusManager.ActiveEffects.Any(f => f is StunEffectInstance))
+                if (entity.StatusManager.ActiveEffects.Any(f => f is StunEffectInstance))
                 {
                     haveStunnedEnemies = true;
                 }

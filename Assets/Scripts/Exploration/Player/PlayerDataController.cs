@@ -19,7 +19,7 @@ public class PlayerDataController : MonoBehaviour
 
     void OnEnable()
     {
-        RuntimeData = Clone(SaveManager.Instance.Data.PlayerData);
+        CloneSave();
     }
     public void SetHealth(int value)
     {
@@ -78,5 +78,9 @@ public class PlayerDataController : MonoBehaviour
             CurrentWeapon = original.CurrentWeapon,
             SkillList = original.SkillList
         };
+    }
+    public void CloneSave()
+    {
+        RuntimeData = Clone(SaveManager.Instance.Data.PlayerData);
     }
 }

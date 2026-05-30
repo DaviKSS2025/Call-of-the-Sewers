@@ -70,6 +70,7 @@ public class TurnOrderManager : IEntityListHandler
     {
         OnEndGame?.Invoke();
         OnPlayerDefeated?.Invoke();
+        ResetSaves();
     }
     public void OnDisable()
     {
@@ -91,7 +92,13 @@ public class TurnOrderManager : IEntityListHandler
                 NPCDataController.Instance.SetHealth(entity.Stats.CurrentHealth, npcController.NPCType);
             }
         }
-
+    }
+    private void ResetSaves()
+    {
+        NPCDataController.Instance.CloneSave();
+        PlayerDataController.Instance.CloneSave();
+        InventoryDataController.Instance.CloneSave();
+        MapDataController.Instance.CloneSave();
     }
 }
 public interface IEntityListHandler

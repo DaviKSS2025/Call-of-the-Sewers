@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class DJonesNPCController : NPCController
 {
@@ -7,20 +6,6 @@ public class DJonesNPCController : NPCController
     [SerializeField] private SkillData _darkFire;
     [SerializeField] private SkillData _darkHealing;
     [SerializeField] private SkillData _darkness;
-    [SerializeField] private Sprite[] _skillSprites;
-    private CombatSpriteController _spriteController;
-    private Image _image;
-
-    public override void Awake()
-    {
-        base.Awake();
-        _image = GetComponent<Image>();
-    }
-    public override void Start()
-    {
-        base.Start();
-        _spriteController = new CombatSpriteController(_image, _skillSprites);
-    }
     protected override void SetupSkillManager()
     {
         AssignSkillManager(new DJonesSkillManager(this));
@@ -51,10 +36,6 @@ public class DJonesNPCController : NPCController
         else if (eventName == "DeathEnd")
         {
             _animatorStateController.PlayDeath();
-        }
-        else if (eventName == "SkillStart")
-        {
-            _spriteController.SortRandomSkillSprite();
         }
     }
 }
