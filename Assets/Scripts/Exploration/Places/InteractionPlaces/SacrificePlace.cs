@@ -1,5 +1,6 @@
-using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 public class SacrificePlace : InteractionPlace
 {
     [SerializeField] private Weapons _weaponToGain;
@@ -34,9 +35,9 @@ public class SacrificePlace : InteractionPlace
     {
         _gameStateChannel.OnGameStateChange += ToggleInputs;
     }
-    public override void Start()
+    public override IEnumerator Start()
     {
-        base.Start();
+        yield return base.Start();
         SetupAfterSacrificedDialogue();
 
         hasSacrificed = MapDataController.Instance.RuntimeExplorationData.UsedSacrificePlace;
@@ -165,4 +166,6 @@ public class SacrificePlace : InteractionPlace
             _sacrificePlace.ShowTextAfterInteraction();
         }
     }
+
+
 }

@@ -25,7 +25,7 @@ public class InventoryListUIManager : MonoBehaviour
         if (items == null || items.Count == 0)
             return;
 
-        foreach (ConsumableItemData item in items)
+        foreach (ItemType item in items)
         {
             var prefab = _itemDatabase.GetItemPrefab(item);
 

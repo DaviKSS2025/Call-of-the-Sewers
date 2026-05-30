@@ -21,6 +21,8 @@ public class PlayerControllerExploration : MonoBehaviour
     [SerializeField] private GameStateChannel _gameStateChannel;
     [SerializeField] private InventoryChannel _inventoryChannel;
     [SerializeField] private DialogueChannel _dialogueChannel;
+    [SerializeField] private SimpleMusicEvent _explorationMusic;
+    [SerializeField] private MusicEventChannel _musicChannel;
 
     private Vector2 _currentMoveInput;
     public Vector2 CurrentMoveInput => _currentMoveInput;
@@ -98,6 +100,8 @@ public class PlayerControllerExploration : MonoBehaviour
         currentState.OnEnter();
 
         transform.position = new Vector2(MapDataController.Instance.RuntimeExplorationData.WorldPosX, MapDataController.Instance.RuntimeExplorationData.WorldPosY);
+
+        _musicChannel.RaiseEvent(_explorationMusic);
     }
     void Update()
     {

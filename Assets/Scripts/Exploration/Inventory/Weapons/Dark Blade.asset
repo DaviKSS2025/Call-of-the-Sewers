@@ -14,5 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Weapons
   _damageMultiplier: 4
   _name: Dark Blade
-  _weaponSprite: {fileID: 0}
-  _weaponType: 2
+  _weaponType: 1

@@ -44,8 +44,6 @@ public class BaseEnemyStateMachineController : IStateChange
     {
         switch (state)
         {
-            case EnemyExplorationStates.Dead:
-                return new DeadBaseState(_controllers);
             case EnemyExplorationStates.Following:
                 return new FollowingBaseState(_controllers, _player);
             default:
@@ -77,6 +75,5 @@ public interface IStateChange
 public enum EnemyExplorationStates
 {
     Wandering,
-    Dead,
     Following
 }

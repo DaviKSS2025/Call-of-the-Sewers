@@ -4,13 +4,16 @@ public class PlayerStats : StatsController
     private PlayerStatsUI _playerStatsUI;
     private float _percentualManaLostOnCritical = 0.1f;
     private int _NPCDeathPenalty = 10;
-    public PlayerStats(BaseEntityController entity, PlayerStatsUI playerStatsUI) : base(entity)
+    private float _defense;
+    public PlayerStats(BaseEntityController entity, PlayerStatsUI playerStatsUI, float defense) : base(entity)
     {
         _currentHealth = PlayerDataController.Instance.RuntimeData.CurrentHealth;
         _currentMana = PlayerDataController.Instance.RuntimeData.CurrentMana;
         _playerStatsUI = playerStatsUI;
         _playerStatsUI.Initialize(entity.EntityNameString, this, entity.SurvStats.MaxHealth);
+        _playerStatsUI.OnHealthChanged();
         _playerStatsUI.MaxMana = entity.SurvStats.MaxMana;
+        _defense = defense;
     }
 
     public override void SubscribeEvents()
@@ -40,7 +43,7 @@ public class PlayerStats : StatsController
     }
     public override int CalculateDamage(int baseDamage, float damageMultiplier, float criticalChanceMultiplier, int baseCriticalChance)
     {
-        int damage = Mathf.RoundToInt(baseDamage * damageMultiplier * (1 - _entity.SurvStats.Defense));
+        int damage = Mathf.RoundToInt(baseDamage * damageMultiplier * (1 - _defense));
 
         if (RollCritical(baseCriticalChance, criticalChanceMultiplier))
         {

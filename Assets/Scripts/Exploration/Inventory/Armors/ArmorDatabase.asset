@@ -15,3 +15,5 @@ MonoBehaviour:
   _armors:
   - type: 0
     armor: {fileID: 11400000, guid: a8cfbd1ffc1953b45ba9b8ae7368ba0f, type: 2}
+  - type: 1
+    armor: {fileID: 11400000, guid: 7732a570f1ef0b841af844391b6e48da, type: 2}

@@ -14,8 +14,6 @@ public class PlayerAnimatorController : AnimatorStateController, IAnimationHandl
     }
     public override void PlaySkill()
     {
-        StackTrace trace = new StackTrace();
-        UnityEngine.Debug.Log(trace);
         _animator.SetTrigger(Skill);
     }
 }

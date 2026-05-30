@@ -6,6 +6,8 @@ public class PlayerController : BaseEntityController
     [SerializeField] private SceneChangeChannel _sceneChangeChannel;
     [SerializeField] private PlayerStatsUI _playerStatsUI;
     [SerializeField] private Sprite[] _skillSprites;
+    [SerializeField] private ArmorDatabase _armorDatabase;
+    [SerializeField] private WeaponDatabase _weaponDatabase;
     private Image _image;
     private RunManager _runManager;
     private SkillManager _skillManager;
@@ -25,12 +27,13 @@ public class PlayerController : BaseEntityController
     }
     protected override void SetupStatsController()
     {
-        AssignStatsController(new PlayerStats(this, _playerStatsUI));
+        AssignStatsController(new PlayerStats(this, _playerStatsUI, _armorDatabase.GetArmorScriptableObject(PlayerDataController.Instance.RuntimeData.CurrentArmor).DefenseMultiplier));
     }
     public override void Start()
     {
         _name = SaveManager.Instance.Data.PlayerData.PlayerName;
         base.Start();
+        _attackController.AttackMultiplier = _weaponDatabase.GetWeaponScriptableObject(PlayerDataController.Instance.RuntimeData.CurrentWeapon).DamageMultiplier;
         _runManager = new RunManager(_stats,_runChance.RunChancePercentage, _sceneChangeChannel, _combatChannel, _name);
         _skillManager = new SkillManager(this);
         _skillManager.Initialize();

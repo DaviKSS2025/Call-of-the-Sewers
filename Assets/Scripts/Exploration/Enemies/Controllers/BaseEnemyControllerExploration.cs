@@ -52,7 +52,7 @@ public class BaseEnemyControllerExploration : MonoBehaviour, IBaseControllers
         }
         else
         {
-            KillEnemy();
+            gameObject.SetActive(false);
         }
     }
     void Update()
@@ -104,15 +104,6 @@ public class BaseEnemyControllerExploration : MonoBehaviour, IBaseControllers
             return false;
         }
     }
-    private void KillEnemy()
-    {
-        _stateController = new BaseEnemyStateMachineController(this, _patrolTargets, _player, _gameStateChannel);
-        _stateController.ChangeState(EnemyExplorationStates.Dead);
-        _boxCollider.enabled = false;
-        _agent.enabled = false;
-        enabled = false;
-    }
-
     public void OnAnimationEvent(string eventName)
     {
         _stateController?.HandleAnimationEvent(eventName);

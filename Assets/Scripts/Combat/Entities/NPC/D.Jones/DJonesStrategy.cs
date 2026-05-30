@@ -47,22 +47,18 @@ public class DJonesStrategy : BaseStrategy, INPCStrategy
         }
         if (currentAllyHealth < allyMaxHealth * _healingThreshold)
         {
-            Debug.Log("NPC resolveu curar");
             _combatChannel.RaiseSkillUsed(_darkHealing);
         }
         else if (!haveBlindEnemies)
         {
-            Debug.Log("NPC resolveu usar escuridão");
             _combatChannel.RaiseSkillUsed(_darkness);
         }
         else if (!haveStunnedEnemies)
         {
-            Debug.Log("NPC resolveu usar dark hold");
             _combatChannel.RaiseSkillUsed(_darkHold);
         }
         else
         {
-            Debug.Log("NPC não entrou nos demais casos");
             bool useDarkFire = Random.value < _darkFireChance;
             if (useDarkFire)
             {

@@ -1,5 +1,5 @@
+using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class ColletableArmor : Colletables
 {
@@ -29,6 +29,7 @@ public class ColletableArmor : Colletables
             {
                 DontPickWorseEquipment();
             }
+            MapDataController.Instance.ItemFound(_armor.Name);
         }
     }
     public override void UpgradeEquipment()

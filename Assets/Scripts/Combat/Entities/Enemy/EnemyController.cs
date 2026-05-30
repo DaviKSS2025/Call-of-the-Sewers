@@ -5,6 +5,8 @@ public abstract class EnemyController : BaseEntityController
     [SerializeField] protected EntityName _entityName;
     [SerializeField] protected IdleChance _idleChance;
     [SerializeField] protected InitialManaDamage _initialManaDamage;
+    [SerializeField] protected SimpleMusicEvent _battleMusic;
+    [SerializeField] protected MusicEventChannel _musicChannel;
 
     protected IEnemyStrategy _enemyStrategy;
 
@@ -24,6 +26,7 @@ public abstract class EnemyController : BaseEntityController
     public override void Start()
     {
         base.Start();
+        _musicChannel.RaiseEvent(_battleMusic);
         SetupStrategy();
     }
     public override void ExecuteTurnStart()

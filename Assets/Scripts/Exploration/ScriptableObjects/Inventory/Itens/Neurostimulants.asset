@@ -15,3 +15,4 @@ MonoBehaviour:
   _name: Neurostimulants
   _description: A remedy capable of purifying your thoughts even in the darkness.
   _sprite: {fileID: 21300000, guid: c27c98ef239e72b43b679b9e1fd8c653, type: 3}
+  _type: 1

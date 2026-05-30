@@ -7,7 +7,6 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource _musicSource;
     [SerializeField] private SFXEventChannel _SFXChannel;
     [SerializeField] private MusicEventChannel _musicChannel;
-    [SerializeField] private SimpleMusicEvent _menuStartMusic; // Music played on menu startup
 
     private int _currentSource;
 
@@ -33,10 +32,6 @@ public class AudioManager : MonoBehaviour
     {
         _SFXChannel.OnSFXRequested -= PlaySFX;
         _musicChannel.OnMusicRequested -= PlayMusic;
-    }
-    private void Start()
-    {
-        _musicChannel.RaiseEvent(_menuStartMusic);
     }
 
     private void PlaySFX(SimpleSFXEvent sfx)
