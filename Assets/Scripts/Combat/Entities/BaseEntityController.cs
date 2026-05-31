@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Diagnostics;
 using TMPro;
 using UnityEngine;
@@ -153,7 +154,7 @@ public abstract class BaseEntityController : MonoBehaviour
             else
             {
                 ComChannel.RaiseShowSkipTurnOnStun(_name);
-                NeutralTurnEnd();
+                StartCoroutine(WaitForStunDelay());
             }
         }
     }
@@ -167,6 +168,12 @@ public abstract class BaseEntityController : MonoBehaviour
         OnTurnEnd();
     }
     public abstract void ExecuteTurnStart();
+
+    private IEnumerator WaitForStunDelay()
+    {
+        yield return new WaitForSeconds(0.5f);
+        NeutralTurnEnd();
+    }
 
     #endregion
     public virtual void OnAnimationEvent(string eventName)
