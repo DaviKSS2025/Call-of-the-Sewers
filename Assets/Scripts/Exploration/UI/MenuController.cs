@@ -103,6 +103,7 @@ public class MenuController : MonoBehaviour
         {
             _consumableUsed.Execute(TargetType.NPC);
         }
+        _inventoryChannel.RaiseInstantItemUsed();
         CloseAllMenus();
     }
 }
