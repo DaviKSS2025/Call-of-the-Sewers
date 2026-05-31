@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4020564571135005250}
   - component: {fileID: 5128547091416410898}
   - component: {fileID: 2724380921326515002}
-  - component: {fileID: 6709942608708240778}
+  - component: {fileID: 1027520344950752723}
   m_Layer: 5
   m_Name: Cerberus
   m_TagString: Untagged
@@ -100,7 +100,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6709942608708240778
+--- !u!114 &1027520344950752723
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,9 +109,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5538633754893564979}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6adf4b79c1ca7664bbdc1e037cabbd4f, type: 3}
+  m_Script: {fileID: 11500000, guid: feba5cb4abbd5474b9577c94cc145b79, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyController
+  m_EditorClassIdentifier: Assembly-CSharp::CerberusController
   _turnChannel: {fileID: 11400000, guid: 2bd52f323a799d046961dd26b75e4b0e, type: 2}
   _combatChannel: {fileID: 11400000, guid: d836378360c742d4e9f1105da45d56fc, type: 2}
   _SFXChannel: {fileID: 11400000, guid: f506fe62561e95c4bb1afaefc7d2f017, type: 2}
@@ -119,9 +119,10 @@ MonoBehaviour:
   _inputChannel: {fileID: 11400000, guid: db916f9bc3f8a7a42b6ca3227ccb49d2, type: 2}
   _targetType: 2
   _attackList:
-  - {fileID: 11400000, guid: e538eb967e9c99e4a8e719ece82da396, type: 2}
-  - {fileID: 11400000, guid: b80c667a7f480af4bbffb8edb896003a, type: 2}
-  - {fileID: 11400000, guid: a43f62546598cd544906c7226ed25c06, type: 2}
+  - {fileID: 11400000, guid: 9c5f54c37c4e1054baf632a4ae418aa0, type: 2}
+  - {fileID: 11400000, guid: 7bec66b2af28a264ba26a0e354f67cbe, type: 2}
+  - {fileID: 11400000, guid: 6e272316135bf9849a5f401c1882f257, type: 2}
+  - {fileID: 11400000, guid: ecd089e9144148c46b6daa425beaa07e, type: 2}
   _statusEffectSlots:
   - {fileID: 3096125628414727405}
   - {fileID: 6992198357729795980}
@@ -130,10 +131,10 @@ MonoBehaviour:
   - {fileID: 770471800180478391}
   - {fileID: 7731542109029510163}
   - {fileID: 3762667047415238915}
-  _survivalStats: {fileID: 11400000, guid: e3a8d09615f80cf4596be991b9086195, type: 2}
+  _survivalStats: {fileID: 11400000, guid: c9a1d595aa5345241aa51645ff20ad0f, type: 2}
   _entityName: {fileID: 11400000, guid: dca334f4bb02f1d4d917922fcd708ee0, type: 2}
   _idleChance: {fileID: 11400000, guid: b9911ea57600aef459497bbf382649aa, type: 2}
-  _initialManaDamage: {fileID: 11400000, guid: 9acbd0be9811e714885c0698cde73502, type: 2}
+  _initialManaDamage: {fileID: 11400000, guid: 8892c53e2da4d294b8fe483197d4579b, type: 2}
   _battleMusic: {fileID: 11400000, guid: bcbe3015106f3ef42bef6a73a8b33b2b, type: 2}
   _musicChannel: {fileID: 11400000, guid: 4d53a345c6b21954fb1d5df942b72982, type: 2}
 --- !u!1001 &7234495597542830995

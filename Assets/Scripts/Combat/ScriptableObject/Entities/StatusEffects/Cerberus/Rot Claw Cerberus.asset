@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbaa8b4f564543d48b5d748e3a17d94d, type: 3}
+  m_Name: Rot Claw Cerberus
+  m_EditorClassIdentifier: Assembly-CSharp::RotEffectData
+  StatusSprite: {fileID: 2800543173965718157, guid: 9ba95bd0bc7d3ea4092cabc70ab684f1, type: 3}
+  DamagePerTurn: 15

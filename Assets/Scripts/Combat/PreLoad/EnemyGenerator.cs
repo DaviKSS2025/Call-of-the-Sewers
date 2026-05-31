@@ -18,11 +18,11 @@ public class EnemyGenerator : MonoBehaviour
 
     private void ManageStartEnemySpawn(List<BaseEntityController> enemies)
     {
-        SpawnEnemy(MapDataController.Instance.EnemyEncounteredInCombat.EnemyType, enemies);
+        SpawnEnemy(MapDataController.Instance.EnemyEncounteredInCombat._enemyType, enemies);
 
         if (WillSpawnMultipleEnemies(_chanceToSpawnMultiples))
         {
-            SpawnEnemy(MapDataController.Instance.EnemyEncounteredInCombat.EnemyType, enemies);
+            SpawnEnemy(MapDataController.Instance.EnemyToSpawnInCombat, enemies);
         }
     }
 

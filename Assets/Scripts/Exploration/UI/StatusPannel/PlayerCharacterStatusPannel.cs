@@ -28,7 +28,7 @@ public class PlayerCharacterStatusPannel : BaseCharacterStatusPannel
         _armorName.text = _currentArmor.Name;
         int attackPower = (int)(_currentWeapon.DamageMultiplier * 100);
         _weaponAttackPower.text = attackPower.ToString();
-        int defensePower = (int)(_currentArmor.DefenseMultiplier + 100);
+        int defensePower = (int)((_currentArmor.DefenseMultiplier*100) + 100);
         _armorDefensePower.text = defensePower.ToString();
         _healthValue.text = PlayerDataController.Instance.RuntimeData.CurrentHealth.ToString();
         _sanityValue.text = PlayerDataController.Instance.RuntimeData.CurrentMana.ToString();

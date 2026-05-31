@@ -14,7 +14,6 @@ public class DarkHealingSkillBehaviour : BaseSkillBehaviour
     }
     public override void UsingSkill()
     {
-        Debug.Log("Usando Dark Healing");
         _user.UseGlobalHealingSkill(_healInfo.GetHealAmount());
     }
 }

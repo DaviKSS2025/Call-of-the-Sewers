@@ -50,17 +50,13 @@ public class MapExplorationData
 public struct EnemiesExplorationData
 {
     [SerializeField] private string _id;
-    [SerializeField] private EnemyType _enemyType;
+    public EnemyType _enemyType;
     private bool _dead;
     private float _worldPosX;
     private float _worldPosY;
     public string Id
     {
         get => _id;
-    }
-    public EnemyType EnemyType
-    {
-        get => _enemyType;
     }
     public bool Dead
     {
@@ -150,5 +146,6 @@ public enum SceneNames
     MainMenu,
     Sewers,
     Combat,
-    ChangeName
+    ChangeName,
+    Endgame
 }

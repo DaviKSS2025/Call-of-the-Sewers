@@ -3322,6 +3322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MapDataController
   _sceneChangeChannel: {fileID: 11400000, guid: 5ac8a99a8451a3a4294b6fba6f75e998, type: 2}
+  EnemyToSpawnInCombat: 0
 --- !u!4 &1624266221
 Transform:
   m_ObjectHideFlags: 0
@@ -3740,6 +3741,7 @@ MonoBehaviour:
   _defeatCanvas: {fileID: 485182492}
   _NPCStatusUI: {fileID: 5291699278686328056, guid: 10b3e3aa3d2047049812af2152907244, type: 3}
   _allyStatusVerticalLayoutGroup: {fileID: 1879565228}
+  _sceneChangeChannel: {fileID: 11400000, guid: 5ac8a99a8451a3a4294b6fba6f75e998, type: 2}
   _turnOrder: []
 --- !u!1001 &1772039667413587329
 PrefabInstance:

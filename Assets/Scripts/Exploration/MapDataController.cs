@@ -11,6 +11,7 @@ public class MapDataController : MonoBehaviour
 
     public MapExplorationData RuntimeExplorationData => _runTimeExplorationData;
     public EnemiesExplorationData EnemyEncounteredInCombat => _enemyEncounteredInCombat;
+    public EnemyType EnemyToSpawnInCombat;
 
     private void Awake()
     {
@@ -56,6 +57,7 @@ public class MapDataController : MonoBehaviour
         if (_runTimeExplorationData.EnemyExplorationInfo.TryGetValue(enemyId, out EnemiesExplorationData enemy))
         {
             _enemyEncounteredInCombat = enemy;
+            EnemyToSpawnInCombat = enemy._enemyType;
         }
         GetPlayerPosition();
     }

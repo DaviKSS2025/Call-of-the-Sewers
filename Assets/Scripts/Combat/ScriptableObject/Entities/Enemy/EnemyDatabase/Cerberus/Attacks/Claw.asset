@@ -16,4 +16,7 @@ MonoBehaviour:
   _attackName: Claw
   _attackChance: 60
   _criticalChance: 30
-  _statusEffect: {fileID: 0}
+  _statusList:
+  - _statusEffect: {fileID: 11400000, guid: 89c66b406039f744b8b2a516fb5c5f23, type: 2}
+    _statusEffectChance: 40
+    _duration: 5

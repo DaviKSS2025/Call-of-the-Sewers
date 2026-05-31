@@ -45,7 +45,7 @@ public abstract class StatsController
         {
             _entity.DeathClears();
             _entity.AnimatorStateController.PlayDeath();
-            _entity.ThisTurnChangeChannel.OnEntityDeath(_entity);
+            _entity.ThisTurnChangeChannel.RaiseEntityDeath(_entity);
             _entity.ComChannel.RaiseEntityKilled(_entity.EntityNameString);
         }
     }

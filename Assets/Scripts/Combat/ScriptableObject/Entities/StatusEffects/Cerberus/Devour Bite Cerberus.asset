@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23cd3df24b7bc8142a0763809b219f1b, type: 3}
-  m_Name: BossDoor
-  m_EditorClassIdentifier: Assembly-CSharp::DoorNames
-  _doorName: BossDoor
+  m_Script: {fileID: 11500000, guid: 5c4eda0a5147bd349aca1d4b45e3c0a7, type: 3}
+  m_Name: Devour Bite Cerberus
+  m_EditorClassIdentifier: Assembly-CSharp::DevouredEffectData
+  StatusSprite: {fileID: 21300000, guid: d5d7ed6c225510d4b9ec31383e51e840, type: 3}

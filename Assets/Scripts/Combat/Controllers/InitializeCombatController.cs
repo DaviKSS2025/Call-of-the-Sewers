@@ -14,11 +14,13 @@ public class InitializeCombatController : MonoBehaviour
     [SerializeField] private GameObject _defeatCanvas;
     [SerializeField] private GameObject _NPCStatusUI;
     [SerializeField] private GameObject _allyStatusVerticalLayoutGroup;
+    [SerializeField] private SceneChangeChannel _sceneChangeChannel;
     private SelectTargetController _selectTargetController;
     private CombatController _combatController;
     private TurnBasedController _turnBasedController;
     private TurnOrderManager _turnOrderManager;
     [SerializeField] private List<BaseEntityController> _turnOrder = new();
+    private bool isLastBoss;
 
     private void Start()
     {
@@ -65,6 +67,7 @@ public class InitializeCombatController : MonoBehaviour
         {
             if (firstEnemy.EntityType == TargetType.Enemy)
             {
+                isLastBoss = firstEnemy is CerberusController;
                 _combatChannel.RaiseMonsterAppearing(firstEnemy.EntityNameString);
                 break;
             }
@@ -118,6 +121,7 @@ public class InitializeCombatController : MonoBehaviour
     private void OnPlayerVictory()
     {
         _victoryCanvas.SetActive(true);
+        _victoryCanvas.GetComponent<VictoryCanvas>().TargetScene = isLastBoss ? SceneNames.Endgame : SceneNames.Sewers;
     }
     private void OnPlayerDefeated()
     {
