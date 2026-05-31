@@ -6577,11 +6577,9 @@ MonoBehaviour:
   _optionButtons:
   - {fileID: 264977060}
   - {fileID: 1563604714}
-  - {fileID: 0}
   _optionTexts:
   - {fileID: 1233600552}
   - {fileID: 899173545}
-  - {fileID: 0}
   _optionPannel: {fileID: 2017571470}
   _choiceChannel: {fileID: 11400000, guid: 977a8a1ee4cdd5c478cef6e6642371f7, type: 2}
 --- !u!1 &817285673

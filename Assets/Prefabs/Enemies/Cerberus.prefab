@@ -119,10 +119,10 @@ MonoBehaviour:
   _inputChannel: {fileID: 11400000, guid: db916f9bc3f8a7a42b6ca3227ccb49d2, type: 2}
   _targetType: 2
   _attackList:
-  - {fileID: 11400000, guid: 9c5f54c37c4e1054baf632a4ae418aa0, type: 2}
   - {fileID: 11400000, guid: 7bec66b2af28a264ba26a0e354f67cbe, type: 2}
-  - {fileID: 11400000, guid: 6e272316135bf9849a5f401c1882f257, type: 2}
   - {fileID: 11400000, guid: ecd089e9144148c46b6daa425beaa07e, type: 2}
+  - {fileID: 11400000, guid: 6e272316135bf9849a5f401c1882f257, type: 2}
+  - {fileID: 11400000, guid: 9c5f54c37c4e1054baf632a4ae418aa0, type: 2}
   _statusEffectSlots:
   - {fileID: 3096125628414727405}
   - {fileID: 6992198357729795980}

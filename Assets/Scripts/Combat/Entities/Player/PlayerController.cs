@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 public class PlayerController : BaseEntityController
 {
@@ -68,7 +69,7 @@ public class PlayerController : BaseEntityController
             }
             else
             {
-                NeutralTurnEnd();
+                StartCoroutine(WaitForRunDelay());
             }
         }
         else if (eventName == "SkillEnd")
@@ -78,5 +79,10 @@ public class PlayerController : BaseEntityController
             _combatChannel.RaiseSkillEnd();
             NeutralTurnEnd();
         }
+    }
+    private IEnumerator WaitForRunDelay()
+    {
+        yield return new WaitForSeconds(0.5f);
+        NeutralTurnEnd();
     }
 }

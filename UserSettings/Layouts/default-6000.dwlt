@@ -217,8 +217,8 @@ MonoBehaviour:
     y: 0
     width: 100
     height: 877
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 226}
+  m_MaxSize: {x: 4001, y: 4026}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -327,7 +327,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 43
+    y: 0
     width: 1920
     height: 36
   m_SerializedDataModeController:
@@ -592,8 +592,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Scene\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 100
-    y: 79
+    x: 101
+    y: 24
     width: 1718
     height: 851
   m_SerializedDataModeController:
@@ -1332,7 +1332,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 79
+    y: 24
     width: 99
     height: 851
   m_SerializedDataModeController:
@@ -1351,8 +1351,7 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs:
-      - m_Data: 41470
+      m_SelectedIDs: []
       m_LastClickedID:
         m_Data: 0
       m_ExpandedIDs:
@@ -1388,8 +1387,8 @@ MonoBehaviour:
       - m_Data: 84354
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Colliders
-        m_OriginalName: Colliders
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
@@ -1397,10 +1396,10 @@ MonoBehaviour:
           width: 0
           height: 0
         m_UserData:
-          m_Data: 84074
+          m_Data: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_TrimLeadingAndTrailingWhitespace: 0
         m_ClientGUIView: {fileID: 9}
@@ -1746,7 +1745,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 956
+    y: 901
     width: 1819
     height: 30
   m_SerializedDataModeController:
@@ -1796,64 +1795,62 @@ MonoBehaviour:
       m_Data: 39466
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 39372
-    - m_Data: 39374
-    - m_Data: 39376
-    - m_Data: 39378
-    - m_Data: 39380
-    - m_Data: 39382
-    - m_Data: 39384
-    - m_Data: 39386
-    - m_Data: 39388
-    - m_Data: 39390
-    - m_Data: 39392
-    - m_Data: 39394
-    - m_Data: 39396
-    - m_Data: 39398
-    - m_Data: 39400
-    - m_Data: 39402
-    - m_Data: 39404
-    - m_Data: 39406
-    - m_Data: 39408
-    - m_Data: 39410
-    - m_Data: 39412
-    - m_Data: 39414
-    - m_Data: 39416
-    - m_Data: 39418
-    - m_Data: 39420
-    - m_Data: 39422
-    - m_Data: 39424
-    - m_Data: 39426
-    - m_Data: 39428
-    - m_Data: 39430
-    - m_Data: 39432
-    - m_Data: 39434
-    - m_Data: 39436
-    - m_Data: 39438
-    - m_Data: 39440
-    - m_Data: 39442
-    - m_Data: 39444
-    - m_Data: 39446
-    - m_Data: 39448
-    - m_Data: 39450
-    - m_Data: 39452
-    - m_Data: 39454
-    - m_Data: 39456
-    - m_Data: 39458
-    - m_Data: 39460
-    - m_Data: 39462
-    - m_Data: 39464
-    - m_Data: 39466
-    - m_Data: 39468
-    - m_Data: 39470
-    - m_Data: 39472
-    - m_Data: 39474
-    - m_Data: 39476
-    - m_Data: 39478
-    - m_Data: 39480
-    - m_Data: 39574
-    - m_Data: 39826
-    - m_Data: 2147483647
+    - m_Data: 39606
+    - m_Data: 39608
+    - m_Data: 39610
+    - m_Data: 39612
+    - m_Data: 39614
+    - m_Data: 39616
+    - m_Data: 39618
+    - m_Data: 39620
+    - m_Data: 39622
+    - m_Data: 39624
+    - m_Data: 39626
+    - m_Data: 39628
+    - m_Data: 39630
+    - m_Data: 39632
+    - m_Data: 39634
+    - m_Data: 39636
+    - m_Data: 39638
+    - m_Data: 39640
+    - m_Data: 39642
+    - m_Data: 39644
+    - m_Data: 39646
+    - m_Data: 39648
+    - m_Data: 39650
+    - m_Data: 39652
+    - m_Data: 39654
+    - m_Data: 39656
+    - m_Data: 39658
+    - m_Data: 39660
+    - m_Data: 39662
+    - m_Data: 39664
+    - m_Data: 39666
+    - m_Data: 39668
+    - m_Data: 39670
+    - m_Data: 39672
+    - m_Data: 39674
+    - m_Data: 39676
+    - m_Data: 39678
+    - m_Data: 39680
+    - m_Data: 39682
+    - m_Data: 39684
+    - m_Data: 39686
+    - m_Data: 39688
+    - m_Data: 39690
+    - m_Data: 39692
+    - m_Data: 39694
+    - m_Data: 39696
+    - m_Data: 39698
+    - m_Data: 39700
+    - m_Data: 39702
+    - m_Data: 39704
+    - m_Data: 39706
+    - m_Data: 39708
+    - m_Data: 39710
+    - m_Data: 39712
+    - m_Data: 39714
+    - m_Data: 39716
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1886,61 +1883,62 @@ MonoBehaviour:
       m_Data: 0
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 39372
-    - m_Data: 39374
-    - m_Data: 39376
-    - m_Data: 39378
-    - m_Data: 39380
-    - m_Data: 39382
-    - m_Data: 39384
-    - m_Data: 39386
-    - m_Data: 39388
-    - m_Data: 39390
-    - m_Data: 39392
-    - m_Data: 39394
-    - m_Data: 39396
-    - m_Data: 39398
-    - m_Data: 39400
-    - m_Data: 39402
-    - m_Data: 39404
-    - m_Data: 39406
-    - m_Data: 39408
-    - m_Data: 39410
-    - m_Data: 39412
-    - m_Data: 39414
-    - m_Data: 39416
-    - m_Data: 39418
-    - m_Data: 39420
-    - m_Data: 39422
-    - m_Data: 39424
-    - m_Data: 39426
-    - m_Data: 39428
-    - m_Data: 39430
-    - m_Data: 39432
-    - m_Data: 39434
-    - m_Data: 39436
-    - m_Data: 39438
-    - m_Data: 39440
-    - m_Data: 39442
-    - m_Data: 39444
-    - m_Data: 39446
-    - m_Data: 39448
-    - m_Data: 39450
-    - m_Data: 39452
-    - m_Data: 39454
-    - m_Data: 39456
-    - m_Data: 39458
-    - m_Data: 39460
-    - m_Data: 39462
-    - m_Data: 39464
-    - m_Data: 39466
-    - m_Data: 39468
-    - m_Data: 39470
-    - m_Data: 39472
-    - m_Data: 39474
-    - m_Data: 39476
-    - m_Data: 39478
-    - m_Data: 39480
+    - m_Data: 39606
+    - m_Data: 39608
+    - m_Data: 39610
+    - m_Data: 39612
+    - m_Data: 39614
+    - m_Data: 39616
+    - m_Data: 39618
+    - m_Data: 39620
+    - m_Data: 39622
+    - m_Data: 39624
+    - m_Data: 39626
+    - m_Data: 39628
+    - m_Data: 39630
+    - m_Data: 39632
+    - m_Data: 39634
+    - m_Data: 39636
+    - m_Data: 39638
+    - m_Data: 39640
+    - m_Data: 39642
+    - m_Data: 39644
+    - m_Data: 39646
+    - m_Data: 39648
+    - m_Data: 39650
+    - m_Data: 39652
+    - m_Data: 39654
+    - m_Data: 39656
+    - m_Data: 39658
+    - m_Data: 39660
+    - m_Data: 39662
+    - m_Data: 39664
+    - m_Data: 39666
+    - m_Data: 39668
+    - m_Data: 39670
+    - m_Data: 39672
+    - m_Data: 39674
+    - m_Data: 39676
+    - m_Data: 39678
+    - m_Data: 39680
+    - m_Data: 39682
+    - m_Data: 39684
+    - m_Data: 39686
+    - m_Data: 39688
+    - m_Data: 39690
+    - m_Data: 39692
+    - m_Data: 39694
+    - m_Data: 39696
+    - m_Data: 39698
+    - m_Data: 39700
+    - m_Data: 39702
+    - m_Data: 39704
+    - m_Data: 39706
+    - m_Data: 39708
+    - m_Data: 39710
+    - m_Data: 39712
+    - m_Data: 39714
+    - m_Data: 39716
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2078,8 +2076,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Inspector\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1820
-    y: 79
+    x: 1821
+    y: 24
     width: 99
     height: 907
   m_SerializedDataModeController:

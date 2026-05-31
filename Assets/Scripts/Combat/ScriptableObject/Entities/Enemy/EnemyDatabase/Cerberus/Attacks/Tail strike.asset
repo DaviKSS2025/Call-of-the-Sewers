@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AttackData
   _damage: 15
   _attackName: Tail Strike
-  _attackChance: 95
-  _criticalChance: 20
-  _statusEffect: {fileID: 0}
+  _attackChance: 20
+  _criticalChance: 95
+  _statusList: []
