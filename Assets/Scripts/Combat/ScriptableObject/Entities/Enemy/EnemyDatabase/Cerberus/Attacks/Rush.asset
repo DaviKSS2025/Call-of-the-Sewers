@@ -16,4 +16,7 @@ MonoBehaviour:
   _attackName: Rush
   _attackChance: 15
   _criticalChance: 10
-  _statusEffect: {fileID: 0}
+  _statusList:
+  - _statusEffect: {fileID: 11400000, guid: 05f81b8c947b4b549a864ba0df813ccb, type: 2}
+    _statusEffectChance: 10
+    _duration: 1

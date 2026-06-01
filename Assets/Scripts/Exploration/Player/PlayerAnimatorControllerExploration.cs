@@ -4,7 +4,6 @@ public class PlayerAnimatorControllerExploration
 {
     private readonly Animator _animator;
 
-    private static readonly int Death = Animator.StringToHash("Death");
     private static readonly int Walk = Animator.StringToHash("Walk");
     private static readonly int WalkDirection = Animator.StringToHash("WalkDirection");
 
@@ -14,10 +13,6 @@ public class PlayerAnimatorControllerExploration
     {
         _animator = animator;
     }
-    public void PlayDeath()
-    {
-        _animator.SetTrigger(Death);
-    }
     public void PlayWalk(Vector2 input)
     {
         _animator.SetBool(Walk, true);
@@ -26,11 +21,11 @@ public class PlayerAnimatorControllerExploration
 
         if (Mathf.Abs(input.x) > Mathf.Abs(input.y))
         {
-            direction = 0; // horizontal
+            direction = input.x > 0 ? 1 : 2; // right : left
         }
         else
         {
-            direction = input.y > 0 ? 1 : 2; // up : down
+            direction = input.y > 0 ? 3 : 4; // up : down
         }
 
         _animator.SetInteger(WalkDirection, direction);

@@ -54,7 +54,7 @@ public class SkillInventoryController : MonoBehaviour
     {
         foreach (SkillButton button in _generatedButtons)
         {
-            if (button.ThisSkillData.ManaCost > _playerController.Stats.CurrentMana)
+            if (button.ThisSkillData.GetManaCost(_playerController) > _playerController.Stats.CurrentMana)
             {
                 Button currentButton = button.GetComponent<Button>();
                 currentButton.enabled = false;

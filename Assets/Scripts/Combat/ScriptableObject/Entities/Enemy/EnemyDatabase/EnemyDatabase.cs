@@ -8,6 +8,7 @@ public class EnemyDatabase : ScriptableObject
     public struct EnemyEntry
     {
         public EnemyType type;
+        public int multipleSpawnChance;
         public GameObject prefab;
     }
 
@@ -21,6 +22,15 @@ public class EnemyDatabase : ScriptableObject
                 return e.prefab;
         }
         return null;
+    }
+    public int GetMultipleSpawnChance(EnemyType type)
+    {
+        foreach (var e in enemies)
+        {
+            if (e.type == type)
+                return e.multipleSpawnChance;
+        }
+        return 0;
     }
 }
 public enum EnemyType

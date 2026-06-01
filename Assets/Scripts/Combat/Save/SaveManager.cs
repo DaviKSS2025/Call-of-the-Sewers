@@ -75,7 +75,7 @@ public class SaveManager : MonoBehaviour
         Data ??= SaveFile.CreateNewGame();
 
         Data.NPCData ??= new List<AllyNPC>();
-        Data.Items ??= new List<ConsumableItemData>();
+        Data.Items ??= new List<ItemType>();
         Data.KeyIds ??= new List<string>();
 
         Data.PlayerData ??= new CharacterData();

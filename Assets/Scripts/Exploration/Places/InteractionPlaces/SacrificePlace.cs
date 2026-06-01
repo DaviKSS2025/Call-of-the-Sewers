@@ -1,19 +1,27 @@
-using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 public class SacrificePlace : InteractionPlace
 {
     [SerializeField] private Weapons _weaponToGain;
     [SerializeField] private NPCDatabase _npcDatabase;
     [SerializeField] private ChoiceChannel _choiceChannel;
+    [SerializeField] protected SFXEventChannel _sfxChannel;
+    [SerializeField] protected SimpleSFXEvent _doomSFX;
     private List<ChoiceOption> _choiceList = new List<ChoiceOption>();
     private DialogueStruct[] _sacrificeResultDialogue;
     private DialogueStruct[] _alreadySacrificedDialogue;
     private bool hasSacrificed;
+    private Animator _animator;
+
+    private static readonly int Inactive = Animator.StringToHash("Inactive");
+
     public DialogueStruct[] SacrificeResultDialogue
     {
         get => _sacrificeResultDialogue;
         set => _sacrificeResultDialogue = value;
     }
+    public Animator Animator => _animator;
     public Weapons WeaponToGain
     {
         get => _weaponToGain;
@@ -30,16 +38,26 @@ public class SacrificePlace : InteractionPlace
     {
         get => _dialogueChannel;
     }
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
+    }
     public override void OnEnable()
     {
         _gameStateChannel.OnGameStateChange += ToggleInputs;
     }
-    public override void Start()
+    public override IEnumerator Start()
     {
-        base.Start();
+        yield return base.Start();
         SetupAfterSacrificedDialogue();
 
         hasSacrificed = MapDataController.Instance.RuntimeExplorationData.UsedSacrificePlace;
+
+        if (hasSacrificed)
+        {
+            _animator.SetTrigger(Inactive);
+        }
+
         _choiceList.Add(new ChoiceOption("Yes.", new AcceptSacrificeEffect(this)));
         _choiceList.Add(new ChoiceOption("No.", new NegateSacrificeEffect(this)));
     }
@@ -134,15 +152,17 @@ public class SacrificePlace : InteractionPlace
             _sacrificePlace.SacrificeResultDialogue[2].SpeakerName = "System";
             _sacrificePlace.SacrificeResultDialogue[3].DialogueLine = $"At the end of the process, at the cost of your partner's soul, you obtain a <color=red>{_sacrificePlace.WeaponToGain.Name}</color>.";
             _sacrificePlace.SacrificeResultDialogue[3].SpeakerName = "System";
-            _sacrificePlace.SacrificeResultDialogue[4].DialogueLine = $"<color=red>{_sacrificePlace.Database.GetNPCName(NPCDataController.Instance.RuntimeData[0].NPCInfo)}</color>'s lifeless body lies motionless on the ground...";
+            _sacrificePlace.SacrificeResultDialogue[4].DialogueLine = $"<color=red>{_sacrificePlace.Database.GetNPCName(NPCDataController.Instance.RuntimeData[0].NPCInfo)}</color>'s isn't with us anymore...";
             _sacrificePlace.SacrificeResultDialogue[4].SpeakerName = "System";
 
+            _sacrificePlace.Animator.SetTrigger(Inactive);
             PlayerDataController.Instance.UpgradeWeapon(_sacrificePlace.WeaponToGain.ThisWeaponType);
             NPCDataController.Instance.RemoveNPC(NPCDataController.Instance.RuntimeData[0].NPCInfo);
             MapDataController.Instance.UsedSacrificePlace();
             _sacrificePlace.AfterInteractionDialogue = _sacrificePlace.SacrificeResultDialogue;
             _sacrificePlace.HasSacrificed = true;
             _sacrificePlace.ShowTextAfterInteraction();
+            _sacrificePlace._sfxChannel.RaiseEvent(_sacrificePlace._doomSFX);
         }
     }
     private class NegateSacrificeEffect : IChoiceEffect
@@ -165,4 +185,6 @@ public class SacrificePlace : InteractionPlace
             _sacrificePlace.ShowTextAfterInteraction();
         }
     }
+
+
 }

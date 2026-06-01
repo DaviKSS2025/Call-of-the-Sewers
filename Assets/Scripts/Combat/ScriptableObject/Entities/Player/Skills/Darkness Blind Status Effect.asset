@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8b41625838e08a4c9037e9f425cc72d, type: 3}
   m_Name: Darkness Blind Status Effect
   m_EditorClassIdentifier: Assembly-CSharp::BlindnessEffectData
-  Duration: 4
-  StatusSprite: {fileID: -1293192984778809801, guid: 58924f151c46bba49b19ce881e47811f, type: 3}
+  StatusSprite: {fileID: 21300000, guid: 142d29f89e18fe6459af85503d49f3a2, type: 3}

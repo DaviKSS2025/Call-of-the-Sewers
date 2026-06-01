@@ -1,5 +1,5 @@
+using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class ColletableArmor : Colletables
 {
@@ -18,6 +18,7 @@ public class ColletableArmor : Colletables
     {
         if (_insideRange)
         {
+            base.OnPlayerPickup();
             wasCollected = true;
             _playerCurrentArmor = _armorDatabase.GetArmorScriptableObject(PlayerDataController.Instance.RuntimeData.CurrentArmor);
             _currentEquipmentName = GetCurrentEquipmentName();
@@ -29,6 +30,7 @@ public class ColletableArmor : Colletables
             {
                 DontPickWorseEquipment();
             }
+            MapDataController.Instance.ItemFound(_armor.Name);
         }
     }
     public override void UpgradeEquipment()

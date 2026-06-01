@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections;
 public abstract class InteractionPlace : MonoBehaviour
 {
     protected bool isInRange;
@@ -24,8 +24,9 @@ public abstract class InteractionPlace : MonoBehaviour
         _gameStateChannel.OnGameStateChange -= ToggleInputs;
     }
 
-    public virtual void Start()
+    public virtual IEnumerator Start()
     {
+        yield return new WaitUntil(() => NPCDataController.Instance != null);
         SetupBeforeInteractionDialogue();
         SetupAfterInteractionDialogue();
     }

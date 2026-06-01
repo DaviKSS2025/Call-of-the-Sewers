@@ -16,6 +16,9 @@ public class MenuController : MonoBehaviour
     [SerializeField] private Selectable _NPCPannelSelectable;
     [SerializeField] private GameStateChannel _gameStateChannel;
     [SerializeField] private InputChannel _inputChannel;
+    [SerializeField] private SFXEventChannel _sfxChannel;
+    [SerializeField] private SimpleSFXEvent _selectSFX;
+    [SerializeField] private SimpleSFXEvent _useSFX;
     public Action OpenedMenu;
     public Action ClosedMenu;
     private IConsumableEffectOnTarget _consumableUsed;
@@ -47,16 +50,16 @@ public class MenuController : MonoBehaviour
     }
     private void CancelSelectTarget()
     {
-        _charPannelSelectable.enabled = false;
-        _NPCPannelSelectable.enabled = false;
+        _charPannelSelectable.interactable = false;
+        _NPCPannelSelectable.interactable = false;
     }
     private void OpenStatusSelectionTarget(IConsumableEffectOnTarget consumableEffect)
     {
         _verticalToolbar.SetActive(false);
         _inventoryMenu.SetActive(false);
         _statusMenu.SetActive(true);
-        _charPannelSelectable.enabled = true;
-        _NPCPannelSelectable.enabled = true;
+        _charPannelSelectable.interactable = true;
+        _NPCPannelSelectable.interactable = NPCDataController.Instance.RuntimeData.Count > 0;
         _consumableUsed = consumableEffect;
         EventSystem.current.SetSelectedGameObject(_charPannel);
         _inputChannel.OnSubmit += ManageTargetEffectSelection;
@@ -93,6 +96,14 @@ public class MenuController : MonoBehaviour
         _mainMenu.SetActive(false);
         _inputChannel.OnSubmit -= ManageTargetEffectSelection;
     }
+    public void PlaySelectedSFX()
+    {
+        _sfxChannel.RaiseEvent(_selectSFX);
+    }
+    public void PlayUseSFX()
+    {
+        _sfxChannel.RaiseEvent(_useSFX);
+    }
     private void ManageTargetEffectSelection()
     {
         if (_charPannel == EventSystem.current.currentSelectedGameObject)
@@ -103,6 +114,7 @@ public class MenuController : MonoBehaviour
         {
             _consumableUsed.Execute(TargetType.NPC);
         }
+        _inventoryChannel.RaiseInstantItemUsed();
         CloseAllMenus();
     }
 }

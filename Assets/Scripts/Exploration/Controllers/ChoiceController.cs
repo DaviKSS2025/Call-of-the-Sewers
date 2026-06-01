@@ -11,6 +11,9 @@ public class ChoiceController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] _optionTexts;
     [SerializeField] private GameObject _optionPannel;
     [SerializeField] private ChoiceChannel _choiceChannel;
+    [SerializeField] protected SFXEventChannel _sfxChannel;
+    [SerializeField] protected SimpleSFXEvent _selectSFX;
+    [SerializeField] protected SimpleSFXEvent _useSFX;
     private bool _canSelectButton;
     private void OnEnable()
     {
@@ -45,10 +48,15 @@ public class ChoiceController : MonoBehaviour
     {
         if (_canSelectButton)
         {
+            _sfxChannel.RaiseEvent(_useSFX);
             _currentOptions[index].Effect.Execute();
             ClearButtons();
             _choiceChannel.RaiseChoiceEnd();
         }
+    }
+    public void SelectButton()
+    {
+        _sfxChannel.RaiseEvent(_selectSFX);
     }
     private void ClearButtons()
     {

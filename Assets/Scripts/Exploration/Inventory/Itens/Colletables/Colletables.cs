@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public abstract class Colletables : MonoBehaviour
@@ -11,6 +12,8 @@ public abstract class Colletables : MonoBehaviour
     protected string _equipmentType;
     protected string _currentEquipmentName;
     protected bool wasCollected;
+    [SerializeField] protected SFXEventChannel _sfxChannel;
+    [SerializeField] protected SimpleSFXEvent _pickSFX;
     public virtual void OnEnable()
     {
         _gameStateChannel.OnGameStateChange += SwitchInputsOnGameStateChange;
@@ -58,6 +61,7 @@ public abstract class Colletables : MonoBehaviour
 
     public virtual void OnPlayerPickup()
     {
+        _sfxChannel.RaiseEvent(_pickSFX);
     }
     public virtual string GetCurrentEquipmentName()
     {

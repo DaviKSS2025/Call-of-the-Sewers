@@ -14,4 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDatabase
   enemies:
   - type: 0
+    multipleSpawnChance: 20
     prefab: {fileID: 5538633754893564979, guid: 2cd68d7ec4281684cb0a8925385619a8, type: 3}
+  - type: 1
+    multipleSpawnChance: 0
+    prefab: {fileID: 5538633754893564979, guid: 5b9445daa8fab70459cc7847df9ac200, type: 3}

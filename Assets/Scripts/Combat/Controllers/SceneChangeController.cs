@@ -21,7 +21,7 @@ public class SceneChangeController : MonoBehaviour
 
     private void OnSceneChanged()
     {
-        SceneManager.LoadScene(SaveManager.Instance.Data.ExplorationData.CurrentMapName.ToString());
+        SceneManager.LoadScene(SceneNames.Sewers.ToString());
     }
     private void OnGoToTargetScene(SceneNames targetMap)
     {

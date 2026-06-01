@@ -48,6 +48,11 @@ public class TurnOrderManager : IEntityListHandler
     }
     private void OnEnemyDeath(BaseEntityController enemy)
     {
+        if (enemy is CerberusController) 
+        {
+            EndCombat();
+            return;
+        }
         _turnOrder.Remove(enemy);
         foreach (BaseEntityController firstEnemy in _turnOrder)
         {
@@ -63,13 +68,18 @@ public class TurnOrderManager : IEntityListHandler
     {
         MapDataController.Instance.EnemyDeathOnCombat();
         SaveAlliesStats();
-        OnEndGame?.Invoke();
-        OnPlayerVictory?.Invoke();
+        EndCombat();
     }
     private void PlayerDefeated()
     {
         OnEndGame?.Invoke();
         OnPlayerDefeated?.Invoke();
+        ResetSaves();
+    }
+    private void EndCombat()
+    {
+        OnEndGame?.Invoke();
+        OnPlayerVictory?.Invoke();
     }
     public void OnDisable()
     {
@@ -91,7 +101,13 @@ public class TurnOrderManager : IEntityListHandler
                 NPCDataController.Instance.SetHealth(entity.Stats.CurrentHealth, npcController.NPCType);
             }
         }
-
+    }
+    private void ResetSaves()
+    {
+        NPCDataController.Instance.CloneSave();
+        PlayerDataController.Instance.CloneSave();
+        InventoryDataController.Instance.CloneSave();
+        MapDataController.Instance.CloneSave();
     }
 }
 public interface IEntityListHandler

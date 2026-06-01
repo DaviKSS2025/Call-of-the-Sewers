@@ -7,7 +7,7 @@ public class CharacterData
 {
     public string PlayerName;
     public ArmorType CurrentArmor = ArmorType.Shirt;
-    public WeaponType CurrentWeapon = WeaponType.Pistol;
+    public WeaponType CurrentWeapon = WeaponType.Knife;
     public int CurrentHealth = 100;
     public int CurrentMana = 100;
     public List<SkillType> SkillList;
@@ -42,27 +42,21 @@ public class MapExplorationData
    public Dictionary<string, bool> OpenedDoors = new Dictionary<string, bool>();
    public Dictionary<string, EnemiesExplorationData> EnemyExplorationInfo = new Dictionary<string, EnemiesExplorationData>();
    public Dictionary<string, bool> CollectedItems = new Dictionary<string, bool>();
-   public Dictionary<string, bool> LitCandles = new Dictionary<string, bool>();
    public bool UsedSacrificePlace;
-   public float WorldPosX = 0;
-   public float WorldPosY = 0;   
-   public SceneNames CurrentMapName = SceneNames.Sewers;
+   public float WorldPosX = -10.782f;
+   public float WorldPosY = -54.74f;   
 }
 [Serializable]
 public struct EnemiesExplorationData
 {
     [SerializeField] private string _id;
-    [SerializeField] private EnemyType _enemyType;
+    public EnemyType _enemyType;
     private bool _dead;
     private float _worldPosX;
     private float _worldPosY;
     public string Id
     {
         get => _id;
-    }
-    public EnemyType EnemyType
-    {
-        get => _enemyType;
     }
     public bool Dead
     {
@@ -88,7 +82,7 @@ public class SaveFile
     public List<AllyNPC> NPCData = new List<AllyNPC>();
     public List<NPCType> AlreadyRecruitedNPCs = new List<NPCType>();
     public bool ChoosedNickName;
-    public List<ConsumableItemData> Items;
+    public List<ItemType> Items;
     public List<string> KeyIds;
     public MapExplorationData ExplorationData;
     public static SaveFile CreateNewGame()
@@ -97,7 +91,18 @@ public class SaveFile
         {
             PlayerData = CreateDefaultPlayer(),
             NPCData = new List<AllyNPC>(),
-            Items = new List<ConsumableItemData>(),
+            Items = new List<ItemType>()
+            {
+                ItemType.Medicine,
+                ItemType.Medicine,
+                ItemType.Medicine,
+                ItemType.Neurostimulants,
+                ItemType.Neurostimulants,
+                ItemType.Neurostimulants,
+                ItemType.Torch,
+                ItemType.Torch,
+                ItemType.Torch
+            },
             KeyIds = new List<string>(),
             ChoosedNickName = false,
             ExplorationData = ResetExploration(),
@@ -111,7 +116,7 @@ public class SaveFile
             PlayerName = null,
             CurrentHealth = 100,
             CurrentMana = 100,
-            CurrentWeapon = WeaponType.Pistol,
+            CurrentWeapon = WeaponType.Knife,
             CurrentArmor = ArmorType.Shirt,
             SkillList = new List<SkillType>()
             {
@@ -130,11 +135,9 @@ public class SaveFile
             OpenedDoors = new Dictionary<string, bool>(),
             EnemyExplorationInfo = new Dictionary<string, EnemiesExplorationData>(),
             CollectedItems = new Dictionary<string, bool>(),
-            LitCandles = new Dictionary<string, bool>(),
             UsedSacrificePlace = false,
-            WorldPosX = 0,
-            WorldPosY = 0,
-            CurrentMapName = SceneNames.Sewers
+            WorldPosX = -10.782f,
+            WorldPosY = -54.74f,
         };
     }
 }
@@ -142,7 +145,7 @@ public enum SceneNames
 {
     MainMenu,
     Sewers,
-    Dungeons,
     Combat,
-    ChangeName
+    ChangeName,
+    Endgame
 }

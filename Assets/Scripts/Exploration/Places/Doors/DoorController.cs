@@ -13,6 +13,8 @@ public class DoorController : MonoBehaviour
     private bool isPlayerOnRange;
     private DialogueStruct[] _openDialogue;
     private DialogueStruct[] _hasNotKeyDialogue;
+    [SerializeField] protected SFXEventChannel _sfxChannel;
+    [SerializeField] protected SimpleSFXEvent _openSFX;
     private void Awake()
     {
         _boxCollider = GetComponent<BoxCollider2D>();
@@ -79,6 +81,7 @@ public class DoorController : MonoBehaviour
     }
     private void OpenDoor(bool openedByPlayer)
     {
+        _sfxChannel.RaiseEvent(_openSFX);
         _spriteRenderer.sprite = _openedSprite;
         _boxCollider.enabled = false;
         _capsuleCollider.enabled = false;

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public abstract class NPCController : BaseEntityController
@@ -61,7 +62,7 @@ public abstract class NPCController : BaseEntityController
     public override void ExecuteTurnStart()
     {
         _skillManager.PrepareToListenEvents();
-        _strategy.ChooseStrategy();
+        StartCoroutine(NPCThinkTime());
     }
     public override void NeutralTurnEnd()
     {
@@ -80,7 +81,6 @@ public abstract class NPCController : BaseEntityController
         }
         else if (eventName == "SkillEnd")
         {
-            Debug.Log("Executou fim da skill npc!");
             _skillManager.OnDisable();
             NeutralTurnEnd();
         }
@@ -92,5 +92,10 @@ public abstract class NPCController : BaseEntityController
         {
             _animatorStateController.PlayDeath();
         }
+    }
+    private IEnumerator NPCThinkTime()
+    {
+        yield return new WaitForSeconds(1f);
+        _strategy.ChooseStrategy();
     }
 }

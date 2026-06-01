@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbaa8b4f564543d48b5d748e3a17d94d, type: 3}
   m_Name: Bite Guardian Rot
   m_EditorClassIdentifier: Assembly-CSharp::RotEffectData
-  Duration: 3
-  StatusSprite: {fileID: -1293192984778809801, guid: 58924f151c46bba49b19ce881e47811f, type: 3}
+  StatusSprite: {fileID: 2800543173965718157, guid: 9ba95bd0bc7d3ea4092cabc70ab684f1, type: 3}
   DamagePerTurn: 10

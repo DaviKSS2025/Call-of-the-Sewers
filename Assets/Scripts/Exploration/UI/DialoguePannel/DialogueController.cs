@@ -9,6 +9,8 @@ public class DialogueController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _speakerTMPro;
     [SerializeField] private InputChannel _inputChannel;
     [SerializeField] private GameStateChannel _gameStateChannel;
+    [SerializeField] protected SFXEventChannel _sfxChannel;
+    [SerializeField] protected SimpleSFXEvent _skipSFX;
     private DialogueStruct[] _currentDialogue = null;
     private int _dialogueIndex;
     private void OnEnable()
@@ -60,6 +62,7 @@ public class DialogueController : MonoBehaviour
             {
                 EndDialogue();
             }
+            _sfxChannel.RaiseEvent(_skipSFX);
         }
     }
     private void EndDialogue()

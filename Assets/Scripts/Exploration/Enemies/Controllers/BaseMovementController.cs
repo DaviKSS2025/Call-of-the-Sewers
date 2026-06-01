@@ -7,6 +7,7 @@ public class BaseMovementController
     private readonly Transform _transform;
     private Vector2 _lastDirection = Vector2.down;
     private NavMeshAgent _agent;
+    private BaseAnimatorController _animator;
     public Transform Transform
     {
         get => _transform;
@@ -20,11 +21,12 @@ public class BaseMovementController
     {
         get => _lastDirection;
     }
-    public BaseMovementController(MovementSpeed movementSpeed, Transform transform, NavMeshAgent agent)
+    public BaseMovementController(MovementSpeed movementSpeed, Transform transform, NavMeshAgent agent, BaseAnimatorController animator)
     {
         _movementSpeed = movementSpeed;
         _transform = transform;
         _agent = agent;
+        _animator = animator;
     }
 
     public void MoveToTarget(Vector2 direction)
@@ -34,8 +36,39 @@ public class BaseMovementController
             _lastDirection = direction;
         }
         AdjustQuartenion();
+        FlipToTarget();
         _agent.nextPosition = _transform.position;
         _agent.speed = _movementSpeed.WalkingSpeed;
+    }
+    public void FlipToTarget()
+    {
+        int direction = GetDirectionIndex(_lastDirection);
+        _animator.PlayWandering(direction);
+    }
+    private int GetDirectionIndex(Vector2 direction)
+    {
+        if (Mathf.Abs(direction.y) > Mathf.Abs(direction.x))
+        {
+            if (direction.y > 0)
+            {
+                return 0; // Back
+            }
+            else
+            {
+                return 1; // Front
+            }
+        }
+        else
+        {
+            if (direction.x < 0)
+            {
+                return 2; // Left
+            }
+            else
+            {
+                return 3; // Right
+            }
+        }
     }
     public void CantMove()
     {

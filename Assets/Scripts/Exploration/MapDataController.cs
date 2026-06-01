@@ -11,6 +11,7 @@ public class MapDataController : MonoBehaviour
 
     public MapExplorationData RuntimeExplorationData => _runTimeExplorationData;
     public EnemiesExplorationData EnemyEncounteredInCombat => _enemyEncounteredInCombat;
+    public EnemyType EnemyToSpawnInCombat;
 
     private void Awake()
     {
@@ -25,19 +26,7 @@ public class MapDataController : MonoBehaviour
     }
     private void OnEnable()
     {
-        _sceneChangeChannel.GoToTargetScene += UpdateSceneNameOnChange;
-        _runTimeExplorationData = SaveManager.Instance.Data.ExplorationData;
-    }
-    private void OnDisable()
-    {
-        _sceneChangeChannel.GoToTargetScene -= UpdateSceneNameOnChange;
-    }
-    private void UpdateSceneNameOnChange(SceneNames nextScene)
-    {
-        if (nextScene == SceneNames.Sewers || nextScene == SceneNames.Dungeons)
-        {
-            RuntimeExplorationData.CurrentMapName = nextScene;
-        }
+        CloneSave();
     }
     public Vector2 GetPlayerPosition()
     {
@@ -54,9 +43,9 @@ public class MapDataController : MonoBehaviour
     {
         _runTimeExplorationData.OpenedDoors[doorName] = true;
     }
-    public void LightCandle(string candleID, bool state)
+    public void ItemFound(string itemName)
     {
-        _runTimeExplorationData.LitCandles[candleID] = state;
+        _runTimeExplorationData.CollectedItems.Add(itemName, true);
     }
     public MapExplorationData GetSaveInfo()
     {
@@ -68,6 +57,7 @@ public class MapDataController : MonoBehaviour
         if (_runTimeExplorationData.EnemyExplorationInfo.TryGetValue(enemyId, out EnemiesExplorationData enemy))
         {
             _enemyEncounteredInCombat = enemy;
+            EnemyToSpawnInCombat = enemy._enemyType;
         }
         GetPlayerPosition();
     }
@@ -89,5 +79,9 @@ public class MapDataController : MonoBehaviour
             enemy.Dead = true;
             _runTimeExplorationData.EnemyExplorationInfo[_enemyEncounteredInCombat.Id] = enemy;
         }
+    }
+    public void CloneSave()
+    {
+        _runTimeExplorationData = SaveManager.Instance.Data.ExplorationData;
     }
 }

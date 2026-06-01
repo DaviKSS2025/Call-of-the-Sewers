@@ -13,7 +13,6 @@ public class PlayerControllerExploration : MonoBehaviour
     private PlayerStatsExploration _stats;
     private PlayerSanityDarknessDrain _sanityDarknessDrain;
     private PlayerMovement _movement;
-    private SpriteRenderer _spriteRenderer;
 
     [SerializeField] private SurvivalStats _maxHealth;
     [SerializeField] private MovementSpeed _movementSpeed;
@@ -22,6 +21,8 @@ public class PlayerControllerExploration : MonoBehaviour
     [SerializeField] private GameStateChannel _gameStateChannel;
     [SerializeField] private InventoryChannel _inventoryChannel;
     [SerializeField] private DialogueChannel _dialogueChannel;
+    [SerializeField] private SimpleMusicEvent _explorationMusic;
+    [SerializeField] private MusicEventChannel _musicChannel;
 
     private Vector2 _currentMoveInput;
     public Vector2 CurrentMoveInput => _currentMoveInput;
@@ -41,7 +42,6 @@ public class PlayerControllerExploration : MonoBehaviour
     {
         _rigidBody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
     private void OnEnable()
     {
@@ -89,7 +89,7 @@ public class PlayerControllerExploration : MonoBehaviour
     {
         //SOLID scripts incicialization
         _stats = new PlayerStatsExploration(_maxHealth.MaxHealth, _movementSpeed.WalkingSpeed);
-        _movement = new PlayerMovement(_rigidBody, _stats, _spriteRenderer);
+        _movement = new PlayerMovement(_rigidBody, _stats);
         _animatorController = new PlayerAnimatorControllerExploration(_animator);
         _stats.Initialize();
         _sanityDarknessDrain = new PlayerSanityDarknessDrain(_inventoryChannel, _gameStateChannel, _dialogueChannel);
@@ -100,6 +100,8 @@ public class PlayerControllerExploration : MonoBehaviour
         currentState.OnEnter();
 
         transform.position = new Vector2(MapDataController.Instance.RuntimeExplorationData.WorldPosX, MapDataController.Instance.RuntimeExplorationData.WorldPosY);
+
+        _musicChannel.RaiseEvent(_explorationMusic);
     }
     void Update()
     {

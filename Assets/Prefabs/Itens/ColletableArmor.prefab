@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4a0aca3a5f2effb41b43cc0a1661d845, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -130,8 +130,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0.21133333}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.28866667}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.56, y: 2.56}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -153,7 +153,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ColletableArmor
   _inputChannel: {fileID: 11400000, guid: db916f9bc3f8a7a42b6ca3227ccb49d2, type: 2}
   _gameStateChannel: {fileID: 11400000, guid: 14d04bf9574aad5478d235597ed5955a, type: 2}
-  _dialogueLines: []
   _dialogueChannel: {fileID: 11400000, guid: c7c8516a1d846af4089186674f8c18d1, type: 2}
+  _sfxChannel: {fileID: 11400000, guid: f506fe62561e95c4bb1afaefc7d2f017, type: 2}
+  _pickSFX: {fileID: 11400000, guid: ebf196bf274d30c458741c1988bc93cd, type: 2}
   _armor: {fileID: 0}
   _armorDatabase: {fileID: 11400000, guid: 1693538a97269224485d3cbbe020b547, type: 2}

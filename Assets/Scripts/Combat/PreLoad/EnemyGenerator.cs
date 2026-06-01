@@ -5,8 +5,7 @@ public class EnemyGenerator : MonoBehaviour
 {
     [SerializeField] private EnemyDatabase _database;
 
-    private int _chanceToSpawnMultiples = 15;
-    private int _decreaseChanceToMultipleSpawn = 15;
+    private int _chanceToSpawnMultiples;
 
     public List<BaseEntityController> Initialize()
     {
@@ -19,19 +18,19 @@ public class EnemyGenerator : MonoBehaviour
 
     private void ManageStartEnemySpawn(List<BaseEntityController> enemies)
     {
-        SpawnEnemy(MapDataController.Instance.EnemyEncounteredInCombat.EnemyType, enemies);
+        SpawnEnemy(MapDataController.Instance.EnemyEncounteredInCombat._enemyType, enemies);
 
-        while (WillSpawnMultipleEnemies())
+        if (WillSpawnMultipleEnemies(_chanceToSpawnMultiples))
         {
-            _chanceToSpawnMultiples -= _decreaseChanceToMultipleSpawn;
-
-            SpawnEnemy(MapDataController.Instance.EnemyEncounteredInCombat.EnemyType, enemies);
+            SpawnEnemy(MapDataController.Instance.EnemyToSpawnInCombat, enemies);
         }
     }
 
     private void SpawnEnemy(EnemyType type, List<BaseEntityController> enemies)
     {
         GameObject prefab = _database.GetEnemyPrefab(type);
+
+        _chanceToSpawnMultiples = _database.GetMultipleSpawnChance(type);
 
         GameObject instance = Instantiate(prefab, transform);
 
@@ -40,8 +39,8 @@ public class EnemyGenerator : MonoBehaviour
         enemies.Add(entity);
     }
 
-    private bool WillSpawnMultipleEnemies()
+    private bool WillSpawnMultipleEnemies(int chance)
     {
-        return Random.Range(0, 101) < _chanceToSpawnMultiples;
+        return Random.Range(0, 101) < chance;
     }
 }

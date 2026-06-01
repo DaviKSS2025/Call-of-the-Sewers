@@ -31,7 +31,7 @@ public abstract class StatsController
     }
     public virtual void TakeExactDamage(int damage)
     {
-        _currentHealth -= damage;
+        _currentHealth = Mathf.Max(_currentHealth - damage, 1);
         ResolveAfterDamage();
     }
     private void ResolveAfterDamage()
@@ -45,7 +45,7 @@ public abstract class StatsController
         {
             _entity.DeathClears();
             _entity.AnimatorStateController.PlayDeath();
-            _entity.ThisTurnChangeChannel.OnEntityDeath(_entity);
+            _entity.ThisTurnChangeChannel.RaiseEntityDeath(_entity);
             _entity.ComChannel.RaiseEntityKilled(_entity.EntityNameString);
         }
     }

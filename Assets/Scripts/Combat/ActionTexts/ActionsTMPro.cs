@@ -22,6 +22,7 @@ public class ActionsTMPro : MonoBehaviour
         _combatChannel.ShowSkipTurnOnStun += OnSkipTurnOnStun;
         _combatChannel.ShowGlobalStatusEffectUsed += OnShowGlobalStatusEffectUsed;
         _combatChannel.ShowSkillText += OnShowTargetAttackSkillText;
+        _combatChannel.ShowGlobalHealRequested += OnShowGlobalHealRequested;
     }
     private void OnDisable()
     {
@@ -34,6 +35,7 @@ public class ActionsTMPro : MonoBehaviour
         _combatChannel.ShowSkipTurnOnStun -= OnSkipTurnOnStun;
         _combatChannel.ShowGlobalStatusEffectUsed -= OnShowGlobalStatusEffectUsed;
         _combatChannel.ShowSkillText -= OnShowTargetAttackSkillText;
+        _combatChannel.ShowGlobalHealRequested -= OnShowGlobalHealRequested;
     }
     private void OnShowAttackText(string attackName, string attackerName, string targetName)
     {
@@ -66,6 +68,10 @@ public class ActionsTMPro : MonoBehaviour
     private void OnShowGlobalStatusEffectUsed(string globalStatusUsage)
     {
         _text.text = globalStatusUsage;
+    }
+    private void OnShowGlobalHealRequested(string skillUser, string skillName)
+    {
+        _text.text = $"<color=red>{skillUser}</color> heals everyone with <color=red>{skillName}</color>!";
     }
     private void OnShowTargetAttackSkillText(string skillName, string attackerName, string targetName)
     {

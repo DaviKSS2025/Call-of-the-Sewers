@@ -7,13 +7,13 @@ public class ItemDatabase : ScriptableObject
     [Serializable]
     public struct ItemEntry
     {
-        public ConsumableItemData type;
+        public ItemType type;
         public GameObject prefab;
     }
     
     [SerializeField] private ItemEntry[] itens;
     
-    public GameObject GetItemPrefab(ConsumableItemData type)
+    public GameObject GetItemPrefab(ItemType type)
     {
         foreach (var e in itens)
         {
@@ -22,4 +22,10 @@ public class ItemDatabase : ScriptableObject
         }
         return null;
     }
+}
+public enum ItemType
+{
+    Medicine,
+    Neurostimulants,
+    Torch
 }

@@ -194,3 +194,5 @@ MonoBehaviour:
   _gameStateChannel: {fileID: 11400000, guid: 14d04bf9574aad5478d235597ed5955a, type: 2}
   _inputChannel: {fileID: 11400000, guid: db916f9bc3f8a7a42b6ca3227ccb49d2, type: 2}
   _openedSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  _sfxChannel: {fileID: 11400000, guid: f506fe62561e95c4bb1afaefc7d2f017, type: 2}
+  _openSFX: {fileID: 11400000, guid: 51cb94e3b7f6ec4428c4c03144378126, type: 2}
