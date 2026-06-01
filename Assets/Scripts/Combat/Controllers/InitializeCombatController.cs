@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Collections;
 public class InitializeCombatController : MonoBehaviour
 {
     [SerializeField] private EnemyGenerator _enemyGenerator;
@@ -20,14 +20,18 @@ public class InitializeCombatController : MonoBehaviour
     private TurnBasedController _turnBasedController;
     private TurnOrderManager _turnOrderManager;
     [SerializeField] private List<BaseEntityController> _turnOrder = new();
+    [SerializeField] private SkillInventoryController _skillInventory;
     private bool isLastBoss;
 
-    private void Start()
+    private IEnumerator Start()
     {
         SpawnEntities();
+        yield return null;
         RaiseMonsterAppear();
+        InitializeSkillInventory();
         InitializeTurnOrderManager();
         ManageNPCStatusUI();
+        yield return null;
         InitializeSelectionSystem();
         InitializeCombatSystem();
         DealInitialManaDamage();
@@ -73,6 +77,10 @@ public class InitializeCombatController : MonoBehaviour
             }
         }
     }
+    private void InitializeSkillInventory()
+    {
+        _skillInventory.enabled = true;
+    }
     private void InitializeTurnOrderManager()
     {
         _turnOrderManager = new TurnOrderManager(_turnChangeChannel, _turnOrder);
@@ -98,7 +106,7 @@ public class InitializeCombatController : MonoBehaviour
                 manaDamage += enemy.ManaDamageInitial.ManaDamage;
             }
         }
-        _combatChannel.InitialManaDamage(_playerController, manaDamage);
+        _combatChannel.RaiseInitialManaDamage(_playerController, manaDamage);
     }
     private void ExecuteFirstTurn()
     {

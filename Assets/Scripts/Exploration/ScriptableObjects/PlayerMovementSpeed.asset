@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8a718fe8eb4e464c8e1968a76623091, type: 3}
   m_Name: PlayerMovementSpeed
   m_EditorClassIdentifier: Assembly-CSharp::MovementSpeed
-  _walkingSpeed: 12
+  _walkingSpeed: 4

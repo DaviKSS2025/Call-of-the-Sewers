@@ -55,10 +55,20 @@ public abstract class NPCController : BaseEntityController
     }
     public override void Start()
     {
-        base.Start();
+        _selectableEntity = new SelectableEntity(this);
+        _selectableEntity.Subscribe();
+        _statusEffectManager = new StatusEffectManager(this);
+        StartCoroutine(NPCStart());
+    }
+
+    private IEnumerator NPCStart()
+    {
+        yield return new WaitUntil(() => _statusUI != null);
+        SetupStatsController();
         SetupStrategy();
         SetupSkillManager();
     }
+
     public override void ExecuteTurnStart()
     {
         _skillManager.PrepareToListenEvents();

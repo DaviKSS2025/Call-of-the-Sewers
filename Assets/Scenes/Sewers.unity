@@ -14172,6 +14172,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MouseLockController
       objectReference: {fileID: 0}
+    - target: {fileID: 1148556022996859172, guid: b4cdd29837f9e4b4ea26e1fda3cd3a5b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2255873461189007063, guid: b4cdd29837f9e4b4ea26e1fda3cd3a5b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 60.35608
