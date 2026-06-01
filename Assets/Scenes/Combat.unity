@@ -239,6 +239,7 @@ GameObject:
   - component: {fileID: 268570935}
   - component: {fileID: 268570937}
   - component: {fileID: 268570938}
+  - component: {fileID: 268570939}
   m_Layer: 5
   m_Name: RunButton
   m_TagString: Untagged
@@ -378,6 +379,35 @@ MonoBehaviour:
   _turnChangeChannel: {fileID: 11400000, guid: 2bd52f323a799d046961dd26b75e4b0e, type: 2}
   _playerController: {fileID: 1195283526}
   _combatChannel: {fileID: 11400000, guid: d836378360c742d4e9f1105da45d56fc, type: 2}
+--- !u!114 &268570939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268570932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 268570938}
+          m_TargetAssemblyTypeName: RunOptionCombatButton, Assembly-CSharp
+          m_MethodName: OnSelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &272304468
 GameObject:
   m_ObjectHideFlags: 0
@@ -1812,6 +1842,7 @@ GameObject:
   - component: {fileID: 853801641}
   - component: {fileID: 853801643}
   - component: {fileID: 853801644}
+  - component: {fileID: 853801645}
   m_Layer: 5
   m_Name: SkillButton
   m_TagString: Untagged
@@ -1952,6 +1983,35 @@ MonoBehaviour:
   _playerController: {fileID: 1195283526}
   _combatChannel: {fileID: 11400000, guid: d836378360c742d4e9f1105da45d56fc, type: 2}
   _skillInventoryController: {fileID: 1318972617}
+--- !u!114 &853801645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853801638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 853801644}
+          m_TargetAssemblyTypeName: SkillCombatButton, Assembly-CSharp
+          m_MethodName: OnSelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &854120062
 GameObject:
   m_ObjectHideFlags: 0
@@ -2396,6 +2456,18 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3103831783420021766, guid: f80d8c3ccbefc124aa2e8f321688a792, type: 3}
+      propertyPath: _knifeSFX
+      value: 
+      objectReference: {fileID: 11400000, guid: e3f583e79d6aa7642a10287eaaecbc86, type: 2}
+    - target: {fileID: 3103831783420021766, guid: f80d8c3ccbefc124aa2e8f321688a792, type: 3}
+      propertyPath: _spellSFX
+      value: 
+      objectReference: {fileID: 11400000, guid: f484d86c36102c64c858bafdde099555, type: 2}
+    - target: {fileID: 3103831783420021766, guid: f80d8c3ccbefc124aa2e8f321688a792, type: 3}
+      propertyPath: _damageSFX
+      value: 
+      objectReference: {fileID: 11400000, guid: c5c45a7dc98e67e4496bc1eeeb791969, type: 2}
     - target: {fileID: 3103831783420021766, guid: f80d8c3ccbefc124aa2e8f321688a792, type: 3}
       propertyPath: _inputChannel
       value: 
@@ -3535,6 +3607,7 @@ GameObject:
   - component: {fileID: 1965060787}
   - component: {fileID: 1965060789}
   - component: {fileID: 1965060790}
+  - component: {fileID: 1965060791}
   m_Layer: 5
   m_Name: AttackButton
   m_TagString: Untagged
@@ -3675,6 +3748,35 @@ MonoBehaviour:
   _playerController: {fileID: 1195283526}
   _combatChannel: {fileID: 11400000, guid: d836378360c742d4e9f1105da45d56fc, type: 2}
   _selectionChannel: {fileID: 11400000, guid: 4df5fe4acd60bd04c8ca8116b6685465, type: 2}
+--- !u!114 &1965060791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965060784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1965060790}
+          m_TargetAssemblyTypeName: AttackOptionButton, Assembly-CSharp
+          m_MethodName: OnSelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &2107105939 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3639305159713655330, guid: 256f794820b4d8649a8407e28ca48d7d, type: 3}

@@ -6,6 +6,8 @@ public class EndgameDialogues : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _dialogueTMPro;
     [SerializeField] private SceneChangeChannel _sceneChangeChannel;
     [SerializeField] private SceneNames _menuScene;
+    [SerializeField] private SFXEventChannel _SFXEventChannel;
+    [SerializeField] private SimpleSFXEvent _clickSFX;
     private string[] _endgameDialogue = new string[6];
     private int _dialogueIndex = 0;
 
@@ -22,6 +24,7 @@ public class EndgameDialogues : MonoBehaviour
     }
     public void NextDialogue()
     {
+        _SFXEventChannel.RaiseEvent(_clickSFX);
         if (_dialogueIndex < _endgameDialogue.Length - 1)
         {
             _dialogueIndex++;

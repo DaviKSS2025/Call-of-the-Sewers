@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8498b6606b9a3854f8dd01be048ed937, type: 3}
-  m_Name: Pistol
+  m_Name: Knife
   m_EditorClassIdentifier: Assembly-CSharp::Weapons
   _damageMultiplier: 1
-  _name: Pistol
-  _weaponSprite: {fileID: -1293192984778809801, guid: 58924f151c46bba49b19ce881e47811f, type: 3}
+  _name: Knife
+  _weaponType: 0

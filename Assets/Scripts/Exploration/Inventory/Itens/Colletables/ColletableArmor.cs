@@ -18,6 +18,7 @@ public class ColletableArmor : Colletables
     {
         if (_insideRange)
         {
+            base.OnPlayerPickup();
             wasCollected = true;
             _playerCurrentArmor = _armorDatabase.GetArmorScriptableObject(PlayerDataController.Instance.RuntimeData.CurrentArmor);
             _currentEquipmentName = GetCurrentEquipmentName();

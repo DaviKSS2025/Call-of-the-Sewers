@@ -16,6 +16,9 @@ public class MenuController : MonoBehaviour
     [SerializeField] private Selectable _NPCPannelSelectable;
     [SerializeField] private GameStateChannel _gameStateChannel;
     [SerializeField] private InputChannel _inputChannel;
+    [SerializeField] private SFXEventChannel _sfxChannel;
+    [SerializeField] private SimpleSFXEvent _selectSFX;
+    [SerializeField] private SimpleSFXEvent _useSFX;
     public Action OpenedMenu;
     public Action ClosedMenu;
     private IConsumableEffectOnTarget _consumableUsed;
@@ -92,6 +95,14 @@ public class MenuController : MonoBehaviour
         ClosedMenu?.Invoke();
         _mainMenu.SetActive(false);
         _inputChannel.OnSubmit -= ManageTargetEffectSelection;
+    }
+    public void PlaySelectedSFX()
+    {
+        _sfxChannel.RaiseEvent(_selectSFX);
+    }
+    public void PlayUseSFX()
+    {
+        _sfxChannel.RaiseEvent(_useSFX);
     }
     private void ManageTargetEffectSelection()
     {

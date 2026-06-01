@@ -9,6 +9,12 @@ public class PlayerController : BaseEntityController
     [SerializeField] private WeaponDatabase _weaponDatabase;
     private RunManager _runManager;
     private SkillManager _skillManager;
+
+    [Header("Sound effects")]
+    [SerializeField] private SimpleSFXEvent _knifeSFX;
+    [SerializeField] private SimpleSFXEvent _damageSFX;
+    [SerializeField] private SimpleSFXEvent _spellSFX;
+
     public RunManager RunManager
     {
         get => _runManager;
@@ -47,6 +53,7 @@ public class PlayerController : BaseEntityController
         if (eventName == "StartDamage")
         {
             _attackController.LaunchAttack();
+            _SFXChannel.RaiseEvent(_knifeSFX);
         }
         else if (eventName == "AttackEnd")
         {
@@ -78,6 +85,14 @@ public class PlayerController : BaseEntityController
             _skillManager.OnDisable();
             _combatChannel.RaiseSkillEnd();
             NeutralTurnEnd();
+        }
+        else if (eventName == "SpellDamage")
+        {
+            _SFXChannel.RaiseEvent(_spellSFX);
+        }
+        else if (eventName == "DamageTaken")
+        {
+            _SFXChannel.RaiseEvent(_damageSFX);
         }
     }
     private IEnumerator WaitForRunDelay()

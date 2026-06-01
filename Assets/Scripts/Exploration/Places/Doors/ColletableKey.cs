@@ -8,6 +8,7 @@ public class ColletableKey : Colletables
     {
         if (_insideRange)
         {
+            base.OnPlayerPickup();
             wasCollected = true;
             InventoryDataController.Instance.AddKey(_doorName.DoorName);
 

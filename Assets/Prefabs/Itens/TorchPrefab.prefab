@@ -304,6 +304,9 @@ MonoBehaviour:
   _inventoryChannel: {fileID: 11400000, guid: ca82eb96f6f20bd43bc653c0c7011f91, type: 2}
   _itemNameTMPro: {fileID: 410150786978661577}
   _itemSprite: {fileID: 8573248793675435463}
+  _sfxChannel: {fileID: 11400000, guid: f506fe62561e95c4bb1afaefc7d2f017, type: 2}
+  _selectSFX: {fileID: 11400000, guid: 6b6e83aa0fa3c474592e74b4c5d0fd78, type: 2}
+  _useSFX: {fileID: 11400000, guid: 12a48eab974b09a449cb9cc054068bfa, type: 2}
   _torchDuration: 30
   _torchLightIntensity: 8
 --- !u!1 &5255435836775030755

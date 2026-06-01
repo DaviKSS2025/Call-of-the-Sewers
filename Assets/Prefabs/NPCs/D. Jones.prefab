@@ -633,11 +633,9 @@ MonoBehaviour:
   _darkFire: {fileID: 11400000, guid: a690523569654e54ab6e551448284df8, type: 2}
   _darkHealing: {fileID: 11400000, guid: 10508edc293fac347be3e741468260c8, type: 2}
   _darkness: {fileID: 11400000, guid: 4814fcf441c0eb3488695306ec045a6a, type: 2}
-  _skillSprites:
-  - {fileID: 5749667170183413548, guid: 6770905aa2c01a047a499127483d2237, type: 3}
-  - {fileID: -9099181672278189167, guid: c4cc78e279c088d429983ed8225e7a15, type: 3}
-  - {fileID: -6339807164234845996, guid: 6dae4bb3dac287c49a67542d2a685baf, type: 3}
-  - {fileID: 1706603519290074463, guid: 4b0628384ffafa14c97e6b1c502823d9, type: 3}
+  _knifeSFX: {fileID: 11400000, guid: e3f583e79d6aa7642a10287eaaecbc86, type: 2}
+  _damageSFX: {fileID: 11400000, guid: c5c45a7dc98e67e4496bc1eeeb791969, type: 2}
+  _spellSFX: {fileID: 11400000, guid: f484d86c36102c64c858bafdde099555, type: 2}
 --- !u!1 &6032681707712947433
 GameObject:
   m_ObjectHideFlags: 0

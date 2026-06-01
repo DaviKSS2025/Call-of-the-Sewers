@@ -6,6 +6,8 @@ public class SacrificePlace : InteractionPlace
     [SerializeField] private Weapons _weaponToGain;
     [SerializeField] private NPCDatabase _npcDatabase;
     [SerializeField] private ChoiceChannel _choiceChannel;
+    [SerializeField] protected SFXEventChannel _sfxChannel;
+    [SerializeField] protected SimpleSFXEvent _doomSFX;
     private List<ChoiceOption> _choiceList = new List<ChoiceOption>();
     private DialogueStruct[] _sacrificeResultDialogue;
     private DialogueStruct[] _alreadySacrificedDialogue;
@@ -160,6 +162,7 @@ public class SacrificePlace : InteractionPlace
             _sacrificePlace.AfterInteractionDialogue = _sacrificePlace.SacrificeResultDialogue;
             _sacrificePlace.HasSacrificed = true;
             _sacrificePlace.ShowTextAfterInteraction();
+            _sacrificePlace._sfxChannel.RaiseEvent(_sacrificePlace._doomSFX);
         }
     }
     private class NegateSacrificeEffect : IChoiceEffect

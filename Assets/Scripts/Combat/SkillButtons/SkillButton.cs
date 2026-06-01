@@ -7,6 +7,9 @@ public class SkillButton : MonoBehaviour
     private PlayerController _playerController;
     [SerializeField] private CombatChannel _combatChannel;
     [SerializeField] private TextMeshProUGUI _text;
+    [SerializeField] private SimpleSFXEvent _hoverSFX;
+    [SerializeField] private SimpleSFXEvent _clickSFX;
+    [SerializeField] private SFXEventChannel _SFXChannel;
     private bool _initialized;
     public SkillData ThisSkillData
     {
@@ -21,8 +24,13 @@ public class SkillButton : MonoBehaviour
     }
     public void SkillUsed()
     {
+        _SFXChannel.RaiseEvent(_clickSFX);
         _combatChannel.RaiseSkillUsed(_skillData);
         enabled = false;
+    }
+    public void Selected()
+    {
+        _SFXChannel.RaiseEvent(_hoverSFX);
     }
     private void OnEnable()
     {

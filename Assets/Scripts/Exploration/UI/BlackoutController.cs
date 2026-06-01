@@ -4,6 +4,8 @@ using UnityEngine;
 public class BlackoutController : MonoBehaviour
 {
     [SerializeField] private CutsceneChannel _cutsceneChannel;
+    [SerializeField] protected SFXEventChannel _sfxChannel;
+    [SerializeField] protected SimpleSFXEvent _doomSFX;
     private Animator _animator;
 
     private static int HalfBlackout = Animator.StringToHash("HalfBlackout");
@@ -25,5 +27,6 @@ public class BlackoutController : MonoBehaviour
     public void PlayHalfBlackout()
     {
         _animator.SetTrigger(HalfBlackout);
+        _sfxChannel.RaiseEvent(_doomSFX);
     }
 }

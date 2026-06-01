@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 438d50fb15c85594182916e9f636c20a, type: 3}
-  m_Name: Shoot
+  m_Name: Slash
   m_EditorClassIdentifier: Assembly-CSharp::AttackData
   _damage: 25
-  _attackName: Shoot
+  _attackName: Slash
   _attackChance: 0
   _criticalChance: 20
   _statusList: []

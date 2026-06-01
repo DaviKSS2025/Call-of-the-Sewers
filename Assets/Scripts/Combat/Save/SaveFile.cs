@@ -7,7 +7,7 @@ public class CharacterData
 {
     public string PlayerName;
     public ArmorType CurrentArmor = ArmorType.Shirt;
-    public WeaponType CurrentWeapon = WeaponType.Pistol;
+    public WeaponType CurrentWeapon = WeaponType.Knife;
     public int CurrentHealth = 100;
     public int CurrentMana = 100;
     public List<SkillType> SkillList;
@@ -116,7 +116,7 @@ public class SaveFile
             PlayerName = null,
             CurrentHealth = 100,
             CurrentMana = 100,
-            CurrentWeapon = WeaponType.Pistol,
+            CurrentWeapon = WeaponType.Knife,
             CurrentArmor = ArmorType.Shirt,
             SkillList = new List<SkillType>()
             {

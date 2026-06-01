@@ -21,6 +21,7 @@ public class SkillManager : ISkillUser
     }
     public void Initialize()
     {
+        _controller.UnscribeEventsOnDisable -= OnDisable;
         _controller.UnscribeEventsOnDisable += OnDisable;
     }
     public void PrepareToListenEvents()

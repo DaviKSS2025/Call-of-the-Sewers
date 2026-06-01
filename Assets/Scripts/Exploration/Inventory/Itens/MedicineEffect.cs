@@ -6,6 +6,7 @@ public class MedicineEffect : ItemEffect, IConsumableEffectOnTarget
     public override void OnUsed()
     {
         _inventoryChannel.RaiseItemUsedOnTarget(this);
+        _sfxChannel.RaiseEvent(_useSFX);
     }
     public void Execute(TargetType type)
     {

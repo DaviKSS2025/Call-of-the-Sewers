@@ -1024,6 +1024,8 @@ MonoBehaviour:
   _speakerTMPro: {fileID: 654236861}
   _inputChannel: {fileID: 11400000, guid: db916f9bc3f8a7a42b6ca3227ccb49d2, type: 2}
   _gameStateChannel: {fileID: 11400000, guid: 14d04bf9574aad5478d235597ed5955a, type: 2}
+  _sfxChannel: {fileID: 11400000, guid: f506fe62561e95c4bb1afaefc7d2f017, type: 2}
+  _skipSFX: {fileID: 11400000, guid: 12a48eab974b09a449cb9cc054068bfa, type: 2}
 --- !u!114 &176555873 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8058869901838776189, guid: 5afeebe8596c35f469f14ff0d6fd2a9b, type: 3}
@@ -1403,6 +1405,7 @@ GameObject:
   - component: {fileID: 264977064}
   - component: {fileID: 264977063}
   - component: {fileID: 264977062}
+  - component: {fileID: 264977065}
   m_Layer: 5
   m_Name: ChoiceButton
   m_TagString: Untagged
@@ -1524,6 +1527,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 264977060}
   m_CullTransparentMesh: 1
+--- !u!114 &264977065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264977060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 806149772}
+          m_TargetAssemblyTypeName: ChoiceController, Assembly-CSharp
+          m_MethodName: SelectButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &276433472
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3845,6 +3877,7 @@ GameObject:
   - component: {fileID: 524344828}
   - component: {fileID: 524344826}
   - component: {fileID: 524344825}
+  - component: {fileID: 524344829}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -3982,6 +4015,35 @@ MonoBehaviour:
   _useSound: {fileID: 11400000, guid: 12a48eab974b09a449cb9cc054068bfa, type: 2}
   _menuController: {fileID: 1708778052}
   _inputController: {fileID: 0}
+--- !u!114 &524344829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524344823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1708778052}
+          m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+          m_MethodName: PlaySelectedSFX
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &529457708
 GameObject:
   m_ObjectHideFlags: 0
@@ -6582,6 +6644,9 @@ MonoBehaviour:
   - {fileID: 899173545}
   _optionPannel: {fileID: 2017571470}
   _choiceChannel: {fileID: 11400000, guid: 977a8a1ee4cdd5c478cef6e6642371f7, type: 2}
+  _sfxChannel: {fileID: 11400000, guid: f506fe62561e95c4bb1afaefc7d2f017, type: 2}
+  _selectSFX: {fileID: 11400000, guid: 6b6e83aa0fa3c474592e74b4c5d0fd78, type: 2}
+  _useSFX: {fileID: 11400000, guid: 12a48eab974b09a449cb9cc054068bfa, type: 2}
 --- !u!1 &817285673
 GameObject:
   m_ObjectHideFlags: 0
@@ -6595,6 +6660,7 @@ GameObject:
   - component: {fileID: 817285677}
   - component: {fileID: 817285676}
   - component: {fileID: 817285675}
+  - component: {fileID: 817285679}
   m_Layer: 5
   m_Name: CancelButton
   m_TagString: Untagged
@@ -6733,6 +6799,35 @@ MonoBehaviour:
   _useSound: {fileID: 11400000, guid: 12a48eab974b09a449cb9cc054068bfa, type: 2}
   _menuController: {fileID: 1708778052}
   _inputController: {fileID: 0}
+--- !u!114 &817285679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817285673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1708778052}
+          m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+          m_MethodName: PlaySelectedSFX
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &824109506
 GameObject:
   m_ObjectHideFlags: 0
@@ -6935,7 +7030,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 762.5818, y: -0.0005187988}
-  m_SizeDelta: {x: 1525.1636, y: 120}
+  m_SizeDelta: {x: 1525.1636, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &851428242
 MonoBehaviour:
@@ -8412,6 +8507,7 @@ GameObject:
   - component: {fileID: 941932233}
   - component: {fileID: 941932235}
   - component: {fileID: 941932236}
+  - component: {fileID: 941932237}
   m_Layer: 5
   m_Name: NPC Pannel
   m_TagString: Untagged
@@ -8537,6 +8633,35 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 0
   m_TargetGraphic: {fileID: 941932233}
+--- !u!114 &941932237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 941932231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1708778052}
+          m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+          m_MethodName: PlaySelectedSFX
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &942435706
 GameObject:
   m_ObjectHideFlags: 0
@@ -9242,6 +9367,7 @@ GameObject:
   - component: {fileID: 1052455307}
   - component: {fileID: 1052455306}
   - component: {fileID: 1052455305}
+  - component: {fileID: 1052455309}
   m_Layer: 5
   m_Name: StatusButton
   m_TagString: Untagged
@@ -9379,6 +9505,35 @@ MonoBehaviour:
   _useSound: {fileID: 11400000, guid: 12a48eab974b09a449cb9cc054068bfa, type: 2}
   _menuController: {fileID: 1708778052}
   _inputController: {fileID: 0}
+--- !u!114 &1052455309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052455303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1708778052}
+          m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+          m_MethodName: PlaySelectedSFX
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &1054121617 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2065058574927330248, guid: 5afeebe8596c35f469f14ff0d6fd2a9b, type: 3}
@@ -9790,6 +9945,7 @@ GameObject:
   - component: {fileID: 1118303847}
   - component: {fileID: 1118303849}
   - component: {fileID: 1118303850}
+  - component: {fileID: 1118303851}
   m_Layer: 5
   m_Name: CharPannel
   m_TagString: Untagged
@@ -9922,6 +10078,35 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 0
   m_TargetGraphic: {fileID: 1118303847}
+--- !u!114 &1118303851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1118303845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1708778052}
+          m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+          m_MethodName: PlaySelectedSFX
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1168381768
 GameObject:
   m_ObjectHideFlags: 0
@@ -9935,6 +10120,7 @@ GameObject:
   - component: {fileID: 1168381773}
   - component: {fileID: 1168381771}
   - component: {fileID: 1168381770}
+  - component: {fileID: 1168381774}
   m_Layer: 5
   m_Name: InventoryButton
   m_TagString: Untagged
@@ -10072,6 +10258,35 @@ MonoBehaviour:
   _useSound: {fileID: 11400000, guid: 12a48eab974b09a449cb9cc054068bfa, type: 2}
   _menuController: {fileID: 1708778052}
   _inputController: {fileID: 0}
+--- !u!114 &1168381774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168381768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1708778052}
+          m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+          m_MethodName: PlaySelectedSFX
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &1171247334
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10213,6 +10428,7 @@ GameObject:
   - component: {fileID: 1184409084}
   - component: {fileID: 1184409082}
   - component: {fileID: 1184409081}
+  - component: {fileID: 1184409085}
   m_Layer: 5
   m_Name: ConfirmReturnButton
   m_TagString: Untagged
@@ -10352,6 +10568,35 @@ MonoBehaviour:
   _menuController: {fileID: 1708778052}
   _inputController: {fileID: 0}
   _sceneChangeChannel: {fileID: 11400000, guid: 5ac8a99a8451a3a4294b6fba6f75e998, type: 2}
+--- !u!114 &1184409085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184409079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1708778052}
+          m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+          m_MethodName: PlaySelectedSFX
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1223629442
 GameObject:
   m_ObjectHideFlags: 0
@@ -12547,6 +12792,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlackoutController
   _cutsceneChannel: {fileID: 11400000, guid: 12c7792c39afce64ba1ecdfca6a24162, type: 2}
+  _sfxChannel: {fileID: 11400000, guid: f506fe62561e95c4bb1afaefc7d2f017, type: 2}
+  _doomSFX: {fileID: 11400000, guid: 86e89a0f7bfcbd24cafb0337b67c6b71, type: 2}
 --- !u!114 &1507504118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13398,6 +13645,7 @@ GameObject:
   - component: {fileID: 1563604718}
   - component: {fileID: 1563604717}
   - component: {fileID: 1563604716}
+  - component: {fileID: 1563604719}
   m_Layer: 5
   m_Name: ChoiceButton
   m_TagString: Untagged
@@ -13519,6 +13767,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1563604714}
   m_CullTransparentMesh: 1
+--- !u!114 &1563604719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563604714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 806149772}
+          m_TargetAssemblyTypeName: ChoiceController, Assembly-CSharp
+          m_MethodName: SelectButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1572483520
 GameObject:
   m_ObjectHideFlags: 0
@@ -15086,6 +15363,9 @@ MonoBehaviour:
   _NPCPannelSelectable: {fileID: 941932236}
   _gameStateChannel: {fileID: 11400000, guid: 14d04bf9574aad5478d235597ed5955a, type: 2}
   _inputChannel: {fileID: 11400000, guid: db916f9bc3f8a7a42b6ca3227ccb49d2, type: 2}
+  _sfxChannel: {fileID: 11400000, guid: f506fe62561e95c4bb1afaefc7d2f017, type: 2}
+  _selectSFX: {fileID: 11400000, guid: 6b6e83aa0fa3c474592e74b4c5d0fd78, type: 2}
+  _useSFX: {fileID: 11400000, guid: 12a48eab974b09a449cb9cc054068bfa, type: 2}
 --- !u!1 &1719350542
 GameObject:
   m_ObjectHideFlags: 0

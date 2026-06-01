@@ -147,3 +147,5 @@ MonoBehaviour:
   _weaponToGain: {fileID: 11400000, guid: 2dc148bfb5abb194a9fda711cc1580f1, type: 2}
   _npcDatabase: {fileID: 11400000, guid: f3146396db7c0de4e8ed70298a739f13, type: 2}
   _choiceChannel: {fileID: 11400000, guid: 977a8a1ee4cdd5c478cef6e6642371f7, type: 2}
+  _sfxChannel: {fileID: 11400000, guid: f506fe62561e95c4bb1afaefc7d2f017, type: 2}
+  _doomSFX: {fileID: 11400000, guid: 86e89a0f7bfcbd24cafb0337b67c6b71, type: 2}

@@ -25,6 +25,6 @@ public class WeaponDatabase : ScriptableObject
 }
 public enum WeaponType
 {
-    Pistol,
+    Knife,
     Dark_Blade
 }
